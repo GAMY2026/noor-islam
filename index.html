@@ -27,7 +27,7 @@
       z-index: 1000;
       background: rgba(3, 17, 13, 0.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 1px solid rgba(212,175,55,0.25);
     }
 
     .header-content {
@@ -57,7 +57,6 @@
       color: #eee;
       text-decoration: none;
       font-size: 14px;
-      transition: 0.3s;
     }
 
     .nav a:hover {
@@ -97,7 +96,7 @@
       max-width: 850px;
       margin: 25px auto 45px;
       padding: 25px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(212,175,55,0.3);
       border-radius: 22px;
       background: rgba(255,255,255,0.05);
       box-shadow: 0 15px 40px rgba(0,0,0,0.25);
@@ -123,12 +122,10 @@
       color: #fff;
       font-size: 16px;
       outline: none;
-      transition: 0.3s;
     }
 
     .search-input:focus {
       border-color: #d4af37;
-      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
     }
 
     .search-input::placeholder {
@@ -148,7 +145,6 @@
       z-index: 100;
       max-height: 330px;
       overflow-y: auto;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.45);
     }
 
     .city-results.show {
@@ -159,15 +155,9 @@
       padding: 14px 18px;
       cursor: pointer;
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: 0.2s;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 10px;
-    }
-
-    .city-item:last-child {
-      border-bottom: none;
     }
 
     .city-item:hover {
@@ -206,11 +196,9 @@
       margin-top: 15px;
       padding: 12px;
       border-radius: 10px;
-      background: rgba(180, 40, 40, 0.15);
-      border: 1px solid rgba(255, 80, 80, 0.25);
+      background: rgba(180,40,40,0.15);
       color: #ffb4b4;
       display: none;
-      line-height: 1.6;
     }
 
     /* DATE */
@@ -233,12 +221,12 @@
       line-height: 1.8;
     }
 
-    /* PRAYER */
+    /* SECTION */
 
-    .prayer-section {
+    .section {
       max-width: 1200px;
       margin: auto;
-      padding: 0 20px 50px;
+      padding: 20px;
     }
 
     .section-title {
@@ -256,9 +244,11 @@
       color: #9fb0aa;
     }
 
+    /* PRAYER */
+
     .prayer-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5,1fr);
       gap: 15px;
     }
 
@@ -268,13 +258,12 @@
       border-radius: 20px;
       padding: 25px 15px;
       text-align: center;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     .prayer-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(212,175,55,0.6);
-      background: rgba(212,175,55,0.07);
+      border-color: rgba(212,175,55,.6);
     }
 
     .prayer-icon {
@@ -292,22 +281,17 @@
     .prayer-time {
       font-size: 27px;
       font-weight: bold;
-      color: #fff;
       direction: ltr;
     }
 
     .next-prayer {
       max-width: 700px;
-      margin: 30px auto 0;
+      margin: 30px auto;
       padding: 18px;
       text-align: center;
       border-radius: 15px;
-      background: linear-gradient(
-        135deg,
-        rgba(212,175,55,0.12),
-        rgba(255,255,255,0.04)
-      );
-      border: 1px solid rgba(212,175,55,0.3);
+      background: rgba(212,175,55,.08);
+      border: 1px solid rgba(212,175,55,.3);
     }
 
     .next-prayer span {
@@ -319,17 +303,140 @@
       font-size: 20px;
     }
 
-    /* SERVICES */
+    /* TRACKING */
 
-    .services {
-      max-width: 1200px;
-      margin: auto;
-      padding: 30px 20px 60px;
+    .tracking-box {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 24px;
+      padding: 25px;
+      margin-bottom: 30px;
     }
+
+    .progress-container {
+      margin-bottom: 25px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: #c8d6d0;
+    }
+
+    .progress-info strong {
+      color: #d4af37;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 13px;
+      background: rgba(255,255,255,.08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg,#b08a20,#d4af37,#f1d675);
+      border-radius: 20px;
+      transition: .4s;
+    }
+
+    .tracking-grid {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 12px;
+    }
+
+    .track-card {
+      border: 1px solid rgba(212,175,55,.2);
+      background: rgba(255,255,255,.04);
+      border-radius: 17px;
+      padding: 18px 10px;
+      text-align: center;
+    }
+
+    .track-name {
+      color: #d4af37;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .track-button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 5px;
+      cursor: pointer;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: 14px;
+      transition: .25s;
+    }
+
+    .track-button.done {
+      background: #176044;
+      color: #fff;
+      border: 1px solid #43a47c;
+    }
+
+    .reset-button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(212,175,55,.35);
+      background: transparent;
+      color: #d4af37;
+      cursor: pointer;
+    }
+
+    /* WEEK */
+
+    .week-wrapper {
+      overflow-x: auto;
+      border-radius: 20px;
+      border: 1px solid rgba(212,175,55,.2);
+    }
+
+    .week-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .week-table th {
+      color: #d4af37;
+      background: rgba(212,175,55,.08);
+      padding: 16px 10px;
+    }
+
+    .week-table td {
+      text-align: center;
+      padding: 14px 8px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      color: #dce7e2;
+    }
+
+    .week-table tr.today {
+      background: rgba(212,175,55,.1);
+    }
+
+    .today-label {
+      color: #d4af37;
+      font-size: 12px;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* SERVICES */
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 18px;
     }
 
@@ -338,15 +445,15 @@
       color: white;
       padding: 28px 20px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(212,175,55,0.15);
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(212,175,55,.15);
       text-align: center;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     .service-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(212,175,55,0.55);
+      border-color: rgba(212,175,55,.55);
     }
 
     .service-icon {
@@ -369,23 +476,17 @@
 
     .ayah {
       max-width: 1000px;
-      margin: 0 auto 60px;
+      margin: 30px auto 60px;
       padding: 45px 25px;
       text-align: center;
       border-radius: 25px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(212,175,55,0.09),
-          rgba(255,255,255,0.03)
-        );
-      border: 1px solid rgba(212,175,55,0.25);
+      background: rgba(212,175,55,.07);
+      border: 1px solid rgba(212,175,55,.25);
     }
 
     .ayah-text {
       font-size: 24px;
       line-height: 2;
-      color: #fff;
       margin-bottom: 15px;
     }
 
@@ -394,48 +495,36 @@
     }
 
     footer {
-      border-top: 1px solid rgba(212,175,55,0.15);
+      border-top: 1px solid rgba(212,175,55,.15);
       padding: 25px 20px;
       text-align: center;
       color: #82948d;
       font-size: 13px;
     }
 
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-      .prayer-grid {
-        grid-template-columns: repeat(3, 1fr);
+    @media(max-width:900px) {
+      .prayer-grid,
+      .tracking-grid {
+        grid-template-columns: repeat(3,1fr);
       }
 
       .service-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
     }
 
-    @media (max-width: 600px) {
+    @media(max-width:600px) {
       .header-content {
         flex-direction: column;
       }
 
-      .nav {
-        justify-content: center;
-      }
-
-      .hero {
-        padding-top: 45px;
-      }
-
-      .prayer-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .prayer-grid,
+      .tracking-grid {
+        grid-template-columns: repeat(2,1fr);
       }
 
       .service-grid {
         grid-template-columns: 1fr;
-      }
-
-      .prayer-card {
-        padding: 20px 10px;
       }
 
       .prayer-time {
@@ -450,10 +539,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .city-en {
-        direction: ltr;
-      }
     }
   </style>
 </head>
@@ -462,256 +547,468 @@
 
 <header>
   <div class="header-content">
-    <div class="logo">☪ نور الإسلام</div>
+
+    <div class="logo">
+      ☪ نور الإسلام
+    </div>
 
     <nav class="nav">
-      <a href="#prayer">مواقيت الصلاة</a>
+      <a href="#prayer">الصلاة</a>
+      <a href="#tracking">متابعة الصلاة</a>
+      <a href="#week">التقويم الأسبوعي</a>
       <a href="#services">الخدمات</a>
-      <a href="#ayah">آية اليوم</a>
     </nav>
+
   </div>
 </header>
 
+
 <main>
 
-  <!-- HERO -->
+<section class="hero">
 
-  <section class="hero">
+  <div class="bismillah">
+    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+  </div>
 
-    <div class="bismillah">
-      بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-    </div>
+  <h1>نور الإسلام</h1>
 
-    <h1>نور الإسلام</h1>
+  <p>
+    منصتك الإسلامية لمتابعة الصلاة والأذكار والقرآن
+  </p>
+
+</section>
+
+
+<!-- LOCATION -->
+
+<section class="location-box">
+
+  <div class="location-title">
+    📍 اختر محافظتك
+  </div>
+
+  <div class="search-wrapper">
+
+    <input
+      type="text"
+      id="citySearch"
+      class="search-input"
+      placeholder="ابحث بالعربي أو English... مثال: القاهرة / Cairo"
+      autocomplete="off"
+    >
+
+    <div id="cityResults" class="city-results"></div>
+
+  </div>
+
+  <div class="selected-city">
+    المحافظة المختارة:
+    <strong id="selectedCity">
+      القاهرة — Cairo
+    </strong>
+  </div>
+
+  <div id="loading" class="loading">
+    ⏳ جاري تحميل مواقيت الصلاة...
+  </div>
+
+  <div id="error" class="error"></div>
+
+</section>
+
+
+<!-- DATE -->
+
+<section class="date-box">
+
+  <h2 id="gregorianDate">
+    جاري تحميل التاريخ...
+  </h2>
+
+  <p id="hijriDate">
+    جاري تحميل التاريخ الهجري...
+  </p>
+
+</section>
+
+
+<!-- PRAYER TIMES -->
+
+<section class="section" id="prayer">
+
+  <div class="section-title">
+
+    <h2>🕌 مواقيت الصلاة</h2>
 
     <p>
-      منصتك الإسلامية لمعرفة مواقيت الصلاة والأذكار والقرآن
+      مواقيت الصلاة حسب المحافظة المختارة
     </p>
 
-  </section>
+  </div>
 
+  <div class="prayer-grid">
 
-  <!-- LOCATION -->
-
-  <section class="location-box">
-
-    <div class="location-title">
-      📍 اختر محافظتك
+    <div class="prayer-card">
+      <div class="prayer-icon">🌅</div>
+      <div class="prayer-name">الفجر</div>
+      <div class="prayer-time" id="fajr">--:--</div>
     </div>
 
-    <div class="search-wrapper">
-
-      <input
-        type="text"
-        id="citySearch"
-        class="search-input"
-        placeholder="ابحث بالعربي أو English... مثال: القاهرة / Cairo"
-        autocomplete="off"
-      >
-
-      <div id="cityResults" class="city-results"></div>
-
+    <div class="prayer-card">
+      <div class="prayer-icon">☀️</div>
+      <div class="prayer-name">الظهر</div>
+      <div class="prayer-time" id="dhuhr">--:--</div>
     </div>
 
-    <div class="selected-city">
-      المحافظة المختارة:
-      <strong id="selectedCity">القاهرة — Cairo</strong>
+    <div class="prayer-card">
+      <div class="prayer-icon">🌤️</div>
+      <div class="prayer-name">العصر</div>
+      <div class="prayer-time" id="asr">--:--</div>
     </div>
 
-    <div id="loading" class="loading">
-      ⏳ جاري تحميل مواقيت الصلاة...
+    <div class="prayer-card">
+      <div class="prayer-icon">🌇</div>
+      <div class="prayer-name">المغرب</div>
+      <div class="prayer-time" id="maghrib">--:--</div>
     </div>
 
-    <div id="error" class="error"></div>
+    <div class="prayer-card">
+      <div class="prayer-icon">🌙</div>
+      <div class="prayer-name">العشاء</div>
+      <div class="prayer-time" id="isha">--:--</div>
+    </div>
 
-  </section>
+  </div>
+
+  <div class="next-prayer">
+
+    <span>الصلاة القادمة:</span>
+
+    <strong id="nextPrayer">
+      جاري الحساب...
+    </strong>
+
+  </div>
+
+</section>
 
 
-  <!-- DATE -->
+<!-- TRACKING -->
 
-  <section class="date-box">
+<section class="section" id="tracking">
 
-    <h2 id="gregorianDate">جاري تحميل التاريخ...</h2>
+  <div class="section-title">
 
-    <p id="hijriDate">
-      جاري تحميل التاريخ الهجري...
+    <h2>📊 لوحة متابعة الصلاة</h2>
+
+    <p>
+      سجل صلواتك اليوم وتابع نسبة الإنجاز
     </p>
 
-  </section>
+  </div>
 
 
-  <!-- PRAYER TIMES -->
+  <div class="tracking-box">
 
-  <section class="prayer-section" id="prayer">
+    <div class="progress-container">
 
-    <div class="section-title">
+      <div class="progress-info">
 
-      <h2>🕌 مواقيت الصلاة</h2>
+        <span>
+          إنجاز اليوم
+        </span>
+
+        <strong id="progressText">
+          0 / 5
+        </strong>
+
+      </div>
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          id="progressFill">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="tracking-grid">
+
+      <div class="track-card">
+
+        <div class="track-name">
+          الفجر
+        </div>
+
+        <button
+          class="track-button"
+          data-prayer="Fajr"
+          onclick="togglePrayer('Fajr')">
+
+          لم أصلِّ
+
+        </button>
+
+      </div>
+
+
+      <div class="track-card">
+
+        <div class="track-name">
+          الظهر
+        </div>
+
+        <button
+          class="track-button"
+          data-prayer="Dhuhr"
+          onclick="togglePrayer('Dhuhr')">
+
+          لم أصلِّ
+
+        </button>
+
+      </div>
+
+
+      <div class="track-card">
+
+        <div class="track-name">
+          العصر
+        </div>
+
+        <button
+          class="track-button"
+          data-prayer="Asr"
+          onclick="togglePrayer('Asr')">
+
+          لم أصلِّ
+
+        </button>
+
+      </div>
+
+
+      <div class="track-card">
+
+        <div class="track-name">
+          المغرب
+        </div>
+
+        <button
+          class="track-button"
+          data-prayer="Maghrib"
+          onclick="togglePrayer('Maghrib')">
+
+          لم أصلِّ
+
+        </button>
+
+      </div>
+
+
+      <div class="track-card">
+
+        <div class="track-name">
+          العشاء
+        </div>
+
+        <button
+          class="track-button"
+          data-prayer="Isha"
+          onclick="togglePrayer('Isha')">
+
+          لم أصلِّ
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="reset-button"
+      onclick="resetToday()">
+
+      إعادة متابعة اليوم
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- WEEK -->
+
+<section class="section" id="week">
+
+  <div class="section-title">
+
+    <h2>📅 التقويم الأسبوعي</h2>
+
+    <p>
+      مواقيت الصلاة خلال الأيام القادمة
+    </p>
+
+  </div>
+
+
+  <div class="week-wrapper">
+
+    <table class="week-table">
+
+      <thead>
+
+        <tr>
+
+          <th>اليوم</th>
+          <th>الفجر</th>
+          <th>الظهر</th>
+          <th>العصر</th>
+          <th>المغرب</th>
+          <th>العشاء</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="weekTableBody">
+
+        <tr>
+
+          <td colspan="6">
+            جاري تحميل التقويم الأسبوعي...
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+  <div class="section-title">
+
+    <h2>✨ خدمات نور الإسلام</h2>
+
+    <p>
+      كل ما تحتاجه في مكان واحد
+    </p>
+
+  </div>
+
+
+  <div class="service-grid">
+
+    <a class="service-card" href="#quran">
+
+      <div class="service-icon">📖</div>
+
+      <h3>القرآن الكريم</h3>
 
       <p>
-        مواقيت الصلاة حسب المحافظة المختارة
+        اقرأ القرآن الكريم وتدبر آياته
       </p>
 
-    </div>
-
-    <div class="prayer-grid">
-
-      <div class="prayer-card">
-        <div class="prayer-icon">🌅</div>
-        <div class="prayer-name">الفجر</div>
-        <div class="prayer-time" id="fajr">--:--</div>
-      </div>
-
-      <div class="prayer-card">
-        <div class="prayer-icon">☀️</div>
-        <div class="prayer-name">الظهر</div>
-        <div class="prayer-time" id="dhuhr">--:--</div>
-      </div>
-
-      <div class="prayer-card">
-        <div class="prayer-icon">🌤️</div>
-        <div class="prayer-name">العصر</div>
-        <div class="prayer-time" id="asr">--:--</div>
-      </div>
-
-      <div class="prayer-card">
-        <div class="prayer-icon">🌇</div>
-        <div class="prayer-name">المغرب</div>
-        <div class="prayer-time" id="maghrib">--:--</div>
-      </div>
-
-      <div class="prayer-card">
-        <div class="prayer-icon">🌙</div>
-        <div class="prayer-name">العشاء</div>
-        <div class="prayer-time" id="isha">--:--</div>
-      </div>
-
-    </div>
-
-    <div class="next-prayer">
-
-      <span>الصلاة القادمة:</span>
-
-      <strong id="nextPrayer">
-        جاري الحساب...
-      </strong>
-
-    </div>
-
-  </section>
+    </a>
 
 
-  <!-- SERVICES -->
+    <a class="service-card" href="#adhkar">
 
-  <section class="services" id="services">
+      <div class="service-icon">📿</div>
 
-    <div class="section-title">
-
-      <h2>✨ خدمات نور الإسلام</h2>
+      <h3>الأذكار</h3>
 
       <p>
-        كل ما تحتاجه في مكان واحد
+        أذكار الصباح والمساء
       </p>
 
-    </div>
-
-    <div class="service-grid">
-
-      <a class="service-card" href="#quran">
-
-        <div class="service-icon">📖</div>
-
-        <h3>القرآن الكريم</h3>
-
-        <p>
-          اقرأ القرآن الكريم وتدبر آياته
-        </p>
-
-      </a>
+    </a>
 
 
-      <a class="service-card" href="#adhkar">
+    <a class="service-card" href="#qibla">
 
-        <div class="service-icon">📿</div>
+      <div class="service-icon">🕋</div>
 
-        <h3>الأذكار</h3>
+      <h3>اتجاه القبلة</h3>
 
-        <p>
-          أذكار الصباح والمساء وأذكار المسلم
-        </p>
+      <p>
+        معرفة اتجاه القبلة بسهولة
+      </p>
 
-      </a>
-
-
-      <a class="service-card" href="#qibla">
-
-        <div class="service-icon">🕋</div>
-
-        <h3>اتجاه القبلة</h3>
-
-        <p>
-          معرفة اتجاه القبلة بسهولة
-        </p>
-
-      </a>
+    </a>
 
 
-      <a class="service-card" href="#calendar">
+    <a class="service-card" href="#calendar">
 
-        <div class="service-icon">📅</div>
+      <div class="service-icon">📅</div>
 
-        <h3>التقويم الهجري</h3>
+      <h3>التقويم الهجري</h3>
 
-        <p>
-          تابع التاريخ الهجري والمناسبات الإسلامية
-        </p>
+      <p>
+        تابع التاريخ الهجري
+      </p>
 
-      </a>
-
-
-      <a class="service-card" href="#mosques">
-
-        <div class="service-icon">🕌</div>
-
-        <h3>المساجد القريبة</h3>
-
-        <p>
-          البحث عن المساجد القريبة منك
-        </p>
-
-      </a>
+    </a>
 
 
-      <a class="service-card" href="#dua">
+    <a class="service-card" href="#mosques">
 
-        <div class="service-icon">🤲</div>
+      <div class="service-icon">🕌</div>
 
-        <h3>الأدعية</h3>
+      <h3>المساجد القريبة</h3>
 
-        <p>
-          مجموعة من الأدعية المأثورة
-        </p>
+      <p>
+        البحث عن المساجد القريبة
+      </p>
 
-      </a>
-
-    </div>
-
-  </section>
+    </a>
 
 
-  <!-- AYAH -->
+    <a class="service-card" href="#dua">
 
-  <section class="ayah" id="ayah">
+      <div class="service-icon">🤲</div>
 
-    <div class="ayah-text">
-      ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
-    </div>
+      <h3>الأدعية</h3>
 
-    <div class="ayah-source">
-      سورة الرعد — آية 28
-    </div>
+      <p>
+        مجموعة من الأدعية
+      </p>
 
-  </section>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- AYAH -->
+
+<section class="ayah">
+
+  <div class="ayah-text">
+    ﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾
+  </div>
+
+  <div class="ayah-source">
+    سورة الرعد — آية 28
+  </div>
+
+</section>
 
 </main>
 
@@ -731,629 +1028,701 @@
 
 <script>
 
-  /* ================================
-     محافظات مصر
-  ================================= */
-
-  const egyptCities = [
-
-    {
-      ar: "القاهرة",
-      en: "Cairo",
-      api: "Cairo"
-    },
-
-    {
-      ar: "الجيزة",
-      en: "Giza",
-      api: "Giza"
-    },
-
-    {
-      ar: "الإسكندرية",
-      en: "Alexandria",
-      api: "Alexandria"
-    },
-
-    {
-      ar: "القليوبية",
-      en: "Qalyubia",
-      api: "Qalyubia"
-    },
-
-    {
-      ar: "الشرقية",
-      en: "Sharqia",
-      api: "Sharqia"
-    },
-
-    {
-      ar: "الدقهلية",
-      en: "Dakahlia",
-      api: "Dakahlia"
-    },
-
-    {
-      ar: "الغربية",
-      en: "Gharbia",
-      api: "Gharbia"
-    },
-
-    {
-      ar: "المنوفية",
-      en: "Monufia",
-      api: "Monufia"
-    },
-
-    {
-      ar: "البحيرة",
-      en: "Beheira",
-      api: "Beheira"
-    },
-
-    {
-      ar: "كفر الشيخ",
-      en: "Kafr El Sheikh",
-      api: "Kafr El Sheikh"
-    },
-
-    {
-      ar: "دمياط",
-      en: "Damietta",
-      api: "Damietta"
-    },
-
-    {
-      ar: "بورسعيد",
-      en: "Port Said",
-      api: "Port Said"
-    },
-
-    {
-      ar: "الإسماعيلية",
-      en: "Ismailia",
-      api: "Ismailia"
-    },
-
-    {
-      ar: "السويس",
-      en: "Suez",
-      api: "Suez"
-    },
-
-    {
-      ar: "شمال سيناء",
-      en: "North Sinai",
-      api: "North Sinai"
-    },
-
-    {
-      ar: "جنوب سيناء",
-      en: "South Sinai",
-      api: "South Sinai"
-    },
-
-    {
-      ar: "بني سويف",
-      en: "Beni Suef",
-      api: "Beni Suef"
-    },
-
-    {
-      ar: "الفيوم",
-      en: "Fayoum",
-      api: "Fayoum"
-    },
-
-    {
-      ar: "المنيا",
-      en: "Minya",
-      api: "Minya"
-    },
-
-    {
-      ar: "أسيوط",
-      en: "Assiut",
-      api: "Assiut"
-    },
-
-    {
-      ar: "سوهاج",
-      en: "Sohag",
-      api: "Sohag"
-    },
-
-    {
-      ar: "قنا",
-      en: "Qena",
-      api: "Qena"
-    },
-
-    {
-      ar: "الأقصر",
-      en: "Luxor",
-      api: "Luxor"
-    },
-
-    {
-      ar: "أسوان",
-      en: "Aswan",
-      api: "Aswan"
-    },
-
-    {
-      ar: "الوادي الجديد",
-      en: "New Valley",
-      api: "New Valley"
-    },
-
-    {
-      ar: "مطروح",
-      en: "Matrouh",
-      api: "Matrouh"
-    },
-
-    {
-      ar: "البحر الأحمر",
-      en: "Red Sea",
-      api: "Red Sea"
-    }
-
-  ];
-
-
-  /* ================================
-     عناصر الصفحة
-  ================================= */
-
-  const searchInput =
-    document.getElementById("citySearch");
-
-  const cityResults =
-    document.getElementById("cityResults");
-
-  const selectedCity =
-    document.getElementById("selectedCity");
-
-  const loading =
-    document.getElementById("loading");
-
-  const errorBox =
-    document.getElementById("error");
-
-
-  /* ================================
-     تطبيع البحث العربي والإنجليزي
-  ================================= */
-
-  function normalizeText(text) {
-
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/[أإآ]/g, "ا")
-      .replace(/ى/g, "ي")
-      .replace(/ة/g, "ه")
-      .replace(/ـ/g, "");
-
-  }
-
-
-  /* ================================
-     عرض النتائج
-  ================================= */
-
-  function showCityResults(search = "") {
-
-    const query =
-      normalizeText(search);
-
-    const results =
-      egyptCities.filter(city => {
-
-        const ar =
-          normalizeText(city.ar);
-
-        const en =
-          normalizeText(city.en);
-
-        return (
-          ar.includes(query) ||
-          en.includes(query)
-        );
-
-      });
-
-
-    cityResults.innerHTML = "";
-
-
-    if (results.length === 0) {
-
-      cityResults.innerHTML = `
-        <div class="city-item">
-          <span class="city-ar">
-            لا توجد محافظة بهذا الاسم
-          </span>
-        </div>
-      `;
-
-      cityResults.classList.add("show");
-
-      return;
-    }
-
-
-    results.forEach(city => {
-
-      const item =
-        document.createElement("div");
-
-      item.className = "city-item";
-
-      item.innerHTML = `
-        <span class="city-ar">
-          ${city.ar}
-        </span>
-
-        <span class="city-en">
-          ${city.en}
-        </span>
-      `;
-
-
-      item.addEventListener("click", () => {
-
-        selectCity(city);
-
-      });
-
-
-      cityResults.appendChild(item);
+/* =====================================
+   المحافظات
+===================================== */
+
+const egyptCities = [
+
+  {ar:"القاهرة",en:"Cairo",api:"Cairo"},
+  {ar:"الجيزة",en:"Giza",api:"Giza"},
+  {ar:"الإسكندرية",en:"Alexandria",api:"Alexandria"},
+  {ar:"القليوبية",en:"Qalyubia",api:"Qalyubia"},
+  {ar:"الشرقية",en:"Sharqia",api:"Sharqia"},
+  {ar:"الدقهلية",en:"Dakahlia",api:"Dakahlia"},
+  {ar:"الغربية",en:"Gharbia",api:"Gharbia"},
+  {ar:"المنوفية",en:"Monufia",api:"Monufia"},
+  {ar:"البحيرة",en:"Beheira",api:"Beheira"},
+  {ar:"كفر الشيخ",en:"Kafr El Sheikh",api:"Kafr El Sheikh"},
+  {ar:"دمياط",en:"Damietta",api:"Damietta"},
+  {ar:"بورسعيد",en:"Port Said",api:"Port Said"},
+  {ar:"الإسماعيلية",en:"Ismailia",api:"Ismailia"},
+  {ar:"السويس",en:"Suez",api:"Suez"},
+  {ar:"شمال سيناء",en:"North Sinai",api:"North Sinai"},
+  {ar:"جنوب سيناء",en:"South Sinai",api:"South Sinai"},
+  {ar:"بني سويف",en:"Beni Suef",api:"Beni Suef"},
+  {ar:"الفيوم",en:"Fayoum",api:"Fayoum"},
+  {ar:"المنيا",en:"Minya",api:"Minya"},
+  {ar:"أسيوط",en:"Assiut",api:"Assiut"},
+  {ar:"سوهاج",en:"Sohag",api:"Sohag"},
+  {ar:"قنا",en:"Qena",api:"Qena"},
+  {ar:"الأقصر",en:"Luxor",api:"Luxor"},
+  {ar:"أسوان",en:"Aswan",api:"Aswan"},
+  {ar:"الوادي الجديد",en:"New Valley",api:"New Valley"},
+  {ar:"مطروح",en:"Matrouh",api:"Matrouh"},
+  {ar:"البحر الأحمر",en:"Red Sea",api:"Red Sea"}
+
+];
+
+
+/* =====================================
+   العناصر
+===================================== */
+
+const searchInput =
+  document.getElementById("citySearch");
+
+const cityResults =
+  document.getElementById("cityResults");
+
+const selectedCity =
+  document.getElementById("selectedCity");
+
+const loading =
+  document.getElementById("loading");
+
+const errorBox =
+  document.getElementById("error");
+
+
+/* =====================================
+   Normalize
+===================================== */
+
+function normalizeText(text){
+
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[أإآ]/g,"ا")
+    .replace(/ى/g,"ي")
+    .replace(/ة/g,"ه")
+    .replace(/ـ/g,"");
+
+}
+
+
+/* =====================================
+   البحث
+===================================== */
+
+function showCityResults(search=""){
+
+  const query =
+    normalizeText(search);
+
+  const results =
+    egyptCities.filter(city => {
+
+      return (
+        normalizeText(city.ar).includes(query) ||
+        normalizeText(city.en).includes(query)
+      );
 
     });
 
 
+  cityResults.innerHTML="";
+
+
+  if(!results.length){
+
+    cityResults.innerHTML=`
+      <div class="city-item">
+        <span class="city-ar">
+          لا توجد محافظة بهذا الاسم
+        </span>
+      </div>
+    `;
+
     cityResults.classList.add("show");
+
+    return;
 
   }
 
 
-  /* ================================
-     اختيار المحافظة
-  ================================= */
+  results.forEach(city=>{
 
-  function selectCity(city) {
+    const item =
+      document.createElement("div");
 
-    searchInput.value =
-      `${city.ar} — ${city.en}`;
+    item.className="city-item";
 
-    selectedCity.textContent =
-      `${city.ar} — ${city.en}`;
+    item.innerHTML=`
+      <span class="city-ar">
+        ${city.ar}
+      </span>
+
+      <span class="city-en">
+        ${city.en}
+      </span>
+    `;
+
+    item.onclick=()=>selectCity(city);
+
+    cityResults.appendChild(item);
+
+  });
+
+
+  cityResults.classList.add("show");
+
+}
+
+
+searchInput.addEventListener(
+  "input",
+  ()=>showCityResults(searchInput.value)
+);
+
+
+searchInput.addEventListener(
+  "focus",
+  ()=>showCityResults(searchInput.value)
+);
+
+
+document.addEventListener("click",event=>{
+
+  if(!event.target.closest(".search-wrapper")){
 
     cityResults.classList.remove("show");
 
-    localStorage.setItem(
-      "noorIslamCity",
-      JSON.stringify(city)
+  }
+
+});
+
+
+/* =====================================
+   اختيار المحافظة
+===================================== */
+
+function selectCity(city){
+
+  searchInput.value =
+    `${city.ar} — ${city.en}`;
+
+  selectedCity.textContent =
+    `${city.ar} — ${city.en}`;
+
+  cityResults.classList.remove("show");
+
+  localStorage.setItem(
+    "noorIslamCity",
+    JSON.stringify(city)
+  );
+
+  loadPrayerTimes(city);
+
+  loadWeek(city);
+
+}
+
+
+/* =====================================
+   مواقيت الصلاة
+===================================== */
+
+async function loadPrayerTimes(city){
+
+  loading.style.display="block";
+
+  errorBox.style.display="none";
+
+  try{
+
+    const url =
+      `https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city.api)}&country=Egypt&method=5`;
+
+    const response =
+      await fetch(url);
+
+    if(!response.ok)
+      throw new Error("API Error");
+
+    const data =
+      await response.json();
+
+    const timings =
+      data.data.timings;
+
+    document.getElementById("fajr").textContent =
+      cleanTime(timings.Fajr);
+
+    document.getElementById("dhuhr").textContent =
+      cleanTime(timings.Dhuhr);
+
+    document.getElementById("asr").textContent =
+      cleanTime(timings.Asr);
+
+    document.getElementById("maghrib").textContent =
+      cleanTime(timings.Maghrib);
+
+    document.getElementById("isha").textContent =
+      cleanTime(timings.Isha);
+
+
+    const date =
+      data.data.date;
+
+    document.getElementById("gregorianDate").textContent =
+      `${date.gregorian.weekday.en} — ${date.gregorian.date}`;
+
+    document.getElementById("hijriDate").textContent =
+      `${date.hijri.weekday.ar} — ${date.hijri.date} هـ — ${date.hijri.month.ar}`;
+
+
+    calculateNextPrayer(timings);
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    errorBox.textContent =
+      "حدث خطأ أثناء تحميل مواقيت الصلاة. تأكد من اتصال الإنترنت.";
+
+    errorBox.style.display="block";
+
+  }
+  finally{
+
+    loading.style.display="none";
+
+  }
+
+}
+
+
+function cleanTime(time){
+
+  if(!time) return "--:--";
+
+  return time.split(" ")[0];
+
+}
+
+
+/* =====================================
+   الصلاة القادمة
+===================================== */
+
+function calculateNextPrayer(timings){
+
+  const prayers=[
+
+    {name:"الفجر",time:cleanTime(timings.Fajr)},
+    {name:"الظهر",time:cleanTime(timings.Dhuhr)},
+    {name:"العصر",time:cleanTime(timings.Asr)},
+    {name:"المغرب",time:cleanTime(timings.Maghrib)},
+    {name:"العشاء",time:cleanTime(timings.Isha)}
+
+  ];
+
+
+  const now=new Date();
+
+  let next=null;
+
+
+  for(const prayer of prayers){
+
+    const parts =
+      prayer.time.split(":");
+
+    const d=new Date();
+
+    d.setHours(
+      Number(parts[0]),
+      Number(parts[1]),
+      0,
+      0
     );
 
-    loadPrayerTimes(city);
+    if(d>now){
 
-  }
-
-
-  /* ================================
-     البحث أثناء الكتابة
-  ================================= */
-
-  searchInput.addEventListener(
-    "input",
-    function() {
-
-      showCityResults(this.value);
-
-    }
-  );
-
-
-  searchInput.addEventListener(
-    "focus",
-    function() {
-
-      showCityResults(this.value);
-
-    }
-  );
-
-
-  /* ================================
-     إغلاق القائمة عند الضغط خارجها
-  ================================= */
-
-  document.addEventListener(
-    "click",
-    function(event) {
-
-      if (
-        !event.target.closest(".search-wrapper")
-      ) {
-
-        cityResults.classList.remove("show");
-
-      }
-
-    }
-  );
-
-
-  /* ================================
-     تحميل مواقيت الصلاة
-  ================================= */
-
-  async function loadPrayerTimes(city) {
-
-    loading.style.display = "block";
-
-    errorBox.style.display = "none";
-
-    try {
-
-      /*
-        Method 5 =
-        Egyptian General Authority of Survey
-      */
-
-      const url =
-        `https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city.api)}&country=Egypt&method=5`;
-
-      const response =
-        await fetch(url);
-
-      if (!response.ok) {
-        throw new Error("API Error");
-      }
-
-      const data =
-        await response.json();
-
-
-      if (
-        !data.data ||
-        !data.data.timings
-      ) {
-
-        throw new Error(
-          "لم يتم العثور على مواقيت الصلاة"
-        );
-
-      }
-
-
-      const timings =
-        data.data.timings;
-
-
-      document.getElementById("fajr").textContent =
-        cleanTime(timings.Fajr);
-
-      document.getElementById("dhuhr").textContent =
-        cleanTime(timings.Dhuhr);
-
-      document.getElementById("asr").textContent =
-        cleanTime(timings.Asr);
-
-      document.getElementById("maghrib").textContent =
-        cleanTime(timings.Maghrib);
-
-      document.getElementById("isha").textContent =
-        cleanTime(timings.Isha);
-
-
-      /* التاريخ */
-
-      const date =
-        data.data.date;
-
-
-      document.getElementById("gregorianDate").textContent =
-        `${date.gregorian.weekday.en} — ${date.gregorian.date}`;
-
-
-      document.getElementById("hijriDate").textContent =
-        `${date.hijri.weekday.ar} — ${date.hijri.date} هـ — ${date.hijri.month.ar}`;
-
-
-      calculateNextPrayer(timings);
-
-    }
-
-    catch (error) {
-
-      console.error(error);
-
-      errorBox.textContent =
-        "حدث خطأ أثناء تحميل مواقيت الصلاة. تأكد من اتصال الإنترنت ثم حاول مرة أخرى.";
-
-      errorBox.style.display = "block";
-
-    }
-
-    finally {
-
-      loading.style.display = "none";
+      next=prayer;
+      break;
 
     }
 
   }
 
 
-  /* ================================
-     تنظيف الوقت
-  ================================= */
+  if(!next){
 
-  function cleanTime(time) {
+    next=prayers[0];
 
-    if (!time) {
-      return "--:--";
-    }
+    document.getElementById("nextPrayer").textContent =
+      `${next.name} غدًا — ${next.time}`;
 
-    return time.split(" ")[0];
+    return;
 
   }
 
 
-  /* ================================
-     الصلاة القادمة
-  ================================= */
+  document.getElementById("nextPrayer").textContent =
+    `${next.name} — ${next.time}`;
 
-  function calculateNextPrayer(timings) {
-
-    const prayers = [
-
-      {
-        name: "الفجر",
-        time: cleanTime(timings.Fajr)
-      },
-
-      {
-        name: "الظهر",
-        time: cleanTime(timings.Dhuhr)
-      },
-
-      {
-        name: "العصر",
-        time: cleanTime(timings.Asr)
-      },
-
-      {
-        name: "المغرب",
-        time: cleanTime(timings.Maghrib)
-      },
-
-      {
-        name: "العشاء",
-        time: cleanTime(timings.Isha)
-      }
-
-    ];
+}
 
 
-    const now =
+/* =====================================
+   متابعة الصلاة
+===================================== */
+
+function getTodayKey(){
+
+  const d=new Date();
+
+  return (
+    d.getFullYear() +
+    "-" +
+    String(d.getMonth()+1).padStart(2,"0") +
+    "-" +
+    String(d.getDate()).padStart(2,"0")
+  );
+
+}
+
+
+function getPrayerStatus(){
+
+  const key =
+    "noorIslamPrayer_" + getTodayKey();
+
+  return JSON.parse(
+    localStorage.getItem(key) || "{}"
+  );
+
+}
+
+
+function savePrayerStatus(status){
+
+  const key =
+    "noorIslamPrayer_" + getTodayKey();
+
+  localStorage.setItem(
+    key,
+    JSON.stringify(status)
+  );
+
+}
+
+
+function togglePrayer(prayer){
+
+  const status =
+    getPrayerStatus();
+
+  status[prayer] =
+    !status[prayer];
+
+  savePrayerStatus(status);
+
+  updatePrayerButtons();
+
+}
+
+
+function updatePrayerButtons(){
+
+  const status =
+    getPrayerStatus();
+
+  const buttons =
+    document.querySelectorAll(".track-button");
+
+  let completed=0;
+
+
+  buttons.forEach(button=>{
+
+    const prayer =
+      button.dataset.prayer;
+
+    if(status[prayer]){
+
+      button.classList.add("done");
+
+      button.textContent="✓ صليت";
+
+      completed++;
+
+    }
+    else{
+
+      button.classList.remove("done");
+
+      button.textContent="لم أصلِّ";
+
+    }
+
+  });
+
+
+  const percentage =
+    (completed/5)*100;
+
+  document.getElementById(
+    "progressFill"
+  ).style.width =
+    percentage + "%";
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    `${completed} / 5`;
+
+}
+
+
+function resetToday(){
+
+  const key =
+    "noorIslamPrayer_" + getTodayKey();
+
+  localStorage.removeItem(key);
+
+  updatePrayerButtons();
+
+}
+
+
+/* =====================================
+   التقويم الأسبوعي
+===================================== */
+
+async function loadWeek(city){
+
+  const body =
+    document.getElementById("weekTableBody");
+
+  body.innerHTML=`
+    <tr>
+      <td colspan="6">
+        ⏳ جاري تحميل الأسبوع...
+      </td>
+    </tr>
+  `;
+
+
+  try{
+
+    const today =
       new Date();
 
+    const year =
+      today.getFullYear();
 
-    let next =
-      null;
+    const month =
+      today.getMonth()+1;
 
+    const url =
+      `https://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=${encodeURIComponent(city.api)}&country=Egypt&method=5`;
 
-    for (const prayer of prayers) {
+    const response =
+      await fetch(url);
 
-      const parts =
-        prayer.time.split(":");
+    if(!response.ok)
+      throw new Error("Week API error");
 
-      const prayerDate =
-        new Date();
-
-      prayerDate.setHours(
-        parseInt(parts[0]),
-        parseInt(parts[1]),
-        0,
-        0
-      );
+    const data =
+      await response.json();
 
 
-      if (prayerDate > now) {
+    const days =
+      data.data;
 
-        next = prayer;
-
-        break;
-
-      }
-
-    }
+    const wanted=[];
 
 
     /*
-      لو خلصت كل الصلوات،
-      الصلاة القادمة هي فجر اليوم التالي
+      نعرض 7 أيام ابتداءً من اليوم
     */
 
-    if (!next) {
+    for(let i=0;i<7;i++){
 
-      next = prayers[0];
+      const date =
+        new Date(today);
 
-      document.getElementById(
-        "nextPrayer"
-      ).textContent =
-        `${next.name} غدًا — ${next.time}`;
+      date.setDate(
+        today.getDate()+i
+      );
+
+
+      /*
+        لو دخلنا شهر جديد
+        نحاول جلب بيانات الشهر الجديد
+      */
+
+      if(
+        date.getMonth()+1 !== month
+      ){
+
+        continue;
+
+      }
+
+
+      const dayNumber =
+        date.getDate();
+
+      const item =
+        days.find(
+          d =>
+            Number(
+              d.date.gregorian.day
+            ) === dayNumber
+        );
+
+
+      if(item)
+        wanted.push(item);
+
+    }
+
+
+    body.innerHTML="";
+
+
+    if(!wanted.length){
+
+      body.innerHTML=`
+        <tr>
+          <td colspan="6">
+            لا توجد بيانات للأسبوع الحالي.
+          </td>
+        </tr>
+      `;
 
       return;
 
     }
 
 
-    document.getElementById(
-      "nextPrayer"
-    ).textContent =
-      `${next.name} — ${next.time}`;
+    wanted.forEach((day,index)=>{
+
+      const tr =
+        document.createElement("tr");
+
+      if(index===0)
+        tr.classList.add("today");
+
+
+      const weekday =
+        day.date.gregorian.weekday.en;
+
+      const arabicDays = {
+
+        Saturday:"السبت",
+        Sunday:"الأحد",
+        Monday:"الاثنين",
+        Tuesday:"الثلاثاء",
+        Wednesday:"الأربعاء",
+        Thursday:"الخميس",
+        Friday:"الجمعة"
+
+      };
+
+
+      tr.innerHTML=`
+
+        <td>
+
+          ${arabicDays[weekday] || weekday}
+
+          <span class="today-label">
+            ${day.date.gregorian.date}
+
+            ${index===0 ? " • اليوم" : ""}
+          </span>
+
+        </td>
+
+        <td>${cleanTime(day.timings.Fajr)}</td>
+
+        <td>${cleanTime(day.timings.Dhuhr)}</td>
+
+        <td>${cleanTime(day.timings.Asr)}</td>
+
+        <td>${cleanTime(day.timings.Maghrib)}</td>
+
+        <td>${cleanTime(day.timings.Isha)}</td>
+
+      `;
+
+
+      body.appendChild(tr);
+
+    });
+
+  }
+  catch(error){
+
+    console.error(error);
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="6">
+          تعذر تحميل التقويم الأسبوعي.
+        </td>
+      </tr>
+    `;
 
   }
 
+}
 
-  /* ================================
-     تحميل المحافظة المحفوظة
-  ================================= */
 
-  function loadSavedCity() {
+/* =====================================
+   تحميل المدينة المحفوظة
+===================================== */
 
-    let saved =
-      localStorage.getItem(
-        "noorIslamCity"
+function loadSavedCity(){
+
+  const saved =
+    localStorage.getItem(
+      "noorIslamCity"
+    );
+
+
+  if(saved){
+
+    try{
+
+      selectCity(
+        JSON.parse(saved)
       );
 
-
-    if (saved) {
-
-      try {
-
-        const city =
-          JSON.parse(saved);
-
-        selectCity(city);
-
-        return;
-
-      }
-
-      catch (e) {
-
-        console.log(e);
-
-      }
+      return;
 
     }
-
-
-    /*
-      الافتراضي: القاهرة
-    */
-
-    const cairo =
-      egyptCities.find(
-        city => city.en === "Cairo"
-      );
-
-    selectCity(cairo);
+    catch(e){}
 
   }
 
 
-  /* ================================
-     تشغيل الموقع
-  ================================= */
+  const cairo =
+    egyptCities.find(
+      city=>city.en==="Cairo"
+    );
 
-  loadSavedCity();
+  selectCity(cairo);
+
+}
+
+
+/* =====================================
+   تشغيل الموقع
+===================================== */
+
+updatePrayerButtons();
+
+loadSavedCity();
 
 </script>
 
