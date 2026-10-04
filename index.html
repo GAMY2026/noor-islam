@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>نور الإسلام</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #071a16;
+      color: #f5e7b2;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0b251f;
+      border-bottom: 1px solid #c9a227;
+      padding: 22px 15px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #e8c75a;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #d8d0b5;
+      font-size: 15px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 45px 20px 30px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      color: #f4d76a;
+    }
+
+    .hero p {
+      color: #d8d0b5;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .date-box {
+      width: fit-content;
+      margin: 25px auto;
+      padding: 12px 22px;
+      border: 1px solid #c9a227;
+      border-radius: 30px;
+      background: #0d2922;
+      color: #f5e7b2;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #0d2922;
+      border: 1px solid #947719;
+      border-radius: 18px;
+      padding: 25px 18px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #e8c75a;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      color: #f4d76a;
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #cfc7aa;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .prayer-section {
+      margin-top: 45px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #f4d76a;
+      font-size: 27px;
+      margin-bottom: 22px;
+    }
+
+    .prayers {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .prayer {
+      background: #0d2922;
+      border: 1px solid #947719;
+      border-radius: 14px;
+      padding: 18px 8px;
+      text-align: center;
+    }
+
+    .prayer-name {
+      color: #f4d76a;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .prayer-time {
+      color: white;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      text-align: center;
+      border-top: 1px solid #947719;
+      color: #aaa58f;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .prayers {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .prayer:last-child {
+        grid-column: span 2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">☪ نور الإسلام</div>
+    <div class="subtitle">رفيقك في طريق الطاعة والذكر</div>
+  </header>
+
+  <section class="hero">
+    <h1>بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</h1>
+
+    <p>
+      وَاذْكُر رَّبَّكَ إِذَا نَسِيتَ
+    </p>
+
+    <div class="date-box">
+      اليوم • نور الإسلام
+    </div>
+  </section>
+
+  <main class="container">
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🕌</div>
+        <h2>مواقيت الصلاة</h2>
+        <p>تابع مواعيد الصلوات الخمس بسهولة.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📖</div>
+        <h2>القرآن الكريم</h2>
+        <p>اقرأ القرآن الكريم واجعل لك وردًا يوميًا.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📿</div>
+        <h2>الأذكار</h2>
+        <p>أذكار الصباح والمساء وأذكار المسلم اليومية.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧭</div>
+        <h2>اتجاه القبلة</h2>
+        <p>اعرف اتجاه القبلة بسهولة من موقعك.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📅</div>
+        <h2>التقويم الهجري</h2>
+        <p>تابع التاريخ الهجري والمناسبات الإسلامية.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📍</div>
+        <h2>المساجد القريبة</h2>
+        <p>ابحث عن المساجد القريبة منك على الخريطة.</p>
+      </div>
+
+    </div>
+
+    <section class="prayer-section">
+
+      <h2 class="section-title">🕌 مواقيت الصلاة</h2>
+
+      <div class="prayers">
+
+        <div class="prayer">
+          <div class="prayer-name">الفجر</div>
+          <div class="prayer-time">04:30</div>
+        </div>
+
+        <div class="prayer">
+          <div class="prayer-name">الظهر</div>
+          <div class="prayer-time">12:00</div>
+        </div>
+
+        <div class="prayer">
+          <div class="prayer-name">العصر</div>
+          <div class="prayer-time">03:30</div>
+        </div>
+
+        <div class="prayer">
+          <div class="prayer-name">المغرب</div>
+          <div class="prayer-time">06:00</div>
+        </div>
+
+        <div class="prayer">
+          <div class="prayer-name">العشاء</div>
+          <div class="prayer-time">07:30</div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 نور الإسلام — نسأل الله أن ينفع به
+  </footer>
+
+</body>
+</html>
