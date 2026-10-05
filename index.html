@@ -3,10 +3,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#063b2d">
-<meta name="description" content="نور الإسلام - مواقيت الصلاة والقرآن والأذكار والقبلة والمساجد القريبة">
-
+<meta name="description" content="نور الإسلام - مواقيت الصلاة والقرآن والأذكار والقبلة والمساجد القريبة والمفضلة">
 <title>نور الإسلام</title>
 
 <link rel="preconnect" href="https://unpkg.com">
@@ -26,14 +25,12 @@ html{
 body{
     font-family:Tahoma,Arial,sans-serif;
     background:
-        radial-gradient(circle at top,#0c5b45 0,#063b2d 35%,#021f18 100%);
+    radial-gradient(circle at top,#0c5b45 0,#063b2d 38%,#021f18 100%);
     color:#fff;
     min-height:100vh;
 }
 
-button,
-input,
-select{
+button,input,select{
     font-family:inherit;
 }
 
@@ -46,12 +43,11 @@ button{
     margin:auto;
 }
 
-/* HEADER */
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(2,31,24,.94);
+    background:rgba(2,31,24,.96);
     backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(212,175,55,.25);
 }
@@ -65,52 +61,49 @@ header{
 }
 
 .logo{
+    color:#e5c45a;
     font-size:24px;
     font-weight:bold;
-    color:#e5c45a;
     white-space:nowrap;
 }
 
 .nav{
     display:flex;
     flex-wrap:wrap;
-    gap:7px;
-    justify-content:flex-end;
+    justify-content:center;
+    gap:6px;
 }
 
 .nav button{
     background:transparent;
     border:1px solid transparent;
     color:#fff;
-    padding:9px 12px;
+    padding:9px 11px;
     border-radius:10px;
-    transition:.2s;
 }
 
 .nav button:hover{
-    border-color:#d4af37;
     color:#e5c45a;
+    border-color:#d4af37;
 }
 
-/* HERO */
 .hero{
     text-align:center;
     padding:65px 15px 45px;
 }
 
 .hero h1{
-    font-size:clamp(34px,6vw,62px);
     color:#e5c45a;
+    font-size:clamp(38px,7vw,65px);
     margin-bottom:15px;
 }
 
 .hero p{
     color:#d9e8e2;
+    line-height:1.9;
     font-size:18px;
-    line-height:1.8;
 }
 
-/* CARDS */
 .card{
     background:rgba(255,255,255,.07);
     border:1px solid rgba(212,175,55,.22);
@@ -132,17 +125,16 @@ header{
 
 .section-title p{
     color:#c8d8d2;
+    line-height:1.7;
 }
 
-/* GOVERNORATE */
 .controls{
     display:flex;
     gap:10px;
     flex-wrap:wrap;
 }
 
-input,
-select{
+input,select{
     flex:1;
     min-width:200px;
     background:#062f25;
@@ -153,8 +145,7 @@ select{
     outline:none;
 }
 
-input:focus,
-select:focus{
+input:focus,select:focus{
     border-color:#e5c45a;
 }
 
@@ -165,14 +156,12 @@ select:focus{
     padding:13px 18px;
     border-radius:12px;
     font-weight:bold;
-    transition:.2s;
 }
 
 .primary-btn:hover{
     transform:translateY(-2px);
 }
 
-/* PRAYER */
 .prayer-grid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -189,7 +178,7 @@ select:focus{
 
 .prayer-box.next{
     border-color:#e5c45a;
-    box-shadow:0 0 20px rgba(229,196,90,.15);
+    box-shadow:0 0 20px rgba(229,196,90,.18);
 }
 
 .prayer-name{
@@ -198,7 +187,7 @@ select:focus{
 }
 
 .prayer-time{
-    font-size:25px;
+    font-size:24px;
     font-weight:bold;
 }
 
@@ -209,7 +198,6 @@ select:focus{
     margin-top:18px;
 }
 
-/* TRACKING */
 .tracking{
     margin-top:25px;
 }
@@ -224,7 +212,7 @@ select:focus{
 
 .progress-bar{
     height:100%;
-    width:0%;
+    width:0;
     background:linear-gradient(90deg,#d4af37,#f3db76);
     transition:.3s;
 }
@@ -249,7 +237,6 @@ select:focus{
     font-weight:bold;
 }
 
-/* SERVICES */
 .services{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -285,7 +272,6 @@ select:focus{
     line-height:1.7;
 }
 
-/* QURAN */
 .quran-list{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -302,10 +288,6 @@ select:focus{
     padding:14px;
     border-radius:12px;
     text-align:right;
-}
-
-.surah-btn:hover{
-    border-color:#e5c45a;
 }
 
 .quran-content{
@@ -328,7 +310,6 @@ select:focus{
     border-radius:10px;
 }
 
-/* AZKAR */
 .tabs{
     display:flex;
     flex-wrap:wrap;
@@ -383,7 +364,6 @@ select:focus{
     font-weight:bold;
 }
 
-/* QIBLA */
 .qibla-box{
     text-align:center;
 }
@@ -420,7 +400,6 @@ select:focus{
     z-index:2;
 }
 
-/* MOSQUES */
 .mosque-tools{
     display:grid;
     grid-template-columns:1fr 150px auto;
@@ -457,16 +436,23 @@ select:focus{
     border:1px solid rgba(212,175,55,.18);
     border-radius:16px;
     padding:18px;
+    transition:.25s;
+}
+
+.mosque-card:hover{
+    border-color:#d4af37;
+    transform:translateY(-2px);
 }
 
 .mosque-card h3{
     color:#e5c45a;
-    margin-bottom:10px;
+    margin:8px 0 10px;
+    line-height:1.6;
 }
 
 .mosque-meta{
     color:#d4e2dc;
-    line-height:1.8;
+    line-height:1.9;
     font-size:14px;
 }
 
@@ -476,7 +462,6 @@ select:focus{
     color:#e5c45a;
     padding:5px 9px;
     border-radius:20px;
-    margin-bottom:10px;
 }
 
 .mosque-actions{
@@ -502,1466 +487,35 @@ select:focus{
     color:#10251e;
 }
 
-/* WEEK */
-.week-table{
-    width:100%;
-    border-collapse:collapse;
-    overflow:hidden;
+.favorite-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.35);
+    background:#0b4938;
+    color:#fff;
+    font-size:21px;
+    float:left;
+    transition:.2s;
 }
 
-.week-table th,
-.week-table td{
-    border:1px solid rgba(255,255,255,.08);
-    padding:10px;
-    text-align:center;
+.favorite-btn:hover{
+    transform:scale(1.08);
 }
 
-.week-table th{
-    color:#e5c45a;
+.favorite-btn.active{
+    background:#d4af37;
+    color:#10251e;
 }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:35px 15px;
-    color:#aebfb9;
+.mosque-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
 }
 
-/* LOADING */
-.loading{
-    text-align:center;
-    color:#e5c45a;
-    padding:20px;
-}
-
-/* MOBILE */
-@media(max-width:800px){
-    .navbar{
-        flex-direction:column;
-        padding:12px 0;
-    }
-
-    .nav{
-        justify-content:center;
-    }
-
-    .prayer-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .services{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .quran-list{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .mosque-tools{
-        grid-template-columns:1fr;
-    }
-
-    .mosque-list{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:500px){
-    .hero{
-        padding-top:40px;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    .prayer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .prayer-track{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .services{
-        grid-template-columns:1fr;
-    }
-
-    .quran-list{
-        grid-template-columns:1fr;
-    }
-
-    .card{
-        padding:18px;
-    }
-
-    #mosqueMap{
-        height:330px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="container navbar">
-        <div class="logo">☪ نور الإسلام</div>
-
-        <div class="nav">
-            <button onclick="openHome()">الرئيسية</button>
-            <button onclick="openQuran()">📖 قرآن</button>
-            <button onclick="goTo('prayerSection')">🕌 صلاة</button>
-            <button onclick="openAzkar()">📿 أذكار</button>
-            <button onclick="goTo('qiblaSection')">🕋 قبلة</button>
-            <button onclick="goTo('mosquesSection')">🕌 المساجد</button>
-        </div>
-    </div>
-</header>
-
-<main>
-
-<section class="hero">
-    <h1>نور الإسلام</h1>
-    <p>
-        منصتك الإسلامية لمواقيت الصلاة والقرآن والأذكار والقبلة
-        والمساجد القريبة منك.
-    </p>
-</section>
-
-<div class="container">
-
-<!-- GOVERNORATE -->
-<section class="card">
-    <div class="section-title">
-        <h2>📍 اختر محافظتك</h2>
-        <p>للحصول على مواقيت الصلاة الصحيحة</p>
-    </div>
-
-    <div class="controls">
-        <input id="govSearch" placeholder="ابحث عن المحافظة..." oninput="filterGovernorates()">
-        <select id="governorate"></select>
-        <button class="primary-btn" onclick="loadPrayerTimes()">تحديث</button>
-    </div>
-</section>
-
-<!-- PRAYER -->
-<section class="card" id="prayerSection">
-    <div class="section-title">
-        <h2>🕌 مواقيت الصلاة</h2>
-        <p id="locationName">جاري التحميل...</p>
-    </div>
-
-    <div id="prayerGrid" class="prayer-grid">
-        <div class="loading">جاري تحميل مواقيت الصلاة...</div>
-    </div>
-
-    <div class="date-row">
-        <div id="gregorianDate"></div>
-        <div id="hijriDate"></div>
-    </div>
-
-    <div class="tracking">
-        <h3 style="color:#e5c45a;">📊 متابعة صلاتك اليوم</h3>
-
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <p id="progressText" style="color:#cbdad5;margin-bottom:12px;"></p>
-
-        <div class="prayer-track" id="prayerTrack"></div>
-
-        <button class="back-btn" onclick="resetPrayerToday()">
-            إعادة اليوم
-        </button>
-    </div>
-</section>
-
-<!-- WEEK -->
-<section class="card">
-    <div class="section-title">
-        <h2>📅 متابعة الصلاة خلال الأسبوع</h2>
-    </div>
-
-    <div style="overflow:auto;">
-        <table class="week-table">
-            <thead>
-                <tr>
-                    <th>اليوم</th>
-                    <th>الفجر</th>
-                    <th>الظهر</th>
-                    <th>العصر</th>
-                    <th>المغرب</th>
-                    <th>العشاء</th>
-                </tr>
-            </thead>
-            <tbody id="weekTable"></tbody>
-        </table>
-    </div>
-</section>
-
-<!-- SERVICES -->
-<section class="card">
-    <div class="section-title">
-        <h2>✨ خدمات نور الإسلام</h2>
-    </div>
-
-    <div class="services">
-        <div class="service" onclick="openQuran()">
-            <div class="icon">📖</div>
-            <h3>القرآن الكريم</h3>
-            <p>اقرأ سور القرآن الكريم بسهولة.</p>
-        </div>
-
-        <div class="service" onclick="openAzkar()">
-            <div class="icon">📿</div>
-            <h3>الأذكار</h3>
-            <p>أذكار الصباح والمساء والنوم وبعد الصلاة.</p>
-        </div>
-
-        <div class="service" onclick="goTo('qiblaSection')">
-            <div class="icon">🕋</div>
-            <h3>القبلة</h3>
-            <p>حدد اتجاه القبلة باستخدام موقعك.</p>
-        </div>
-
-        <div class="service" onclick="goTo('mosquesSection')">
-            <div class="icon">🕌</div>
-            <h3>المساجد القريبة</h3>
-            <p>اعثر على المساجد القريبة منك على الخريطة.</p>
-        </div>
-
-        <div class="service">
-            <div class="icon">📅</div>
-            <h3>التاريخ الهجري</h3>
-            <p id="serviceHijri">جاري التحميل...</p>
-        </div>
-
-        <div class="service">
-            <div class="icon">🤲</div>
-            <h3>الأدعية</h3>
-            <p>اللهم أعنا على ذكرك وشكرك وحسن عبادتك.</p>
-        </div>
-    </div>
-</section>
-
-<!-- QURAN -->
-<section class="card" id="quranSection" style="display:none;">
-    <div class="section-title">
-        <h2>📖 القرآن الكريم</h2>
-        <p>اختر السورة التي تريد قراءتها</p>
-    </div>
-
-    <input id="surahSearch" placeholder="ابحث عن سورة..." oninput="filterSurahs()">
-
-    <div id="surahList" class="quran-list"></div>
-
-    <div id="quranContent" style="display:none;">
-        <h2 id="surahTitle" style="color:#e5c45a;text-align:center;"></h2>
-        <div id="ayahs" class="quran-content"></div>
-        <button class="back-btn" onclick="backToSurahs()">← رجوع للسور</button>
-    </div>
-</section>
-
-<!-- AZKAR -->
-<section class="card" id="azkarSection" style="display:none;">
-    <div class="section-title">
-        <h2>📿 الأذكار</h2>
-    </div>
-
-    <div class="tabs">
-        <button class="tab active" onclick="showAzkar('morning',this)">الصباح</button>
-        <button class="tab" onclick="showAzkar('evening',this)">المساء</button>
-        <button class="tab" onclick="showAzkar('sleep',this)">النوم</button>
-        <button class="tab" onclick="showAzkar('afterPrayer',this)">بعد الصلاة</button>
-    </div>
-
-    <div id="azkarList"></div>
-</section>
-
-<!-- QIBLA -->
-<section class="card" id="qiblaSection">
-    <div class="section-title">
-        <h2>🕋 اتجاه القبلة</h2>
-        <p>اسمح للموقع باستخدام موقعك لتحديد اتجاه القبلة.</p>
-    </div>
-
-    <div class="qibla-box">
-        <div class="compass">
-            <div class="needle" id="qiblaNeedle"></div>
-            <div class="center"></div>
-        </div>
-
-        <button class="primary-btn" onclick="findQibla()">
-            📍 تحديد اتجاه القبلة
-        </button>
-
-        <p id="qiblaResult" style="margin-top:15px;color:#d4e2dc;"></p>
-    </div>
-</section>
-
-<!-- MOSQUES -->
-<section class="card" id="mosquesSection">
-    <div class="section-title">
-        <h2>🕌 المساجد القريبة منك</h2>
-        <p>حدد موقعك وسنبحث عن أقرب المساجد حولك.</p>
-    </div>
-
-    <div class="mosque-tools">
-        <input
-            id="mosqueSearch"
-            placeholder="🔎 ابحث باسم المسجد..."
-            oninput="filterMosques()"
-        >
-
-        <select id="mosqueRadius" onchange="changeMosqueRadius()">
-            <option value="2000">2 كم</option>
-            <option value="5000" selected>5 كم</option>
-            <option value="10000">10 كم</option>
-        </select>
-
-        <button class="primary-btn" onclick="findNearbyMosques()">
-            📍 تحديد موقعي
-        </button>
-    </div>
-
-    <div class="location-status" id="mosqueStatus">
-        لم يتم تحديد موقعك بعد.
-    </div>
-
-    <div id="mosqueMap"></div>
-
-    <div id="mosqueList" class="mosque-list">
-        <div class="loading">
-            اضغط على «تحديد موقعي» للبحث عن المساجد القريبة.
-        </div>
-    </div>
-</section>
-
-</div>
-</main>
-
-<footer>
-    <p>☪ نور الإسلام — تقبل الله منا ومنكم صالح الأعمال 🤲</p>
-</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-/* =========================
-   GENERAL
-========================= */
-
-function goTo(id){
-    const el=document.getElementById(id);
-    if(el){
-        el.scrollIntoView({behavior:"smooth"});
-    }
-}
-
-function openHome(){
-    document.getElementById("quranSection").style.display="none";
-    document.getElementById("azkarSection").style.display="none";
-    window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function openHomeAndScroll(id){
-    document.getElementById("quranSection").style.display="none";
-    document.getElementById("azkarSection").style.display="none";
-    setTimeout(()=>goTo(id),100);
-}
-
-/* =========================
-   GOVERNORATES
-========================= */
-
-const governorates=[
-    {ar:"القاهرة",api:"Cairo"},
-    {ar:"الجيزة",api:"Giza"},
-    {ar:"الإسكندرية",api:"Alexandria"},
-    {ar:"القليوبية",api:"Qalyubia"},
-    {ar:"الدقهلية",api:"Dakahlia"},
-    {ar:"البحر الأحمر",api:"Red Sea"},
-    {ar:"البحيرة",api:"Beheira"},
-    {ar:"الفيوم",api:"Faiyum"},
-    {ar:"الغربية",api:"Gharbia"},
-    {ar:"الإسماعيلية",api:"Ismailia"},
-    {ar:"المنوفية",api:"Monufia"},
-    {ar:"المنيا",api:"Minya"},
-    {ar:"القليوبية",api:"Qalyubia"},
-    {ar:"الوادي الجديد",api:"New Valley"},
-    {ar:"السويس",api:"Suez"},
-    {ar:"أسوان",api:"Aswan"},
-    {ar:"أسيوط",api:"Asyut"},
-    {ar:"بني سويف",api:"Beni Suef"},
-    {ar:"بورسعيد",api:"Port Said"},
-    {ar:"دمياط",api:"Damietta"},
-    {ar:"جنوب سيناء",api:"South Sinai"},
-    {ar:"كفر الشيخ",api:"Kafr El Sheikh"},
-    {ar:"مطروح",api:"Matrouh"},
-    {ar:"الأقصر",api:"Luxor"},
-    {ar:"سوهاج",api:"Sohag"},
-    {ar:"الشرقية",api:"Sharqia"},
-    {ar:"شمال سيناء",api:"North Sinai"}
-];
-
-function fillGovernorates(list=governorates){
-    const select=document.getElementById("governorate");
-    select.innerHTML="";
-
-    list.forEach(g=>{
-        const option=document.createElement("option");
-        option.value=g.api;
-        option.textContent=g.ar;
-        select.appendChild(option);
-    });
-
-    const saved=localStorage.getItem("noorGovernorate");
-
-    if(saved && list.some(g=>g.api===saved)){
-        select.value=saved;
-    }else{
-        select.value="Cairo";
-    }
-}
-
-function filterGovernorates(){
-    const q=document.getElementById("govSearch").value.trim();
-
-    const result=governorates.filter(g=>
-        g.ar.includes(q) ||
-        g.api.toLowerCase().includes(q.toLowerCase())
-    );
-
-    fillGovernorates(result);
-}
-
-document.getElementById("governorate").addEventListener("change",function(){
-    localStorage.setItem("noorGovernorate",this.value);
-    loadPrayerTimes();
-});
-
-/* =========================
-   PRAYER TIMES
-========================= */
-
-const prayerNames=[
-    {key:"Fajr",name:"الفجر"},
-    {key:"Dhuhr",name:"الظهر"},
-    {key:"Asr",name:"العصر"},
-    {key:"Maghrib",name:"المغرب"},
-    {key:"Isha",name:"العشاء"}
-];
-
-async function loadPrayerTimes(){
-    const city=document.getElementById("governorate").value;
-
-    document.getElementById("locationName").textContent=
-        "جاري تحميل مواقيت " + city + "...";
-
-    try{
-        const url=
-        `https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=Egypt&method=5`;
-
-        const response=await fetch(url);
-        const data=await response.json();
-
-        if(!data.data){
-            throw new Error("Prayer API error");
-        }
-
-        const timings=data.data.timings;
-        const date=data.data.date;
-
-        document.getElementById("locationName").textContent=
-            "مواقيت الصلاة في " + getGovernorateArabic(city);
-
-        renderPrayerTimes(timings);
-        renderDates(date);
-        loadWeek(city);
-
-    }catch(error){
-        document.getElementById("prayerGrid").innerHTML=
-            `<div class="loading">تعذر تحميل مواقيت الصلاة. حاول مرة أخرى.</div>`;
-    }
-}
-
-function getGovernorateArabic(api){
-    const found=governorates.find(g=>g.api===api);
-    return found ? found.ar : api;
-}
-
-function renderPrayerTimes(timings){
-    const grid=document.getElementById("prayerGrid");
-
-    let html="";
-
-    prayerNames.forEach(p=>{
-        html+=`
-        <div class="prayer-box" id="prayer-${p.key}">
-            <div class="prayer-name">${p.name}</div>
-            <div class="prayer-time">${formatTime(timings[p.key])}</div>
-        </div>`;
-    });
-
-    grid.innerHTML=html;
-
-    highlightNextPrayer(timings);
-}
-
-function formatTime(time){
-    if(!time) return "--:--";
-
-    let [hour,minute]=time.split(":").map(Number);
-
-    const suffix=hour>=12 ? "م" : "ص";
-
-    hour=hour%12;
-    if(hour===0) hour=12;
-
-    return `${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")} ${suffix}`;
-}
-
-function highlightNextPrayer(timings){
-    const now=new Date();
-
-    const currentMinutes=
-        now.getHours()*60+now.getMinutes();
-
-    let next=null;
-
-    for(const p of prayerNames){
-        if(!timings[p.key]) continue;
-
-        const [h,m]=timings[p.key].split(":").map(Number);
-        const minutes=h*60+m;
-
-        if(minutes>currentMinutes){
-            next=p;
-            break;
-        }
-    }
-
-    if(!next){
-        next=prayerNames[0];
-    }
-
-    const el=document.getElementById("prayer-"+next.key);
-
-    if(el){
-        el.classList.add("next");
-    }
-}
-
-function renderDates(date){
-    document.getElementById("gregorianDate").textContent=
-        `📅 ${date.gregorian.day} ${date.gregorian.month.en} ${date.gregorian.year}`;
-
-    document.getElementById("hijriDate").textContent=
-        `🌙 ${date.hijri.day} ${date.hijri.month.ar} ${date.hijri.year} هـ`;
-
-    document.getElementById("serviceHijri").textContent=
-        `${date.hijri.day} ${date.hijri.month.ar} ${date.hijri.year} هـ`;
-}
-
-/* =========================
-   DAILY TRACKING
-========================= */
-
-const trackPrayerNames=[
-    {key:"Fajr",name:"الفجر"},
-    {key:"Dhuhr",name:"الظهر"},
-    {key:"Asr",name:"العصر"},
-    {key:"Maghrib",name:"المغرب"},
-    {key:"Isha",name:"العشاء"}
-];
-
-function todayKey(){
-    const d=new Date();
-
-    return d.getFullYear()+"-"+
-        String(d.getMonth()+1).padStart(2,"0")+"-"+
-        String(d.getDate()).padStart(2,"0");
-}
-
-function getTodayTracking(){
-    return JSON.parse(
-        localStorage.getItem("prayerTracking_"+todayKey()) || "{}"
-    );
-}
-
-function saveTodayTracking(data){
-    localStorage.setItem(
-        "prayerTracking_"+todayKey(),
-        JSON.stringify(data)
-    );
-}
-
-function renderPrayerTracking(){
-    const container=document.getElementById("prayerTrack");
-    const data=getTodayTracking();
-
-    container.innerHTML="";
-
-    trackPrayerNames.forEach(p=>{
-        const btn=document.createElement("button");
-
-        btn.className="track-btn"+(data[p.key] ? " done":"");
-        btn.textContent=data[p.key] ? `✓ ${p.name}` : p.name;
-
-        btn.onclick=()=>{
-            const current=getTodayTracking();
-            current[p.key]=!current[p.key];
-            saveTodayTracking(current);
-            renderPrayerTracking();
-        };
-
-        container.appendChild(btn);
-    });
-
-    const done=trackPrayerNames.filter(p=>data[p.key]).length;
-    const percent=(done/5)*100;
-
-    document.getElementById("progressBar").style.width=percent+"%";
-
-    document.getElementById("progressText").textContent=
-        `أنجزت ${done} من 5 صلوات اليوم`;
-}
-
-function resetPrayerToday(){
-    localStorage.removeItem("prayerTracking_"+todayKey());
-    renderPrayerTracking();
-}
-
-/* =========================
-   WEEK
-========================= */
-
-function loadWeek(city){
-    const tbody=document.getElementById("weekTable");
-
-    tbody.innerHTML=`
-        <tr>
-            <td colspan="6" class="loading">جاري تحميل الأسبوع...</td>
-        </tr>
-    `;
-
-    fetch(
-        `https://api.aladhan.com/v1/calendarByCity?city=${encodeURIComponent(city)}&country=Egypt&method=5&month=${new Date().getMonth()+1}&year=${new Date().getFullYear()}`
-    )
-    .then(r=>r.json())
-    .then(data=>{
-        const today=new Date().getDate();
-
-        const start=Math.max(0,today-3);
-        const end=Math.min(data.data.length,today+4);
-
-        let html="";
-
-        for(let i=start;i<end;i++){
-            const item=data.data[i];
-
-            html+=`
-            <tr>
-                <td>${item.date.gregorian.weekday.ar}</td>
-                <td>${formatTime(item.timings.Fajr)}</td>
-                <td>${formatTime(item.timings.Dhuhr)}</td>
-                <td>${formatTime(item.timings.Asr)}</td>
-                <td>${formatTime(item.timings.Maghrib)}</td>
-                <td>${formatTime(item.timings.Isha)}</td>
-            </tr>`;
-        }
-
-        tbody.innerHTML=html;
-    })
-    .catch(()=>{
-        tbody.innerHTML=
-        `<tr><td colspan="6">تعذر تحميل بيانات الأسبوع.</td></tr>`;
-    });
-}
-
-/* =========================
-   QURAN
-========================= */
-
-const surahs=[
-["الفاتحة","Al-Fatiha"],["البقرة","Al-Baqarah"],["آل عمران","Aal-E-Imran"],
-["النساء","An-Nisa"],["المائدة","Al-Ma'idah"],["الأنعام","Al-An'am"],
-["الأعراف","Al-A'raf"],["الأنفال","Al-Anfal"],["التوبة","At-Tawbah"],
-["يونس","Yunus"],["هود","Hud"],["يوسف","Yusuf"],
-["الرعد","Ar-Ra'd"],["إبراهيم","Ibrahim"],["الحجر","Al-Hijr"],
-["النحل","An-Nahl"],["الإسراء","Al-Isra"],["الكهف","Al-Kahf"],
-["مريم","Maryam"],["طه","Ta-Ha"],["الأنبياء","Al-Anbiya"],
-["الحج","Al-Hajj"],["المؤمنون","Al-Mu'minun"],["النور","An-Nur"],
-["الفرقان","Al-Furqan"],["الشعراء","Ash-Shu'ara"],["النمل","An-Naml"],
-["القصص","Al-Qasas"],["العنكبوت","Al-Ankabut"],["الروم","Ar-Rum"],
-["لقمان","Luqman"],["السجدة","As-Sajdah"],["الأحزاب","Al-Ahzab"],
-["سبأ","Saba"],["فاطر","Fatir"],["يس","Ya-Sin"],
-["الصافات","As-Saffat"],["ص","Sad"],["الزمر","Az-Zumar"],
-["غافر","Ghafir"],["فصلت","Fussilat"],["الشورى","Ash-Shura"],
-["الزخرف","Az-Zukhruf"],["الدخان","Ad-Dukhan"],["الجاثية","Al-Jathiyah"],
-["الأحقاف","Al-Ahqaf"],["محمد","Muhammad"],["الفتح","Al-Fath"],
-["الحجرات","Al-Hujurat"],["ق","Qaf"],["الذاريات","Adh-Dhariyat"],
-["الطور","At-Tur"],["النجم","An-Najm"],["القمر","Al-Qamar"],
-["الرحمن","Ar-Rahman"],["الواقعة","Al-Waqi'ah"],["الحديد","Al-Hadid"],
-["المجادلة","Al-Mujadilah"],["الحشر","Al-Hashr"],["الممتحنة","Al-Mumtahanah"],
-["الصف","As-Saff"],["الجمعة","Al-Jumu'ah"],["المنافقون","Al-Munafiqun"],
-["التغابن","At-Taghabun"],["الطلاق","At-Talaq"],["التحريم","At-Tahrim"],
-["الملك","Al-Mulk"],["القلم","Al-Qalam"],["الحاقة","Al-Haqqah"],
-["المعارج","Al-Ma'arij"],["نوح","Nuh"],["الجن","Al-Jinn"],
-["المزمل","Al-Muzzammil"],["المدثر","Al-Muddaththir"],["القيامة","Al-Qiyamah"],
-["الإنسان","Al-Insan"],["المرسلات","Al-Mursalat"],["النبأ","An-Naba"],
-["النازعات","An-Nazi'at"],["عبس","Abasa"],["التكوير","At-Takwir"],
-["الانفطار","Al-Infitar"],["المطففين","Al-Mutaffifin"],["الانشقاق","Al-Inshiqaq"],
-["البروج","Al-Buruj"],["الطارق","At-Tariq"],["الأعلى","Al-A'la"],
-["الغاشية","Al-Ghashiyah"],["الفجر","Al-Fajr"],["البلد","Al-Balad"],
-["الشمس","Ash-Shams"],["الليل","Al-Lail"],["الضحى","Ad-Duha"],
-["الشرح","Ash-Sharh"],["التين","At-Tin"],["العلق","Al-Alaq"],
-["القدر","Al-Qadr"],["البينة","Al-Bayyinah"],["الزلزلة","Az-Zalzalah"],
-["العاديات","Al-Adiyat"],["القارعة","Al-Qari'ah"],["التكاثر","At-Takathur"],
-["العصر","Al-Asr"],["الهمزة","Al-Humazah"],["الفيل","Al-Fil"],
-["قريش","Quraysh"],["الماعون","Al-Ma'un"],["الكوثر","Al-Kawthar"],
-["الكافرون","Al-Kafirun"],["النصر","An-Nasr"],["المسد","Al-Masad"],
-["الإخلاص","Al-Ikhlas"],["الفلق","Al-Falaq"],["الناس","An-Nas"]
-];
-
-function openQuran(){
-    document.getElementById("azkarSection").style.display="none";
-    document.getElementById("quranSection").style.display="block";
-
-    renderSurahs();
-
-    goTo("quranSection");
-}
-
-function renderSurahs(list=surahs){
-    const container=document.getElementById("surahList");
-
-    container.style.display="grid";
-    document.getElementById("quranContent").style.display="none";
-
-    container.innerHTML="";
-
-    list.forEach((s,index)=>{
-        const btn=document.createElement("button");
-
-        btn.className="surah-btn";
-        btn.textContent=`${index+1}. ${s[0]}`;
-
-        btn.onclick=()=>loadSurah(index+1,s[0]);
-
-        container.appendChild(btn);
-    });
-}
-
-function filterSurahs(){
-    const q=document.getElementById("surahSearch").value.trim();
-
-    const list=surahs.filter(s=>
-        s[0].includes(q) ||
-        s[1].toLowerCase().includes(q.toLowerCase())
-    );
-
-    renderSurahs(list);
-}
-
-async function loadSurah(number,name){
-    document.getElementById("surahList").style.display="none";
-    document.getElementById("quranContent").style.display="block";
-    document.getElementById("surahTitle").textContent=
-        `سورة ${name}`;
-
-    document.getElementById("ayahs").innerHTML=
-        `<div class="loading">جاري تحميل السورة...</div>`;
-
-    try{
-        const response=await fetch(
-            `https://api.alquran.cloud/v1/surah/${number}/quran-uthmani`
-        );
-
-        const data=await response.json();
-
-        let html="";
-
-        data.data.ayahs.forEach(ayah=>{
-            html+=`
-            <div class="ayah">
-                ${ayah.text}
-                <span style="color:#e5c45a;">
-                    ﴿${ayah.numberInSurah}﴾
-                </span>
-            </div>`;
-        });
-
-        document.getElementById("ayahs").innerHTML=html;
-
-    }catch(error){
-        document.getElementById("ayahs").innerHTML=
-            `<div class="loading">تعذر تحميل السورة.</div>`;
-    }
-}
-
-function backToSurahs(){
-    renderSurahs();
-}
-
-/* =========================
-   AZKAR
-========================= */
-
-const azkarData={
-    morning:[
-        ["أصبحنا وأصبح الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.",1],
-        ["اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.",1],
-        ["رضيت بالله رباً، وبالإسلام ديناً، وبمحمد ﷺ نبياً.",3],
-        ["سبحان الله وبحمده.",100]
-    ],
-
-    evening:[
-        ["أمسينا وأمسى الملك لله والحمد لله، لا إله إلا الله وحده لا شريك له.",1],
-        ["اللهم إني أمسيت أشهدك وأشهد حملة عرشك وملائكتك وجميع خلقك أنك أنت الله لا إله إلا أنت.",4],
-        ["رضيت بالله رباً، وبالإسلام ديناً، وبمحمد ﷺ نبياً.",3],
-        ["سبحان الله وبحمده.",100]
-    ],
-
-    sleep:[
-        ["باسمك اللهم أموت وأحيا.",1],
-        ["اللهم قني عذابك يوم تبعث عبادك.",3],
-        ["آية الكرسي.",1],
-        ["سبحان الله.",33],
-        ["الحمد لله.",33],
-        ["الله أكبر.",34]
-    ],
-
-    afterPrayer:[
-        ["أستغفر الله.",3],
-        ["اللهم أنت السلام، ومنك السلام، تباركت يا ذا الجلال والإكرام.",1],
-        ["لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير. اللهم لا مانع لما أعطيت، ولا معطي لما منعت، ولا ينفع ذا الجد منك الجد.",1],
-        ["سبحان الله.",33],
-        ["الحمد لله.",33],
-        ["الله أكبر.",33],
-        ["لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.",1]
-    ]
-};
-
-let currentAzkar="morning";
-
-function openAzkar(){
-    document.getElementById("quranSection").style.display="none";
-    document.getElementById("azkarSection").style.display="block";
-
-    showAzkar(currentAzkar);
-
-    goTo("azkarSection");
-}
-
-function azkarStorageKey(tab,index){
-    return `azkar_${todayKey()}_${tab}_${index}`;
-}
-
-function showAzkar(tab,button){
-    currentAzkar=tab;
-
-    document.querySelectorAll(".tab").forEach(b=>{
-        b.classList.remove("active");
-    });
-
-    if(button){
-        button.classList.add("active");
-    }else{
-        document.querySelector(".tab").classList.add("active");
-    }
-
-    const container=document.getElementById("azkarList");
-
-    container.innerHTML="";
-
-    azkarData[tab].forEach((z,index)=>{
-        const target=z[1];
-        const current=parseInt(
-            localStorage.getItem(azkarStorageKey(tab,index)) || "0"
-        );
-
-        const div=document.createElement("div");
-
-        div.className="zikr";
-
-        div.innerHTML=`
-            <div class="zikr-text">${z[0]}</div>
-
-            <div class="zikr-actions">
-                <span class="zikr-count">
-                    <span id="count-${tab}-${index}">${current}</span>
-                    / ${target}
-                </span>
-
-                <button class="zikr-btn"
-                    onclick="countZikr('${tab}',${index},${target})">
-                    تسبيح
-                </button>
-            </div>
-        `;
-
-        container.appendChild(div);
-    });
-}
-
-function countZikr(tab,index,target){
-    const key=azkarStorageKey(tab,index);
-
-    let current=parseInt(localStorage.getItem(key) || "0");
-
-    if(current<target){
-        current++;
-        localStorage.setItem(key,current);
-    }
-
-    const el=document.getElementById(`count-${tab}-${index}`);
-
-    if(el){
-        el.textContent=current;
-    }
-}
-
-/* =========================
-   QIBLA
-========================= */
-
-const KAABA_LAT=21.422487;
-const KAABA_LON=39.826206;
-
-function calculateBearing(lat1,lon1,lat2,lon2){
-    const toRad=d=>d*Math.PI/180;
-    const toDeg=r=>r*180/Math.PI;
-
-    const p1=toRad(lat1);
-    const p2=toRad(lat2);
-    const dl=toRad(lon2-lon1);
-
-    const y=Math.sin(dl)*Math.cos(p2);
-
-    const x=
-        Math.cos(p1)*Math.sin(p2)-
-        Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
-
-    return (toDeg(Math.atan2(y,x))+360)%360;
-}
-
-function findQibla(){
-    const result=document.getElementById("qiblaResult");
-
-    result.textContent="جاري تحديد موقعك...";
-
-    if(!navigator.geolocation){
-        result.textContent="المتصفح لا يدعم تحديد الموقع.";
-        return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-        position=>{
-            const lat=position.coords.latitude;
-            const lon=position.coords.longitude;
-
-            const bearing=calculateBearing(
-                lat,
-                lon,
-                KAABA_LAT,
-                KAABA_LON
-            );
-
-            document.getElementById("qiblaNeedle").style.transform=
-                `rotate(${bearing}deg)`;
-
-            result.textContent=
-                `اتجاه القبلة حوالي ${Math.round(bearing)}° من اتجاه الشمال.`;
-        },
-        ()=>{
-            result.textContent=
-                "لم نتمكن من تحديد موقعك. اسمح للموقع باستخدام الموقع الجغرافي.";
-        },
-        {
-            enableHighAccuracy:true,
-            timeout:20000,
-            maximumAge:60000
-        }
-    );
-}
-
-/* =========================
-   MOSQUES
-========================= */
-
-let mosqueMap=null;
-let userMarker=null;
-let mosqueMarkers=[];
-let allMosques=[];
-let userLocation=null;
-
-const overpassServers=[
-    "https://overpass-api.de/api/interpreter",
-    "https://overpass.kumi.systems/api/interpreter"
-];
-
-function initializeMosqueMap(){
-    if(mosqueMap) return;
-
-    mosqueMap=L.map("mosqueMap").setView(
-        [30.0444,31.2357],
-        12
-    );
-
-    L.tileLayer(
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-            maxZoom:19,
-            attribution:"© OpenStreetMap contributors"
-        }
-    ).addTo(mosqueMap);
-
-    setTimeout(()=>{
-        mosqueMap.invalidateSize();
-    },300);
-}
-
-function clearMosqueMarkers(){
-    mosqueMarkers.forEach(marker=>{
-        mosqueMap.removeLayer(marker);
-    });
-
-    mosqueMarkers=[];
-}
-
-function distanceKm(lat1,lon1,lat2,lon2){
-    const R=6371;
-
-    const dLat=(lat2-lat1)*Math.PI/180;
-    const dLon=(lon2-lon1)*Math.PI/180;
-
-    const a=
-        Math.sin(dLat/2)**2+
-        Math.cos(lat1*Math.PI/180)*
-        Math.cos(lat2*Math.PI/180)*
-        Math.sin(dLon/2)**2;
-
-    return R*2*Math.atan2(
-        Math.sqrt(a),
-        Math.sqrt(1-a)
-    );
-}
-
-function getMosqueCoordinates(element){
-    if(
-        typeof element.lat==="number" &&
-        typeof element.lon==="number"
-    ){
-        return {
-            lat:element.lat,
-            lon:element.lon
-        };
-    }
-
-    if(
-        element.center &&
-        typeof element.center.lat==="number" &&
-        typeof element.center.lon==="number"
-    ){
-        return {
-            lat:element.center.lat,
-            lon:element.center.lon
-        };
-    }
-
-    return null;
-}
-
-function mosqueName(tags){
-    return (
-        tags.name ||
-        tags["name:ar"] ||
-        tags["name:en"] ||
-        "مسجد قريب"
-    );
-}
-
-function mosqueAddress(tags){
-    const parts=[];
-
-    if(tags["addr:street"]) parts.push(tags["addr:street"]);
-    if(tags["addr:suburb"]) parts.push(tags["addr:suburb"]);
-    if(tags["addr:city"]) parts.push(tags["addr:city"]);
-
-    return parts.length
-        ? parts.join(" - ")
-        : "العنوان غير متوفر";
-}
-
-function estimateWalkingTime(distance){
-    const minutes=Math.max(
-        1,
-        Math.round(distance*1000/80)
-    );
-
-    return minutes;
-}
-
-function estimateDrivingTime(distance){
-    const minutes=Math.max(
-        1,
-        Math.round(distance*60/35)
-    );
-
-    return minutes;
-}
-
-function buildOverpassQuery(lat,lon,radius){
-    return `
-[out:json][timeout:30];
-(
-  nwr(around:${radius},${lat},${lon})["amenity"="place_of_worship"]["religion"="muslim"];
-  nwr(around:${radius},${lat},${lon})["amenity"="place_of_worship"]["name"~"مسجد|mosque|masjid|جامع",i];
-);
-out center tags;
-`;
-}
-
-async function fetchMosques(lat,lon,radius){
-    const query=buildOverpassQuery(lat,lon,radius);
-
-    let lastError=null;
-
-    for(const server of overpassServers){
-        try{
-            const response=await fetch(
-                server+"?data="+encodeURIComponent(query)
-            );
-
-            if(!response.ok){
-                throw new Error("Server error");
-            }
-
-            const data=await response.json();
-
-            return data.elements || [];
-
-        }catch(error){
-            lastError=error;
-        }
-    }
-
-    throw lastError || new Error("No Overpass server available");
-}
-
-async function findNearbyMosques(){
-    initializeMosqueMap();
-
-    const status=document.getElementById("mosqueStatus");
-    const list=document.getElementById("mosqueList");
-
-    status.textContent="📍 جاري تحديد موقعك...";
-
-    list.innerHTML=
-        `<div class="loading">جاري البحث عن المساجد القريبة...</div>`;
-
-    if(!navigator.geolocation){
-        status.textContent=
-            "المتصفح لا يدعم تحديد الموقع الجغرافي.";
-        return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-        async position=>{
-            userLocation={
-                lat:position.coords.latitude,
-                lon:position.coords.longitude
-            };
-
-            const radius=
-                parseInt(document.getElementById("mosqueRadius").value);
-
-            status.textContent=
-                "📍 تم تحديد موقعك. جاري البحث في نطاق "+
-                (radius/1000)+" كم...";
-
-            if(userMarker){
-                mosqueMap.removeLayer(userMarker);
-            }
-
-            userMarker=L.marker([
-                userLocation.lat,
-                userLocation.lon
-            ])
-            .addTo(mosqueMap)
-            .bindPopup("📍 موقعك الحالي");
-
-            mosqueMap.setView([
-                userLocation.lat,
-                userLocation.lon
-            ],14);
-
-            clearMosqueMarkers();
-
-            try{
-                const elements=await fetchMosques(
-                    userLocation.lat,
-                    userLocation.lon,
-                    radius
-                );
-
-                const seen=new Set();
-
-                allMosques=elements
-                    .map(element=>{
-                        const coords=
-                            getMosqueCoordinates(element);
-
-                        if(!coords) return null;
-
-                        const tags=element.tags || {};
-
-                        const distance=
-                            distanceKm(
-                                userLocation.lat,
-                                userLocation.lon,
-                                coords.lat,
-                                coords.lon
-                            );
-
-                        const key=
-                            coords.lat.toFixed(5)+","+
-                            coords.lon.toFixed(5);
-
-                        if(seen.has(key)) return null;
-
-                        seen.add(key);
-
-                        return {
-                            id:element.id,
-                            lat:coords.lat,
-                            lon:coords.lon,
-                            name:mosqueName(tags),
-                            address:mosqueAddress(tags),
-                            phone:
-                                tags.phone ||
-                                tags["contact:phone"] ||
-                                "",
-                            distance
-                        };
-                    })
-                    .filter(Boolean)
-                    .sort((a,b)=>a.distance-b.distance);
-
-                renderMosques(allMosques);
-
-                if(allMosques.length===0){
-                    status.textContent=
-                        "لم نجد مساجد في النطاق المحدد. جرب 10 كم.";
-                }else{
-                    status.textContent=
-                        `🕌 وجدنا ${allMosques.length} مسجد في نطاق ${radius/1000} كم.`;
-                }
-
-            }catch(error){
-                list.innerHTML=
-                    `<div class="loading">
-                        تعذر تحميل المساجد الآن. حاول مرة أخرى بعد قليل.
-                    </div>`;
-
-                status.textContent=
-                    "حدث خطأ أثناء البحث عن المساجد.";
-            }
-        },
-        error=>{
-            let message="تعذر تحديد موقعك.";
-
-            if(error.code===1){
-                message=
-                    "تم رفض إذن الموقع. فعّل Location للموقع من إعدادات المتصفح.";
-            }else if(error.code===2){
-                message=
-                    "تعذر تحديد موقعك. تأكد من تشغيل GPS أو خدمات الموقع.";
-            }else if(error.code===3){
-                message=
-                    "استغرق تحديد الموقع وقتًا طويلًا. حاول مرة أخرى.";
-            }
-
-            status.textContent=message;
-
-            list.innerHTML=
-                `<div class="loading">${message}</div>`;
-        },
-        {
-            enableHighAccuracy:true,
-            timeout:20000,
-            maximumAge:60000
-        }
-    );
-}
-
-function renderMosques(list){
-    const container=document.getElementById("mosqueList");
-
-    clearMosqueMarkers();
-
-    if(!list.length){
-        container.innerHTML=
-            `<div class="loading">لا توجد نتائج مطابقة.</div>`;
-        return;
-    }
-
-    let html="";
-
-    list.forEach((mosque,index)=>{
-        const walking=
-            estimateWalkingTime(mosque.distance);
-
-        const driving=
-            estimateDrivingTime(mosque.distance);
-
-        const mapsUrl=
-            `https://www.google.com/maps/dir/?api=1&destination=${mosque.lat},${mosque.lon}`;
-
-        html+=`
-        <div class="mosque-card">
-            <span class="distance">
-                📍 ${mosque.distance.toFixed(2)} كم
-            </span>
-
-            <h3>🕌 ${escapeHtml(mosque.name)}</h3>
-
-            <div class="mosque-meta">
-                🏠 ${escapeHtml(mosque.address)}
-                <br>
-                🚶 وقت المشي التقريبي: ${walking} دقيقة
-                <br>
-                🚗 وقت السيارة التقريبي: ${driving} دقيقة
-                ${
-                    mosque.phone
-                    ? `<br>📞 ${escapeHtml(mosque.phone)}`
-                    : ""
-                }
-            </div>
-
-            <div class="mosque-actions">
-                <button
-                    class="gold"
-                    onclick="focusMosqueById('${mosque.id}')">
-                    🗺️ على الخريطة
-                </button>
-
-                <a
-                    href="${mapsUrl}"
-                    target="_blank"
-                    rel="noopener">
-                    🧭 الاتجاهات
-                </a>
-
-                ${
-                    mosque.phone
-                    ? `
-                    <a href="tel:${mosque.phone}">
-                        📞 اتصال
-                    </a>`
-                    : ""
-                }
-            </div>
-        </div>`;
-    });
-
-    container.innerHTML=html;
-
-    addMosqueMarkers(list);
-}
-
-function addMosqueMarkers(list){
-    list.forEach(mosque=>{
-        const marker=L.marker([
-            mosque.lat,
-            mosque.lon
-        ]).addTo(mosqueMap);
-
-        marker.bindPopup(`
-            <div style="min-width:180px;text-align:right;direction:rtl;">
-                <strong>${escapeHtml(mosque.name)}</strong>
-                <br>
-                📍 ${mosque.distance.toFixed(2)} كم
-                <br>
-                🚶 ${estimateWalkingTime(mosque.distance)} دقيقة تقريبًا
-                <br><br>
-                <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=${mosque.lat},${mosque.lon}"
-                    target="_blank"
-                    rel="noopener">
-                    🧭 فتح الاتجاهات
-                </a>
-            </div>
-        `);
-
-        marker.mosqueId=String(mosque.id);
-
-        mosqueMarkers.push(marker);
-    });
-}
-
-function focusMosqueById(id){
-    const marker=mosqueMarkers.find(
-        m=>String(m.mosqueId)===String(id)
-    );
-
-    const mosque=allMosques.find(
-        m=>String(m.id)===String(id)
-    );
-
-    if(!marker || !mosque) return;
-
-    mosqueMap.setView([
-        mosque.lat,
-        mosque.lon
-    ],17);
-
-    marker.openPopup();
-}
-
-function filterMosques(){
-    const q=
-        document.getElementById("mosqueSearch").value
-        .trim()
-        .toLowerCase();
-
-    const filtered=allMosques.filter(m=>
-        m.name.toLowerCase().includes(q) ||
-        m.address.toLowerCase().includes(q)
-    );
-
-    renderMosques(filtered);
-}
-
-function changeMosqueRadius(){
-    if(userLocation){
-        findNearbyMosques();
-    }
-}
-
-function escapeHtml(value){
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
-
-/* =========================
-   START
-========================= */
-
-fillGovernorates();
-renderPrayerTracking();
-initializeMosqueMap();
-loadPrayerTimes();
-
-</script>
-
-</body>
-</html>
+.favorites-panel{
+    background:
+    linear-gradient(145deg,rgba(2
 ```
