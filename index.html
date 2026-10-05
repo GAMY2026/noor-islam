@@ -11,10 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
 <style>
 :root{
@@ -24,8 +21,7 @@
   --gold2:#f3d58a;
   --gold3:#9d742d;
   --white:#fff;
-  --muted:#bdbdbd;
-  --card:#111111;
+  --muted:#aaa;
   --border:rgba(217,173,85,.22);
 }
 
@@ -54,14 +50,18 @@ a{
 }
 
 button,
-select,
-input{
+input,
+select{
   font-family:inherit;
 }
 
 .container{
   width:min(1180px,92%);
   margin:auto;
+}
+
+section{
+  scroll-margin-top:90px;
 }
 
 /* ================= HEADER ================= */
@@ -80,7 +80,7 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:25px;
+  gap:20px;
 }
 
 .logo{
@@ -108,14 +108,12 @@ header{
 .nav-links{
   display:flex;
   align-items:center;
-  gap:7px;
-  flex-wrap:wrap;
-  justify-content:center;
+  gap:5px;
 }
 
 .nav-links a{
   color:#d4d4d4;
-  padding:9px 12px;
+  padding:9px 11px;
   border-radius:10px;
   font-size:14px;
   transition:.3s;
@@ -144,11 +142,10 @@ header{
   overflow:hidden;
   display:flex;
   align-items:center;
-  isolation:isolate;
   background:
     radial-gradient(circle at 75% 30%,rgba(217,173,85,.13),transparent 20%),
     radial-gradient(circle at 20% 80%,rgba(217,173,85,.07),transparent 28%),
-    linear-gradient(135deg,#030303 0%,#090806 50%,#030303 100%);
+    linear-gradient(135deg,#030303,#090806 50%,#030303);
 }
 
 .hero::before{
@@ -156,23 +153,13 @@ header{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.55) 48%,rgba(0,0,0,.10) 100%);
-  z-index:-1;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:600px;
-  height:600px;
-  border-radius:50%;
-  border:1px solid rgba(217,173,85,.08);
-  right:-180px;
-  top:-120px;
-  box-shadow:
-    0 0 0 40px rgba(217,173,85,.018),
-    0 0 0 80px rgba(217,173,85,.012);
-  z-index:-1;
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.12)
+    );
+  pointer-events:none;
 }
 
 .hero-content{
@@ -181,9 +168,11 @@ header{
   display:grid;
   grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:40px;
+  gap:35px;
   min-height:calc(100vh - 76px);
-  padding:70px 0;
+  padding:55px 0;
+  position:relative;
+  z-index:2;
 }
 
 .hero-text{
@@ -193,37 +182,33 @@ header{
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:9px;
+  gap:8px;
   border:1px solid rgba(217,173,85,.25);
   background:rgba(217,173,85,.055);
   color:var(--gold2);
   border-radius:50px;
   padding:8px 15px;
   font-size:13px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .eyebrow::before{
   content:"✦";
-  color:var(--gold);
 }
 
 .hero-title{
   font-family:"Amiri",serif;
-  font-size:clamp(52px,8vw,100px);
+  font-size:clamp(55px,8vw,100px);
   line-height:.95;
-  font-weight:700;
   color:#fff;
-  text-shadow:0 0 35px rgba(217,173,85,.12);
   margin-bottom:18px;
 }
 
 .hero-title span{
   display:block;
   color:var(--gold2);
-  font-size:.48em;
-  line-height:1.4;
-  letter-spacing:1px;
+  font-size:.47em;
+  line-height:1.5;
 }
 
 .hero-description{
@@ -231,7 +216,7 @@ header{
   color:#c6c6c6;
   line-height:2;
   font-size:17px;
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 .hero-actions{
@@ -276,18 +261,18 @@ header{
 
 .hero-art{
   position:relative;
-  height:540px;
+  height:510px;
   animation:artIn 1.2s ease both;
 }
 
 .moon{
   position:absolute;
-  width:190px;
-  height:190px;
+  width:180px;
+  height:180px;
   border-radius:50%;
   background:linear-gradient(135deg,#fff3b6,#d5a847);
   right:105px;
-  top:45px;
+  top:30px;
   box-shadow:
     0 0 40px rgba(217,173,85,.24),
     0 0 100px rgba(217,173,85,.10);
@@ -296,25 +281,12 @@ header{
 .moon::after{
   content:"";
   position:absolute;
-  width:190px;
-  height:190px;
+  width:180px;
+  height:180px;
   border-radius:50%;
   background:#080807;
-  right:-42px;
-  top:-24px;
-}
-
-.moon-glow{
-  position:absolute;
-  width:270px;
-  height:270px;
-  border-radius:50%;
-  right:65px;
-  top:5px;
-  border:1px solid rgba(217,173,85,.08);
-  box-shadow:
-    0 0 0 25px rgba(217,173,85,.025),
-    0 0 0 50px rgba(217,173,85,.018);
+  right:-40px;
+  top:-23px;
 }
 
 .star{
@@ -324,64 +296,51 @@ header{
   opacity:.8;
 }
 
-.s1{top:40px;right:40px;font-size:15px;}
-.s2{top:150px;right:20px;font-size:10px;animation-delay:1s;}
-.s3{top:90px;left:80px;font-size:13px;animation-delay:1.5s;}
-.s4{top:230px;left:25px;font-size:9px;animation-delay:.5s;}
-.s5{top:25px;left:180px;font-size:8px;animation-delay:2s;}
-.s6{top:280px;right:100px;font-size:10px;animation-delay:1.2s;}
+.s1{top:35px;right:35px}
+.s2{top:145px;right:10px;font-size:10px;animation-delay:1s}
+.s3{top:85px;left:70px;font-size:13px;animation-delay:1.5s}
+.s4{top:225px;left:20px;font-size:9px;animation-delay:.5s}
+.s5{top:15px;left:170px;font-size:8px;animation-delay:2s}
+.s6{top:270px;right:90px;font-size:10px;animation-delay:1.2s}
 
 .mosque{
   position:absolute;
   bottom:0;
-  left:20px;
+  left:15px;
   right:0;
-  height:280px;
-}
-
-.mosque-ground{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  height:30px;
-  border-radius:50%;
-  background:linear-gradient(90deg,transparent,rgba(217,173,85,.12),transparent);
+  height:270px;
 }
 
 .mosque-main{
   position:absolute;
-  bottom:28px;
+  bottom:25px;
   left:25%;
   width:50%;
-  height:145px;
+  height:140px;
   background:linear-gradient(180deg,#1a1814,#0b0b0b);
   border:1px solid rgba(217,173,85,.24);
   border-bottom:none;
-  border-radius:5px 5px 0 0;
-  box-shadow:0 -20px 80px rgba(217,173,85,.06);
 }
 
 .dome{
   position:absolute;
-  width:170px;
-  height:100px;
-  border-radius:170px 170px 0 0;
+  width:165px;
+  height:96px;
+  border-radius:165px 165px 0 0;
   background:linear-gradient(145deg,#d8ad55,#765522);
   left:50%;
   transform:translateX(-50%);
-  bottom:170px;
-  box-shadow:0 0 35px rgba(217,173,85,.12);
+  bottom:165px;
 }
 
 .dome::before{
   content:"";
   position:absolute;
   width:5px;
-  height:45px;
+  height:43px;
   background:var(--gold);
   left:50%;
-  top:-40px;
+  top:-38px;
   transform:translateX(-50%);
 }
 
@@ -391,15 +350,15 @@ header{
   color:var(--gold2);
   font-size:24px;
   left:50%;
-  top:-63px;
+  top:-61px;
   transform:translateX(-50%) rotate(-15deg);
 }
 
 .minaret{
   position:absolute;
-  bottom:28px;
-  width:30px;
-  height:235px;
+  bottom:25px;
+  width:29px;
+  height:225px;
   background:linear-gradient(90deg,#0b0b0b,#2b261b,#0b0b0b);
   border:1px solid rgba(217,173,85,.18);
 }
@@ -407,13 +366,13 @@ header{
 .minaret::before{
   content:"";
   position:absolute;
-  width:56px;
-  height:48px;
+  width:54px;
+  height:46px;
   border-radius:50% 50% 0 0;
   background:linear-gradient(135deg,#d7aa51,#72501d);
   left:50%;
   transform:translateX(-50%);
-  top:-35px;
+  top:-34px;
 }
 
 .minaret::after{
@@ -423,78 +382,170 @@ header{
   height:30px;
   background:var(--gold);
   left:50%;
-  top:-61px;
+  top:-59px;
   transform:translateX(-50%);
 }
 
-.minaret-left{left:8%;}
-.minaret-right{right:8%;}
+.minaret-left{left:7%}
+.minaret-right{right:7%}
 
 .window{
   position:absolute;
   width:23px;
-  height:50px;
+  height:48px;
   border-radius:15px 15px 0 0;
   border:1px solid rgba(217,173,85,.32);
   background:#080808;
-  bottom:30px;
+  bottom:28px;
 }
 
-.w1{left:20%;}
-.w2{left:36%;}
-.w3{right:36%;}
-.w4{right:20%;}
+.w1{left:20%}
+.w2{left:36%}
+.w3{right:36%}
+.w4{right:20%}
 
 .door{
   position:absolute;
   bottom:0;
   left:50%;
   transform:translateX(-50%);
-  width:54px;
-  height:88px;
+  width:52px;
+  height:85px;
   border-radius:28px 28px 0 0;
-  background:linear-gradient(180deg,#080808,#17120a);
+  background:#080808;
   border:1px solid rgba(217,173,85,.35);
 }
 
 .kaaba{
   position:absolute;
-  right:15px;
-  bottom:45px;
-  width:95px;
-  height:95px;
+  right:10px;
+  bottom:40px;
+  width:88px;
+  height:88px;
   background:#090909;
   border:2px solid #211c11;
-  transform:rotate(0deg);
   box-shadow:0 18px 45px rgba(0,0,0,.7);
 }
 
 .kaaba::before{
   content:"";
   position:absolute;
-  top:30px;
+  top:28px;
   left:0;
   right:0;
-  height:13px;
+  height:12px;
   background:linear-gradient(90deg,#8b6727,#e0b85f,#8b6727);
 }
 
 .kaaba::after{
   content:"";
   position:absolute;
-  width:19px;
-  height:25px;
+  width:18px;
+  height:24px;
   background:#1a1308;
   border:1px solid rgba(217,173,85,.5);
-  right:13px;
+  right:12px;
   bottom:0;
 }
 
-/* ================= SECTIONS ================= */
+/* ================= HOME INFO ================= */
 
-section{
-  scroll-margin-top:90px;
+.home-info{
+  position:relative;
+  z-index:5;
+  margin-top:-75px;
+  padding-bottom:35px;
 }
+
+.home-info-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr .7fr;
+  gap:14px;
+}
+
+.home-panel{
+  min-height:145px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  border:1px solid rgba(217,173,85,.23);
+  border-radius:20px;
+  padding:22px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+}
+
+.panel-label{
+  color:#999;
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.panel-title{
+  color:var(--gold2);
+  font-size:18px;
+  font-weight:800;
+}
+
+.next-prayer-name{
+  font-family:"Amiri",serif;
+  color:#fff;
+  font-size:30px;
+  margin-top:2px;
+}
+
+.next-prayer-time{
+  color:var(--gold2);
+  font-size:19px;
+  font-weight:700;
+}
+
+.countdown{
+  font-size:28px;
+  font-weight:800;
+  color:#fff;
+  direction:ltr;
+  text-align:right;
+  margin-top:5px;
+}
+
+.date-big{
+  font-family:"Amiri",serif;
+  color:#fff;
+  font-size:25px;
+  margin-top:8px;
+}
+
+.date-small{
+  color:#999;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.home-progress{
+  margin-top:14px;
+}
+
+.home-progress-bar{
+  height:7px;
+  border-radius:50px;
+  background:#1b1b1b;
+  overflow:hidden;
+}
+
+#homeProgressBar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,var(--gold3),var(--gold2));
+  transition:.5s;
+}
+
+#homeProgressText{
+  color:#999;
+  font-size:11px;
+  margin-top:6px;
+}
+
+/* ================= SECTIONS ================= */
 
 .section{
   padding:90px 0;
@@ -502,50 +553,42 @@ section{
 
 .section-heading{
   text-align:center;
-  margin-bottom:45px;
+  margin-bottom:42px;
 }
 
 .section-heading .mini{
   color:var(--gold);
   font-size:13px;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .section-heading h2{
   font-family:"Amiri",serif;
   font-size:42px;
-  color:#fff;
 }
 
 .section-heading p{
-  color:#9d9d9d;
+  color:#999;
   font-size:14px;
-  margin-top:5px;
+  margin-top:4px;
 }
 
-/* ================= CARDS ================= */
-
 .card{
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+  background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
   border:1px solid var(--border);
   border-radius:20px;
   padding:25px;
   box-shadow:0 20px 60px rgba(0,0,0,.18);
 }
 
-.card:hover{
-  border-color:rgba(217,173,85,.38);
-}
-
-/* ================= GOVERNORATE ================= */
+/* ================= CITY ================= */
 
 .city-box{
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   gap:12px;
-  margin-bottom:30px;
+  margin-bottom:28px;
   flex-wrap:wrap;
 }
 
@@ -563,11 +606,6 @@ input{
   outline:none;
 }
 
-select:focus,
-input:focus{
-  border-color:var(--gold);
-}
-
 /* ================= PRAYER ================= */
 
 .prayer-grid{
@@ -578,7 +616,7 @@ input:focus{
 
 .prayer-card{
   text-align:center;
-  padding:24px 12px;
+  padding:23px 10px;
   background:linear-gradient(145deg,#12110f,#090909);
   border:1px solid rgba(217,173,85,.18);
   border-radius:18px;
@@ -592,24 +630,24 @@ input:focus{
 
 .prayer-icon{
   font-size:25px;
-  margin-bottom:10px;
 }
 
 .prayer-name{
   color:#c4c4c4;
   font-size:14px;
+  margin-top:6px;
 }
 
 .prayer-time{
   color:var(--gold2);
-  font-size:27px;
+  font-size:26px;
   font-weight:800;
-  margin-top:5px;
+  margin-top:4px;
 }
 
 .method-note{
   text-align:center;
-  color:#888;
+  color:#777;
   font-size:12px;
   margin-top:18px;
 }
@@ -625,7 +663,7 @@ input:focus{
   justify-content:space-between;
   align-items:center;
   gap:15px;
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 .track-title h3{
@@ -638,7 +676,7 @@ input:focus{
   background:#191919;
   border-radius:50px;
   overflow:hidden;
-  margin-bottom:17px;
+  margin-bottom:16px;
 }
 
 #progressBar{
@@ -711,18 +749,13 @@ td{
   color:#c5c5c5;
 }
 
-tr:hover td{
-  background:rgba(217,173,85,.025);
-}
-
 /* ================= QURAN ================= */
 
 .quran-tools{
   display:flex;
+  justify-content:center;
   gap:10px;
   margin-bottom:25px;
-  flex-wrap:wrap;
-  justify-content:center;
 }
 
 .quran-list{
@@ -817,9 +850,9 @@ tr:hover td{
 }
 
 .zikr-reset{
-  background:#151515 !important;
-  color:#aaa !important;
-  border:1px solid #292929 !important;
+  background:#151515!important;
+  color:#aaa!important;
+  border:1px solid #292929!important;
   margin-top:8px;
 }
 
@@ -871,7 +904,7 @@ tr:hover td{
   font-weight:800;
 }
 
-/* ================= MOSQUES ================= */
+/* ================= MAP ================= */
 
 .map-box{
   height:430px;
@@ -888,8 +921,8 @@ tr:hover td{
 .mosque-actions{
   display:flex;
   justify-content:center;
-  margin-bottom:18px;
   gap:10px;
+  margin-bottom:17px;
   flex-wrap:wrap;
 }
 
@@ -909,16 +942,16 @@ footer{
   background:#030303;
 }
 
-footer .footer-logo{
+.footer-logo{
   color:var(--gold2);
   font-size:23px;
   font-weight:800;
-  margin-bottom:7px;
 }
 
 footer p{
   color:#777;
   font-size:12px;
+  margin-top:6px;
 }
 
 /* ================= ANIMATION ================= */
@@ -946,8 +979,14 @@ footer p{
 }
 
 @keyframes twinkle{
-  0%,100%{opacity:.3;transform:scale(.8);}
-  50%{opacity:1;transform:scale(1.2);}
+  0%,100%{
+    opacity:.3;
+    transform:scale(.8);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.2);
+  }
 }
 
 /* ================= MOBILE ================= */
@@ -990,28 +1029,35 @@ footer p{
   .hero-content{
     grid-template-columns:1fr;
     text-align:center;
-    padding:65px 0 30px;
-  }
-
-  .hero-text{
-    order:1;
-  }
-
-  .hero-art{
-    order:2;
-    height:390px;
-    transform:scale(.86);
-    margin-top:-35px;
+    padding:60px 0 20px;
   }
 
   .hero-description{
     margin-left:auto;
     margin-right:auto;
-    font-size:15px;
   }
 
   .hero-actions{
     justify-content:center;
+  }
+
+  .hero-art{
+    height:350px;
+    transform:scale(.80);
+    margin-top:-20px;
+  }
+
+  .home-info{
+    margin-top:0;
+    padding-bottom:10px;
+  }
+
+  .home-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-panel{
+    min-height:auto;
   }
 
   .prayer-grid{
@@ -1030,6 +1076,7 @@ footer p{
   .azkar-grid{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:500px){
@@ -1051,20 +1098,21 @@ footer p{
     font-size:58px;
   }
 
-  .hero-title span{
-    font-size:.45em;
-  }
-
   .hero-description{
     font-size:14px;
-    line-height:1.9;
   }
 
   .hero-art{
-    height:330px;
-    transform:scale(.72);
-    transform-origin:top center;
+    transform:scale(.67);
     margin-bottom:-90px;
+  }
+
+  .hero-actions{
+    width:100%;
+  }
+
+  .hero-actions .btn{
+    width:100%;
   }
 
   .section{
@@ -1075,28 +1123,16 @@ footer p{
     font-size:34px;
   }
 
-  .prayer-grid{
-    gap:9px;
-  }
-
-  .prayer-time{
-    font-size:22px;
-  }
-
   .card{
     padding:18px;
   }
 
-  .btn{
-    width:100%;
+  .prayer-time{
+    font-size:21px;
   }
 
-  .hero-actions{
-    width:100%;
-  }
-
-  .hero-actions .btn{
-    width:100%;
+  .countdown{
+    font-size:24px;
   }
 }
 </style>
@@ -1107,877 +1143,1266 @@ footer p{
 <!-- ================= HEADER ================= -->
 
 <header>
-  <div class="container navbar">
+<div class="container navbar">
 
-    <a href="#home" class="logo">
-      <span class="logo-icon">☪</span>
-      <span>نور الإسلام</span>
-    </a>
+<a href="#home" class="logo">
+  <span class="logo-icon">☪</span>
+  <span>نور الإسلام</span>
+</a>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">الرئيسية</a>
-      <a href="#prayer">🕌 الصلاة</a>
-      <a href="#quran">📖 القرآن</a>
-      <a href="#azkar">📿 الأذكار</a>
-      <a href="#qibla">🕋 القبلة</a>
-      <a href="#mosques">🕌 المساجد</a>
-    </nav>
+<nav class="nav-links" id="navLinks">
+  <a href="#home">الرئيسية</a>
+  <a href="#prayer">🕌 الصلاة</a>
+  <a href="#quran">📖 القرآن</a>
+  <a href="#azkar">📿 الأذكار</a>
+  <a href="#qibla">🕋 القبلة</a>
+  <a href="#mosques">🕌 المساجد</a>
+</nav>
 
-  </div>
+</div>
 </header>
+
 
 <!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
-  <div class="hero-content">
+<div class="hero-content">
 
-    <div class="hero-text">
+<div class="hero-text">
 
-      <div class="eyebrow">
-        طريقك إلى الطمأنينة
-      </div>
+<div class="eyebrow">
+طريقك إلى الطمأنينة
+</div>
 
-      <h1 class="hero-title">
-        نور الإسلام
-        <span>نورٌ يهدي القلوب</span>
-      </h1>
+<h1 class="hero-title">
+نور الإسلام
+<span>نورٌ يهدي القلوب</span>
+</h1>
 
-      <p class="hero-description">
-        كل ما تحتاجه في مكان واحد:
-        مواقيت الصلاة، القرآن الكريم، الأذكار،
-        اتجاه القبلة، والبحث عن المساجد القريبة.
-      </p>
+<p class="hero-description">
+كل ما تحتاجه في مكان واحد:
+مواقيت الصلاة، القرآن الكريم،
+الأذكار، اتجاه القبلة، والبحث عن المساجد القريبة.
+</p>
 
-      <div class="hero-actions">
-        <a href="#prayer" class="btn btn-gold">
-          🕌 مواقيت الصلاة
-        </a>
+<div class="hero-actions">
 
-        <a href="#quran" class="btn btn-dark">
-          📖 القرآن الكريم
-        </a>
-      </div>
+<a href="#prayer" class="btn btn-gold">
+🕌 مواقيت الصلاة
+</a>
 
-    </div>
+<a href="#quran" class="btn btn-dark">
+📖 القرآن الكريم
+</a>
 
-    <div class="hero-art">
+</div>
 
-      <div class="moon-glow"></div>
-      <div class="moon"></div>
+</div>
 
-      <div class="star s1">✦</div>
-      <div class="star s2">✦</div>
-      <div class="star s3">✧</div>
-      <div class="star s4">✦</div>
-      <div class="star s5">✧</div>
-      <div class="star s6">✦</div>
 
-      <div class="mosque">
+<div class="hero-art">
 
-        <div class="minaret minaret-left"></div>
-        <div class="minaret minaret-right"></div>
+<div class="moon"></div>
 
-        <div class="dome"></div>
+<div class="star s1">✦</div>
+<div class="star s2">✦</div>
+<div class="star s3">✧</div>
+<div class="star s4">✦</div>
+<div class="star s5">✧</div>
+<div class="star s6">✦</div>
 
-        <div class="mosque-main">
-          <div class="window w1"></div>
-          <div class="window w2"></div>
-          <div class="window w3"></div>
-          <div class="window w4"></div>
-          <div class="door"></div>
-        </div>
+<div class="mosque">
 
-        <div class="kaaba">
-        </div>
+<div class="minaret minaret-left"></div>
+<div class="minaret minaret-right"></div>
 
-        <div class="mosque-ground"></div>
+<div class="dome"></div>
 
-      </div>
+<div class="mosque-main">
 
-    </div>
+<div class="window w1"></div>
+<div class="window w2"></div>
+<div class="window w3"></div>
+<div class="window w4"></div>
 
-  </div>
+<div class="door"></div>
+
+</div>
+
+<div class="kaaba"></div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+
+<!-- ================= HOME LIVE INFO ================= -->
+
+<div class="home-info">
+
+<div class="container">
+
+<div class="home-info-grid">
+
+<!-- NEXT PRAYER -->
+
+<div class="home-panel">
+
+<div class="panel-label">
+🕌 الصلاة القادمة
+</div>
+
+<div class="next-prayer-name" id="nextPrayerName">
+جاري الحساب...
+</div>
+
+<div class="next-prayer-time" id="nextPrayerTime">
+--:--
+</div>
+
+<div class="countdown" id="countdown">
+--:--:--
+</div>
+
+</div>
+
+
+<!-- HIJRI DATE -->
+
+<div class="home-panel">
+
+<div class="panel-label">
+🌙 التاريخ الهجري
+</div>
+
+<div class="date-big" id="hijriDate">
+جاري التحميل...
+</div>
+
+<div class="date-small">
+حسب التقويم الهجري
+</div>
+
+</div>
+
+
+<!-- TODAY PROGRESS -->
+
+<div class="home-panel">
+
+<div class="panel-label">
+📿 إنجاز صلوات اليوم
+</div>
+
+<div class="date-big" id="homePrayerCount">
+0 / 5
+</div>
+
+<div class="home-progress">
+
+<div class="home-progress-bar">
+<div id="homeProgressBar"></div>
+</div>
+
+<div id="homeProgressText">
+أنجزت 0 من 5 صلوات
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <!-- ================= PRAYER ================= -->
 
 <section class="section" id="prayer">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">الصلاة نور</div>
-      <h2>مواقيت الصلاة</h2>
-      <p>اختر محافظتك لمعرفة مواقيت اليوم</p>
-    </div>
+<div class="section-heading">
+<div class="mini">الصلاة نور</div>
+<h2>مواقيت الصلاة</h2>
+<p>اختر محافظتك لمعرفة مواقيت اليوم</p>
+</div>
 
-    <div class="city-box">
+<div class="city-box">
 
-      <label for="governorate">
-        المحافظة:
-      </label>
+<label for="governorate">
+المحافظة:
+</label>
 
-      <select id="governorate">
-        <option value="Cairo">القاهرة</option>
-        <option value="Giza">الجيزة</option>
-        <option value="Alexandria">الإسكندرية</option>
-        <option value="Qalyubia">القليوبية</option>
-        <option value="Dakahlia">الدقهلية</option>
-        <option value="Sharqia">الشرقية</option>
-        <option value="Gharbia">الغربية</option>
-        <option value="Monufia">المنوفية</option>
-        <option value="Beheira">البحيرة</option>
-        <option value="Kafr El Sheikh">كفر الشيخ</option>
-        <option value="Damietta">دمياط</option>
-        <option value="Port Said">بورسعيد</option>
-        <option value="Ismailia">الإسماعيلية</option>
-        <option value="Suez">السويس</option>
-        <option value="North Sinai">شمال سيناء</option>
-        <option value="South Sinai">جنوب سيناء</option>
-        <option value="Fayoum">الفيوم</option>
-        <option value="Beni Suef">بني سويف</option>
-        <option value="Minya">المنيا</option>
-        <option value="Assiut">أسيوط</option>
-        <option value="Sohag">سوهاج</option>
-        <option value="Qena">قنا</option>
-        <option value="Luxor">الأقصر</option>
-        <option value="Aswan">أسوان</option>
-        <option value="Red Sea">البحر الأحمر</option>
-        <option value="New Valley">الوادي الجديد</option>
-      </select>
+<select id="governorate">
 
-      <button class="btn btn-gold" onclick="loadPrayerTimes()">
-        تحديث المواقيت
-      </button>
+<option value="Cairo">القاهرة</option>
+<option value="Giza">الجيزة</option>
+<option value="Alexandria">الإسكندرية</option>
+<option value="Qalyubia">القليوبية</option>
+<option value="Dakahlia">الدقهلية</option>
+<option value="Sharqia">الشرقية</option>
+<option value="Gharbia">الغربية</option>
+<option value="Monufia">المنوفية</option>
+<option value="Beheira">البحيرة</option>
+<option value="Kafr El Sheikh">كفر الشيخ</option>
+<option value="Damietta">دمياط</option>
+<option value="Port Said">بورسعيد</option>
+<option value="Ismailia">الإسماعيلية</option>
+<option value="Suez">السويس</option>
+<option value="North Sinai">شمال سيناء</option>
+<option value="South Sinai">جنوب سيناء</option>
+<option value="Fayoum">الفيوم</option>
+<option value="Beni Suef">بني سويف</option>
+<option value="Minya">المنيا</option>
+<option value="Assiut">أسيوط</option>
+<option value="Sohag">سوهاج</option>
+<option value="Qena">قنا</option>
+<option value="Luxor">الأقصر</option>
+<option value="Aswan">أسوان</option>
+<option value="Red Sea">البحر الأحمر</option>
+<option value="New Valley">الوادي الجديد</option>
 
-    </div>
+</select>
 
-    <div class="card">
+<button class="btn btn-gold" onclick="loadPrayerTimes()">
+تحديث المواقيت
+</button>
 
-      <div class="prayer-grid" id="prayerGrid">
+</div>
 
-        <div class="prayer-card">
-          <div class="prayer-icon">🌙</div>
-          <div class="prayer-name">الفجر</div>
-          <div class="prayer-time" id="Fajr">--:--</div>
-        </div>
 
-        <div class="prayer-card">
-          <div class="prayer-icon">☀️</div>
-          <div class="prayer-name">الظهر</div>
-          <div class="prayer-time" id="Dhuhr">--:--</div>
-        </div>
+<div class="card">
 
-        <div class="prayer-card">
-          <div class="prayer-icon">🌤️</div>
-          <div class="prayer-name">العصر</div>
-          <div class="prayer-time" id="Asr">--:--</div>
-        </div>
+<div class="prayer-grid">
 
-        <div class="prayer-card">
-          <div class="prayer-icon">🌇</div>
-          <div class="prayer-name">المغرب</div>
-          <div class="prayer-time" id="Maghrib">--:--</div>
-        </div>
+<div class="prayer-card">
+<div class="prayer-icon">🌙</div>
+<div class="prayer-name">الفجر</div>
+<div class="prayer-time" id="Fajr">--:--</div>
+</div>
 
-        <div class="prayer-card">
-          <div class="prayer-icon">🌙</div>
-          <div class="prayer-name">العشاء</div>
-          <div class="prayer-time" id="Isha">--:--</div>
-        </div>
+<div class="prayer-card">
+<div class="prayer-icon">☀️</div>
+<div class="prayer-name">الظهر</div>
+<div class="prayer-time" id="Dhuhr">--:--</div>
+</div>
 
-      </div>
+<div class="prayer-card">
+<div class="prayer-icon">🌤️</div>
+<div class="prayer-name">العصر</div>
+<div class="prayer-time" id="Asr">--:--</div>
+</div>
 
-      <div class="method-note">
-        المواقيت محسوبة بطريقة الهيئة المصرية العامة للمساحة 🇪🇬
-      </div>
+<div class="prayer-card">
+<div class="prayer-icon">🌇</div>
+<div class="prayer-name">المغرب</div>
+<div class="prayer-time" id="Maghrib">--:--</div>
+</div>
 
-      <!-- Tracking -->
+<div class="prayer-card">
+<div class="prayer-icon">🌙</div>
+<div class="prayer-name">العشاء</div>
+<div class="prayer-time" id="Isha">--:--</div>
+</div>
 
-      <div class="tracking">
+</div>
 
-        <div class="track-title">
-          <h3>📿 متابعة صلوات اليوم</h3>
-          <span id="progressText">أنجزت 0 من 5 صلوات اليوم</span>
-        </div>
 
-        <div class="progress-wrap">
-          <div id="progressBar"></div>
-        </div>
+<div class="method-note">
+المواقيت محسوبة بطريقة الهيئة المصرية العامة للمساحة 🇪🇬
+</div>
 
-        <div class="track-buttons" id="prayerTrack"></div>
 
-      </div>
+<div class="tracking">
 
-    </div>
+<div class="track-title">
 
-  </div>
+<h3>
+📿 متابعة صلوات اليوم
+</h3>
+
+<span id="progressText">
+أنجزت 0 من 5 صلوات اليوم
+</span>
+
+</div>
+
+<div class="progress-wrap">
+<div id="progressBar"></div>
+</div>
+
+<div class="track-buttons" id="prayerTrack"></div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- ================= WEEKLY ================= -->
 
 <section class="section" id="weekly">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">أسبوعك مع الصلاة</div>
-      <h2>التقويم الأسبوعي</h2>
-      <p>مواقيت الأيام القادمة</p>
-    </div>
+<div class="section-heading">
+<div class="mini">أسبوعك مع الصلاة</div>
+<h2>التقويم الأسبوعي</h2>
+<p>مواقيت الأيام القادمة</p>
+</div>
 
-    <div class="card">
+<div class="card">
 
-      <div class="table-wrap">
-        <table>
+<div class="table-wrap">
 
-          <thead>
-            <tr>
-              <th>اليوم</th>
-              <th>الفجر</th>
-              <th>الظهر</th>
-              <th>العصر</th>
-              <th>المغرب</th>
-              <th>العشاء</th>
-            </tr>
-          </thead>
+<table>
 
-          <tbody id="weeklyTable">
-            <tr>
-              <td colspan="6">جاري تحميل المواقيت...</td>
-            </tr>
-          </tbody>
+<thead>
+<tr>
+<th>اليوم</th>
+<th>الفجر</th>
+<th>الظهر</th>
+<th>العصر</th>
+<th>المغرب</th>
+<th>العشاء</th>
+</tr>
+</thead>
 
-        </table>
-      </div>
+<tbody id="weeklyTable">
 
-    </div>
+<tr>
+<td colspan="6">
+جاري تحميل المواقيت...
+</td>
+</tr>
 
-  </div>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- ================= QURAN ================= -->
 
 <section class="section" id="quran">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">كلام الله</div>
-      <h2>القرآن الكريم</h2>
-      <p>اختر السورة واقرأها</p>
-    </div>
+<div class="section-heading">
+<div class="mini">كلام الله</div>
+<h2>القرآن الكريم</h2>
+<p>اختر السورة واقرأها</p>
+</div>
 
-    <div class="card">
+<div class="card">
 
-      <div class="quran-tools">
-        <input
-          id="surahSearch"
-          type="text"
-          placeholder="ابحث عن سورة..."
-          oninput="filterSurahs()"
-        />
-      </div>
+<div class="quran-tools">
 
-      <div class="quran-list" id="surahList"></div>
+<input
+id="surahSearch"
+type="text"
+placeholder="ابحث عن سورة..."
+oninput="filterSurahs()"
+/>
 
-      <div class="quran-reader" id="quranReader">
-        <h3>اختر سورة للقراءة</h3>
-      </div>
+</div>
 
-    </div>
+<div class="quran-list" id="surahList"></div>
 
-  </div>
+<div class="quran-reader" id="quranReader">
+
+<h3>
+اختر سورة للقراءة
+</h3>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- ================= AZKAR ================= -->
 
 <section class="section" id="azkar">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">اذكر الله</div>
-      <h2>الأذكار</h2>
-      <p>واذكر ربك كثيرًا</p>
-    </div>
+<div class="section-heading">
+<div class="mini">اذكر الله</div>
+<h2>الأذكار</h2>
+<p>واذكر ربك كثيرًا</p>
+</div>
 
-    <div class="azkar-grid">
+<div class="azkar-grid">
 
-      <div class="card zikr">
-        <div class="zikr-text">
-          سُبْحَانَ الله
-        </div>
-        <div class="zikr-count" id="zikr1">0</div>
-        <button onclick="increaseZikr(1)">
-          تسبيح
-        </button>
-        <br>
-        <button class="zikr-reset" onclick="resetZikr(1)">
-          تصفير
-        </button>
-      </div>
+<div class="card zikr">
 
-      <div class="card zikr">
-        <div class="zikr-text">
-          الْحَمْدُ لِلَّه
-        </div>
-        <div class="zikr-count" id="zikr2">0</div>
-        <button onclick="increaseZikr(2)">
-          تحميد
-        </button>
-        <br>
-        <button class="zikr-reset" onclick="resetZikr(2)">
-          تصفير
-        </button>
-      </div>
+<div class="zikr-text">
+سُبْحَانَ الله
+</div>
 
-      <div class="card zikr">
-        <div class="zikr-text">
-          الله أكبر
-        </div>
-        <div class="zikr-count" id="zikr3">0</div>
-        <button onclick="increaseZikr(3)">
-          تكبير
-        </button>
-        <br>
-        <button class="zikr-reset" onclick="resetZikr(3)">
-          تصفير
-        </button>
-      </div>
+<div class="zikr-count" id="zikr1">
+0
+</div>
 
-    </div>
+<button onclick="increaseZikr(1)">
+تسبيح
+</button>
 
-  </div>
+<br>
+
+<button class="zikr-reset" onclick="resetZikr(1)">
+تصفير
+</button>
+
+</div>
+
+
+<div class="card zikr">
+
+<div class="zikr-text">
+الْحَمْدُ لِلَّه
+</div>
+
+<div class="zikr-count" id="zikr2">
+0
+</div>
+
+<button onclick="increaseZikr(2)">
+تحميد
+</button>
+
+<br>
+
+<button class="zikr-reset" onclick="resetZikr(2)">
+تصفير
+</button>
+
+</div>
+
+
+<div class="card zikr">
+
+<div class="zikr-text">
+الله أكبر
+</div>
+
+<div class="zikr-count" id="zikr3">
+0
+</div>
+
+<button onclick="increaseZikr(3)">
+تكبير
+</button>
+
+<br>
+
+<button class="zikr-reset" onclick="resetZikr(3)">
+تصفير
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- ================= QIBLA ================= -->
 
 <section class="section" id="qibla">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">وجهتك إلى بيت الله</div>
-      <h2>اتجاه القبلة</h2>
-      <p>الاتجاه التقريبي من موقعك</p>
-    </div>
+<div class="section-heading">
+<div class="mini">وجهتك إلى بيت الله</div>
+<h2>اتجاه القبلة</h2>
+<p>الاتجاه التقريبي من موقعك</p>
+</div>
 
-    <div class="card qibla-box">
+<div class="card qibla-box">
 
-      <div class="compass"></div>
+<div class="compass"></div>
 
-      <div>
-        اتجاه القبلة:
-      </div>
+<div>
+اتجاه القبلة:
+</div>
 
-      <div class="qibla-degree" id="qiblaDegree">
-        جاري الحساب...
-      </div>
+<div class="qibla-degree" id="qiblaDegree">
+جاري الحساب...
+</div>
 
-      <button
-        class="btn btn-gold"
-        style="margin-top:15px"
-        onclick="calculateQibla()"
-      >
-        📍 استخدام موقعي
-      </button>
+<button
+class="btn btn-gold"
+style="margin-top:15px"
+onclick="calculateQibla()"
+>
+📍 استخدام موقعي
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
+
 
 <!-- ================= MOSQUES ================= -->
 
 <section class="section" id="mosques">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
-      <div class="mini">بيوت الله</div>
-      <h2>المساجد القريبة</h2>
-      <p>ابحث عن المساجد حول موقعك</p>
-    </div>
+<div class="section-heading">
+<div class="mini">بيوت الله</div>
+<h2>المساجد القريبة</h2>
+<p>ابحث عن المساجد حول موقعك</p>
+</div>
 
-    <div class="card">
+<div class="card">
 
-      <div class="mosque-actions">
+<div class="mosque-actions">
 
-        <button
-          class="btn btn-gold"
-          onclick="findMosques()"
-        >
-          🕌 البحث عن المساجد
-        </button>
+<button
+class="btn btn-gold"
+onclick="findMosques()"
+>
+🕌 البحث عن المساجد
+</button>
 
-        <button
-          class="btn btn-dark"
-          onclick="getLocationForMap()"
-        >
-          📍 استخدام موقعي
-        </button>
+<button
+class="btn btn-dark"
+onclick="getLocationForMap()"
+>
+📍 استخدام موقعي
+</button>
 
-      </div>
+</div>
 
-      <div id="mosqueStatus">
-        اضغط على البحث للعثور على المساجد القريبة.
-      </div>
+<div id="mosqueStatus">
+اضغط على البحث للعثور على المساجد القريبة.
+</div>
 
-      <div class="map-box">
-        <div id="map"></div>
-      </div>
+<div class="map-box">
+<div id="map"></div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <div class="container">
+<div class="container">
 
-    <div class="footer-logo">
-      ☪ نور الإسلام
-    </div>
+<div class="footer-logo">
+☪ نور الإسلام
+</div>
 
-    <p>
-      نورٌ يهدي القلوب • الصلاة • القرآن • الأذكار • القبلة • المساجد
-    </p>
+<p>
+نورٌ يهدي القلوب • الصلاة • القرآن • الأذكار • القبلة • المساجد
+</p>
 
-    <p style="margin-top:8px">
-      © 2026 نور الإسلام
-    </p>
+<p>
+© 2026 نور الإسلام
+</p>
 
-  </div>
+</div>
 
 </footer>
+
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
 
-/* =========================================================
+/* =====================================================
    MENU
-========================================================= */
+===================================================== */
 
 function toggleMenu(){
 
-  document
-    .getElementById("navLinks")
-    .classList.toggle("active");
+document
+.getElementById("navLinks")
+.classList.toggle("active");
 
 }
 
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
 
-/* =========================================================
-   CLOSE MOBILE MENU
-========================================================= */
+link.addEventListener("click",function(){
 
 document
-  .querySelectorAll(".nav-links a")
-  .forEach(function(link){
+.getElementById("navLinks")
+.classList.remove("active");
 
-    link.addEventListener("click",function(){
+});
 
-      document
-        .getElementById("navLinks")
-        .classList.remove("active");
-
-    });
-
-  });
+});
 
 
-/* =========================================================
+/* =====================================================
    PRAYER SETTINGS
-========================================================= */
+===================================================== */
 
 const EGYPT_PRAYER_METHOD = 5;
 const EGYPT_ASR_SCHOOL = 0;
 
-const prayerNames = {
-  Fajr:"الفجر",
-  Dhuhr:"الظهر",
-  Asr:"العصر",
-  Maghrib:"المغرب",
-  Isha:"العشاء"
-};
+const prayerOrder = [
+{
+key:"Fajr",
+name:"الفجر"
+},
+{
+key:"Dhuhr",
+name:"الظهر"
+},
+{
+key:"Asr",
+name:"العصر"
+},
+{
+key:"Maghrib",
+name:"المغرب"
+},
+{
+key:"Isha",
+name:"العشاء"
+}
+];
+
+let todayPrayerTimes = {};
 
 
-/* =========================================================
+/* =====================================================
    GOVERNORATE
-========================================================= */
+===================================================== */
 
 const governorate =
-  document.getElementById("governorate");
+document.getElementById("governorate");
 
 const savedGovernorate =
-  localStorage.getItem("noorGovernorate");
+localStorage.getItem("noorGovernorate");
 
 if(savedGovernorate){
-  governorate.value = savedGovernorate;
+
+governorate.value =
+savedGovernorate;
+
 }
 
 governorate.addEventListener(
-  "change",
-  function(){
+"change",
+function(){
 
-    localStorage.setItem(
-      "noorGovernorate",
-      governorate.value
-    );
+localStorage.setItem(
+"noorGovernorate",
+governorate.value
+);
 
-    loadPrayerTimes();
+loadPrayerTimes();
 
-  }
+}
 );
 
 
-/* =========================================================
+/* =====================================================
    TIME FORMAT
-========================================================= */
+===================================================== */
 
 function formatPrayerTime(time){
 
-  if(!time) return "--:--";
+if(!time) return "--:--";
 
-  let parts =
-    time
-      .replace(/\s*\(.+\)/,"")
-      .split(":");
+let parts =
+time
+.replace(/\s*\(.+\)/,"")
+.split(":");
 
-  let hour =
-    parseInt(parts[0],10);
+let hour =
+parseInt(parts[0],10);
 
-  let minute =
-    parts[1];
+let minute =
+parts[1];
 
-  let period =
-    hour >= 12 ? "م" : "ص";
+let period =
+hour >= 12 ? "م" : "ص";
 
-  hour =
-    hour % 12;
+hour =
+hour % 12;
 
-  if(hour === 0){
-    hour = 12;
-  }
+if(hour === 0){
+hour = 12;
+}
 
-  return hour + ":" + minute + " " + period;
+return hour + ":" + minute + " " + period;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    LOAD PRAYER TIMES
-========================================================= */
+===================================================== */
 
 async function loadPrayerTimes(){
 
-  const city =
-    governorate.value;
+const city =
+governorate.value;
 
-  localStorage.setItem(
-    "noorGovernorate",
-    city
-  );
+localStorage.setItem(
+"noorGovernorate",
+city
+);
 
-  try{
+try{
 
-    const url =
-      "https://api.aladhan.com/v1/timingsByCity" +
-      "?city=" + encodeURIComponent(city) +
-      "&country=Egypt" +
-      "&method=" + EGYPT_PRAYER_METHOD +
-      "&school=" + EGYPT_ASR_SCHOOL;
+const url =
+"https://api.aladhan.com/v1/timingsByCity" +
+"?city=" + encodeURIComponent(city) +
+"&country=Egypt" +
+"&method=" + EGYPT_PRAYER_METHOD +
+"&school=" + EGYPT_ASR_SCHOOL;
 
-    const response =
-      await fetch(url);
+const response =
+await fetch(url);
 
-    const data =
-      await response.json();
+const data =
+await response.json();
 
-    if(data.code !== 200){
-      throw new Error("Prayer API error");
-    }
+if(data.code !== 200){
+throw new Error("Prayer API error");
+}
 
-    const timings =
-      data.data.timings;
+todayPrayerTimes =
+data.data.timings;
 
-    document.getElementById("Fajr").textContent =
-      formatPrayerTime(timings.Fajr);
+document.getElementById("Fajr").textContent =
+formatPrayerTime(todayPrayerTimes.Fajr);
 
-    document.getElementById("Dhuhr").textContent =
-      formatPrayerTime(timings.Dhuhr);
+document.getElementById("Dhuhr").textContent =
+formatPrayerTime(todayPrayerTimes.Dhuhr);
 
-    document.getElementById("Asr").textContent =
-      formatPrayerTime(timings.Asr);
+document.getElementById("Asr").textContent =
+formatPrayerTime(todayPrayerTimes.Asr);
 
-    document.getElementById("Maghrib").textContent =
-      formatPrayerTime(timings.Maghrib);
+document.getElementById("Maghrib").textContent =
+formatPrayerTime(todayPrayerTimes.Maghrib);
 
-    document.getElementById("Isha").textContent =
-      formatPrayerTime(timings.Isha);
+document.getElementById("Isha").textContent =
+formatPrayerTime(todayPrayerTimes.Isha);
 
-    loadWeekly();
+updateNextPrayer();
 
-  }catch(error){
+loadWeekly();
 
-    console.error(error);
+}catch(error){
 
-    document.getElementById("Fajr").textContent = "--:--";
-    document.getElementById("Dhuhr").textContent = "--:--";
-    document.getElementById("Asr").textContent = "--:--";
-    document.getElementById("Maghrib").textContent = "--:--";
-    document.getElementById("Isha").textContent = "--:--";
+console.error(error);
 
-  }
+}
 
 }
 
 
-/* =========================================================
-   WEEKLY PRAYER
-========================================================= */
+/* =====================================================
+   NEXT PRAYER
+===================================================== */
+
+function parseTimeToDate(time){
+
+const clean =
+time
+.replace(/\s*\(.+\)/,"")
+.trim();
+
+const parts =
+clean.split(":");
+
+const hour =
+parseInt(parts[0],10);
+
+const minute =
+parseInt(parts[1],10);
+
+const date =
+new Date();
+
+date.setHours(
+hour,
+minute,
+0,
+0
+);
+
+return date;
+
+}
+
+
+function updateNextPrayer(){
+
+if(!todayPrayerTimes.Fajr){
+return;
+}
+
+const now =
+new Date();
+
+let next = null;
+
+for(let i=0;i<prayerOrder.length;i++){
+
+const prayer =
+prayerOrder[i];
+
+const time =
+todayPrayerTimes[prayer.key];
+
+if(!time) continue;
+
+const prayerDate =
+parseTimeToDate(time);
+
+if(prayerDate > now){
+
+next = {
+...prayer,
+date:prayerDate,
+time:time
+};
+
+break;
+
+}
+
+}
+
+if(!next){
+
+const tomorrow =
+new Date();
+
+tomorrow.setDate(
+tomorrow.getDate()+1
+);
+
+tomorrow.setHours(
+0,0,0,0
+);
+
+const fajr =
+parseTimeToDate(
+todayPrayerTimes.Fajr
+);
+
+fajr.setDate(
+tomorrow.getDate()
+);
+
+next = {
+...prayerOrder[0],
+date:fajr,
+time:todayPrayerTimes.Fajr
+};
+
+}
+
+document.getElementById(
+"nextPrayerName"
+).textContent =
+next.name;
+
+document.getElementById(
+"nextPrayerTime"
+).textContent =
+formatPrayerTime(next.time);
+
+updateCountdown(
+next.date
+);
+
+}
+
+
+function updateCountdown(target){
+
+const now =
+new Date();
+
+let diff =
+target - now;
+
+if(diff <= 0){
+
+updateNextPrayer();
+
+return;
+
+}
+
+const totalSeconds =
+Math.floor(diff / 1000);
+
+const hours =
+Math.floor(
+totalSeconds / 3600
+);
+
+const minutes =
+Math.floor(
+(totalSeconds % 3600) / 60
+);
+
+const seconds =
+totalSeconds % 60;
+
+document.getElementById(
+"countdown"
+).textContent =
+String(hours).padStart(2,"0") +
+":" +
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+   HIJRI DATE
+===================================================== */
+
+async function loadHijriDate(){
+
+try{
+
+const response =
+await fetch(
+"https://api.aladhan.com/v1/gToH"
+);
+
+const data =
+await response.json();
+
+if(
+data.code === 200 &&
+data.data &&
+data.data.hijri
+){
+
+const h =
+data.data.hijri;
+
+document.getElementById(
+"hijriDate"
+).textContent =
+h.day +
+" " +
+h.month.ar +
+" " +
+h.year;
+
+}
+
+}catch(error){
+
+document.getElementById(
+"hijriDate"
+).textContent =
+"التاريخ الهجري";
+
+}
+
+}
+
+
+/* =====================================================
+   WEEKLY
+===================================================== */
 
 async function loadWeekly(){
 
-  const city =
-    governorate.value;
+const city =
+governorate.value;
 
-  const now =
-    new Date();
+const now =
+new Date();
 
-  const month =
-    now.getMonth() + 1;
+const month =
+now.getMonth()+1;
 
-  const year =
-    now.getFullYear();
+const year =
+now.getFullYear();
 
-  try{
+try{
 
-    const url =
-      "https://api.aladhan.com/v1/calendarByCity" +
-      "?city=" + encodeURIComponent(city) +
-      "&country=Egypt" +
-      "&method=" + EGYPT_PRAYER_METHOD +
-      "&school=" + EGYPT_ASR_SCHOOL +
-      "&month=" + month +
-      "&year=" + year;
+const url =
+"https://api.aladhan.com/v1/calendarByCity" +
+"?city=" + encodeURIComponent(city) +
+"&country=Egypt" +
+"&method=" + EGYPT_PRAYER_METHOD +
+"&school=" + EGYPT_ASR_SCHOOL +
+"&month=" + month +
+"&year=" + year;
 
-    const response =
-      await fetch(url);
+const response =
+await fetch(url);
 
-    const result =
-      await response.json();
+const result =
+await response.json();
 
-    const days =
-      result.data || [];
+const days =
+result.data || [];
 
-    const today =
-      now.getDate();
+const today =
+now.getDate();
 
-    let selected =
-      days.filter(function(day){
+let selected =
+days.filter(function(day){
 
-        const d =
-          parseInt(day.date.gregorian.day,10);
+const d =
+parseInt(
+day.date.gregorian.day,
+10
+);
 
-        return d >= today &&
-               d < today + 7;
+return d >= today &&
+d < today+7;
 
-      });
+});
 
-    if(selected.length < 7){
+const tbody =
+document.getElementById(
+"weeklyTable"
+);
 
-      selected =
-        days.slice(
-          Math.max(0,today - 1),
-          Math.min(days.length,today + 6)
-        );
+tbody.innerHTML = "";
 
-    }
+selected.forEach(function(day){
 
-    const tbody =
-      document.getElementById("weeklyTable");
+const t =
+day.timings;
 
-    tbody.innerHTML = "";
+const tr =
+document.createElement("tr");
 
-    selected.forEach(function(day){
+tr.innerHTML = `
+<td>${day.date.gregorian.day}/${day.date.gregorian.month}</td>
+<td>${formatPrayerTime(t.Fajr)}</td>
+<td>${formatPrayerTime(t.Dhuhr)}</td>
+<td>${formatPrayerTime(t.Asr)}</td>
+<td>${formatPrayerTime(t.Maghrib)}</td>
+<td>${formatPrayerTime(t.Isha)}</td>
+`;
 
-      const t =
-        day.timings;
+tbody.appendChild(tr);
 
-      const tr =
-        document.createElement("tr");
+});
 
-      tr.innerHTML = `
-        <td>${day.date.gregorian.day}/${day.date.gregorian.month}</td>
-        <td>${formatPrayerTime(t.Fajr)}</td>
-        <td>${formatPrayerTime(t.Dhuhr)}</td>
-        <td>${formatPrayerTime(t.Asr)}</td>
-        <td>${formatPrayerTime(t.Maghrib)}</td>
-        <td>${formatPrayerTime(t.Isha)}</td>
-      `;
+}catch(error){
 
-      tbody.appendChild(tr);
+console.error(error);
 
-    });
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById("weeklyTable").innerHTML =
-      `<tr><td colspan="6">تعذر تحميل التقويم حاليًا</td></tr>`;
-
-  }
+}
 
 }
 
 
-/* =========================================================
+/* =====================================================
    PRAYER TRACKING
-========================================================= */
+===================================================== */
 
-const trackPrayerNames = [
-  {key:"Fajr",name:"الفجر"},
-  {key:"Dhuhr",name:"الظهر"},
-  {key:"Asr",name:"العصر"},
-  {key:"Maghrib",name:"المغرب"},
-  {key:"Isha",name:"العشاء"}
-];
+const trackPrayerNames = prayerOrder;
 
 
 function trackingStorageKey(){
 
-  const today =
-    new Date()
-      .toISOString()
-      .slice(0,10);
+const today =
+new Date()
+.toISOString()
+.slice(0,10);
 
-  return "noorPrayerTracking_" + today;
+return "noorPrayerTracking_" + today;
 
 }
 
 
 function getTodayTracking(){
 
-  try{
+try{
 
-    return JSON.parse(
-      localStorage.getItem(
-        trackingStorageKey()
-      )
-    ) || {};
+return JSON.parse(
+localStorage.getItem(
+trackingStorageKey()
+)
+) || {};
 
-  }catch(e){
+}catch(e){
 
-    return {};
+return {};
 
-  }
+}
 
 }
 
 
 function saveTodayTracking(data){
 
-  localStorage.setItem(
-    trackingStorageKey(),
-    JSON.stringify(data)
-  );
+localStorage.setItem(
+trackingStorageKey(),
+JSON.stringify(data)
+);
 
 }
 
 
 function renderPrayerTracking(){
 
-  const container =
-    document.getElementById(
-      "prayerTrack"
-    );
+const container =
+document.getElementById(
+"prayerTrack"
+);
 
-  const data =
-    getTodayTracking();
+const data =
+getTodayTracking();
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  trackPrayerNames.forEach(function(p){
+trackPrayerNames.forEach(function(p){
 
-    const btn =
-      document.createElement("button");
+const btn =
+document.createElement("button");
 
-    const done =
-      data[p.key] === true;
+const done =
+data[p.key] === true;
 
-    btn.className =
-      done
-      ? "track-btn done"
-      : "track-btn";
+btn.className =
+done
+? "track-btn done"
+: "track-btn";
 
-    btn.textContent =
-      done
-      ? "✓ " + p.name
-      : p.name;
+btn.textContent =
+done
+? "✓ " + p.name
+: p.name;
 
-    btn.addEventListener(
-      "click",
-      function(){
+btn.addEventListener(
+"click",
+function(){
 
-        const current =
-          getTodayTracking();
+const current =
+getTodayTracking();
 
-        current[p.key] =
-          current[p.key] !== true;
+current[p.key] =
+current[p.key] !== true;
 
-        saveTodayTracking(
-          current
-        );
+saveTodayTracking(current);
 
-        renderPrayerTracking();
+renderPrayerTracking();
 
-      }
-    );
+updateHomeProgress();
 
-    container.appendChild(btn);
+});
 
-  });
+container.appendChild(btn);
 
-  const doneCount =
-    trackPrayerNames.filter(
-      p => data[p.key] === true
-    ).length;
+});
 
-  document.getElementById(
-    "progressBar"
-  ).style.width =
-    (doneCount / 5 * 100) + "%";
+const doneCount =
+trackPrayerNames.filter(
+p => data[p.key] === true
+).length;
 
-  document.getElementById(
-    "progressText"
-  ).textContent =
-    "أنجزت " + doneCount + " من 5 صلوات اليوم";
+document.getElementById(
+"progressBar"
+).style.width =
+(doneCount / 5 * 100) + "%";
+
+document.getElementById(
+"progressText"
+).textContent =
+"أنجزت " +
+doneCount +
+" من 5 صلوات اليوم";
+
+updateHomeProgress();
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   HOME PROGRESS
+===================================================== */
+
+function updateHomeProgress(){
+
+const data =
+getTodayTracking();
+
+const doneCount =
+prayerOrder.filter(
+p => data[p.key] === true
+).length;
+
+document.getElementById(
+"homePrayerCount"
+).textContent =
+doneCount + " / 5";
+
+document.getElementById(
+"homeProgressBar"
+).style.width =
+(doneCount / 5 * 100) + "%";
+
+document.getElementById(
+"homeProgressText"
+).textContent =
+"أنجزت " +
+doneCount +
+" من 5 صلوات";
+
+}
+
+
+/* =====================================================
    QURAN
-========================================================= */
+===================================================== */
 
 const surahs = [
+
 ["الفاتحة",1],
 ["البقرة",2],
 ["آل عمران",3],
@@ -2092,271 +2517,269 @@ const surahs = [
 ["الإخلاص",112],
 ["الفلق",113],
 ["الناس",114]
+
 ];
 
 
 function renderSurahs(list){
 
-  const container =
-    document.getElementById("surahList");
+const container =
+document.getElementById("surahList");
 
-  container.innerHTML = "";
+container.innerHTML = "";
 
-  list.forEach(function(item){
+list.forEach(function(item){
 
-    const button =
-      document.createElement("button");
+const button =
+document.createElement("button");
 
-    button.className =
-      "surah-btn";
+button.className =
+"surah-btn";
 
-    button.innerHTML = `
-      <div class="surah-number">
-        سورة ${item[1]}
-      </div>
-      <div class="surah-name">
-        ${item[0]}
-      </div>
-    `;
+button.innerHTML = `
+<div class="surah-number">
+سورة ${item[1]}
+</div>
+<div class="surah-name">
+${item[0]}
+</div>
+`;
 
-    button.onclick =
-      function(){
+button.onclick =
+function(){
 
-        loadSurah(
-          item[1],
-          item[0]
-        );
+loadSurah(
+item[1],
+item[0]
+);
 
-      };
+};
 
-    container.appendChild(button);
+container.appendChild(button);
 
-  });
+});
 
 }
 
 
 function filterSurahs(){
 
-  const value =
-    document
-      .getElementById("surahSearch")
-      .value
-      .trim();
+const value =
+document
+.getElementById("surahSearch")
+.value
+.trim();
 
-  const filtered =
-    surahs.filter(function(item){
+const filtered =
+surahs.filter(function(item){
 
-      return item[0]
-        .includes(value);
+return item[0].includes(value);
 
-    });
+});
 
-  renderSurahs(filtered);
+renderSurahs(filtered);
 
 }
 
 
 async function loadSurah(number,name){
 
-  const reader =
-    document.getElementById("quranReader");
+const reader =
+document.getElementById("quranReader");
 
-  reader.innerHTML =
-    `<h3>جاري تحميل سورة ${name}...</h3>`;
+reader.innerHTML =
+`<h3>جاري تحميل سورة ${name}...</h3>`;
 
-  try{
+try{
 
-    const response =
-      await fetch(
-        "https://api.alquran.cloud/v1/surah/" +
-        number +
-        "/quran-uthmani"
-      );
+const response =
+await fetch(
+"https://api.alquran.cloud/v1/surah/" +
+number +
+"/quran-uthmani"
+);
 
-    const result =
-      await response.json();
+const result =
+await response.json();
 
-    const ayahs =
-      result.data.ayahs;
+const ayahs =
+result.data.ayahs;
 
-    let html =
-      `<h3>سورة ${name}</h3>`;
+let html =
+`<h3>سورة ${name}</h3>`;
 
-    ayahs.forEach(function(ayah){
+ayahs.forEach(function(ayah){
 
-      html += `
-        <div class="ayah">
-          ${ayah.text}
-          <span style="color:#b9913d;font-size:13px">
-            ﴿${ayah.numberInSurah}﴾
-          </span>
-        </div>
-      `;
+html += `
+<div class="ayah">
+${ayah.text}
+<span style="color:#b9913d;font-size:13px">
+﴿${ayah.numberInSurah}﴾
+</span>
+</div>
+`;
 
-    });
+});
 
-    reader.innerHTML = html;
+reader.innerHTML = html;
 
-  }catch(error){
+}catch(error){
 
-    console.error(error);
+reader.innerHTML =
+"<h3>تعذر تحميل السورة حاليًا</h3>";
 
-    reader.innerHTML =
-      `<h3>تعذر تحميل السورة حاليًا</h3>`;
-
-  }
+}
 
 }
 
 
-/* =========================================================
+/* =====================================================
    AZKAR
-========================================================= */
+===================================================== */
 
 function getZikrCount(id){
 
-  return parseInt(
-    localStorage.getItem(
-      "noorZikr" + id
-    ) || "0",
-    10
-  );
+return parseInt(
+localStorage.getItem(
+"noorZikr"+id
+) || "0",
+10
+);
 
 }
-
 
 function renderZikr(id){
 
-  document.getElementById(
-    "zikr" + id
-  ).textContent =
-    getZikrCount(id);
+document.getElementById(
+"zikr"+id
+).textContent =
+getZikrCount(id);
 
 }
-
 
 function increaseZikr(id){
 
-  const count =
-    getZikrCount(id) + 1;
+const count =
+getZikrCount(id)+1;
 
-  localStorage.setItem(
-    "noorZikr" + id,
-    count
-  );
+localStorage.setItem(
+"noorZikr"+id,
+count
+);
 
-  renderZikr(id);
+renderZikr(id);
 
 }
-
 
 function resetZikr(id){
 
-  localStorage.setItem(
-    "noorZikr" + id,
-    "0"
-  );
+localStorage.setItem(
+"noorZikr"+id,
+"0"
+);
 
-  renderZikr(id);
+renderZikr(id);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    QIBLA
-========================================================= */
+===================================================== */
 
 function toRadians(value){
-  return value * Math.PI / 180;
+return value*Math.PI/180;
 }
 
 function toDegrees(value){
-  return value * 180 / Math.PI;
+return value*180/Math.PI;
 }
 
 
 function calculateQibla(){
 
-  const result =
-    document.getElementById("qiblaDegree");
+const result =
+document.getElementById(
+"qiblaDegree"
+);
 
-  if(!navigator.geolocation){
+if(!navigator.geolocation){
 
-    result.textContent =
-      "المتصفح لا يدعم الموقع";
+result.textContent =
+"المتصفح لا يدعم الموقع";
 
-    return;
+return;
 
-  }
+}
 
-  result.textContent =
-    "جاري تحديد موقعك...";
+result.textContent =
+"جاري تحديد موقعك...";
 
-  navigator.geolocation.getCurrentPosition(
+navigator.geolocation.getCurrentPosition(
 
-    function(position){
+function(position){
 
-      const lat =
-        position.coords.latitude;
+const lat =
+position.coords.latitude;
 
-      const lon =
-        position.coords.longitude;
+const lon =
+position.coords.longitude;
 
-      const kaabaLat =
-        21.4225;
+const kaabaLat =
+21.4225;
 
-      const kaabaLon =
-        39.8262;
+const kaabaLon =
+39.8262;
 
-      const phi1 =
-        toRadians(lat);
+const phi1 =
+toRadians(lat);
 
-      const phi2 =
-        toRadians(kaabaLat);
+const phi2 =
+toRadians(kaabaLat);
 
-      const deltaLon =
-        toRadians(
-          kaabaLon - lon
-        );
+const deltaLon =
+toRadians(
+kaabaLon-lon
+);
 
-      const y =
-        Math.sin(deltaLon);
+const y =
+Math.sin(deltaLon);
 
-      const x =
-        Math.cos(phi1) *
-        Math.tan(phi2) -
-        Math.sin(phi1) *
-        Math.cos(deltaLon);
+const x =
+Math.cos(phi1)*
+Math.tan(phi2) -
+Math.sin(phi1)*
+Math.cos(deltaLon);
 
-      let bearing =
-        toDegrees(
-          Math.atan2(y,x)
-        );
+let bearing =
+toDegrees(
+Math.atan2(y,x)
+);
 
-      bearing =
-        (bearing + 360) % 360;
+bearing =
+(bearing+360)%360;
 
-      result.textContent =
-        bearing.toFixed(1) + "° من اتجاه الشمال";
+result.textContent =
+bearing.toFixed(1) +
+"° من اتجاه الشمال";
 
-    },
+},
 
-    function(){
+function(){
 
-      result.textContent =
-        "تعذر الحصول على الموقع";
+result.textContent =
+"تعذر الحصول على الموقع";
 
-    }
+}
 
-  );
+);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MAP
-========================================================= */
+===================================================== */
 
 let map;
 let userMarker;
@@ -2365,283 +2788,278 @@ let mosqueLayer;
 
 function initializeMap(){
 
-  if(map) return;
+if(map) return;
 
-  map =
-    L.map("map");
+map =
+L.map("map");
 
-  L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    {
-      maxZoom:19,
-      attribution:"© OpenStreetMap"
-    }
-  ).addTo(map);
+L.tileLayer(
+"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+{
+maxZoom:19,
+attribution:"© OpenStreetMap"
+}
+).addTo(map);
 
-  map.setView(
-    [30.0444,31.2357],
-    12
-  );
+map.setView(
+[30.0444,31.2357],
+12
+);
 
 }
 
 
 function getLocationForMap(){
 
-  if(!navigator.geolocation){
+if(!navigator.geolocation){
 
-    document.getElementById(
-      "mosqueStatus"
-    ).textContent =
-      "المتصفح لا يدعم تحديد الموقع.";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"المتصفح لا يدعم تحديد الموقع.";
 
-    return;
+return;
 
-  }
+}
 
-  document.getElementById(
-    "mosqueStatus"
-  ).textContent =
-    "جاري تحديد موقعك...";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"جاري تحديد موقعك...";
 
-  navigator.geolocation.getCurrentPosition(
+navigator.geolocation.getCurrentPosition(
 
-    function(position){
+function(position){
 
-      const lat =
-        position.coords.latitude;
+const lat =
+position.coords.latitude;
 
-      const lon =
-        position.coords.longitude;
+const lon =
+position.coords.longitude;
 
-      initializeMap();
+initializeMap();
 
-      map.setView(
-        [lat,lon],
-        15
-      );
+map.setView(
+[lat,lon],
+15
+);
 
-      if(userMarker){
-        map.removeLayer(userMarker);
-      }
+if(userMarker){
+map.removeLayer(userMarker);
+}
 
-      userMarker =
-        L.marker([lat,lon])
-          .addTo(map)
-          .bindPopup("موقعك الحالي")
-          .openPopup();
+userMarker =
+L.marker([lat,lon])
+.addTo(map)
+.bindPopup("موقعك الحالي")
+.openPopup();
 
-      document.getElementById(
-        "mosqueStatus"
-      ).textContent =
-        "تم تحديد موقعك.";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"تم تحديد موقعك.";
 
-    },
+},
 
-    function(){
+function(){
 
-      document.getElementById(
-        "mosqueStatus"
-      ).textContent =
-        "لم نتمكن من الوصول إلى موقعك. تأكد من السماح بالموقع.";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"لم نتمكن من الوصول إلى موقعك.";
 
-    }
+}
 
-  );
+);
 
 }
 
 
 async function findMosques(){
 
-  if(!navigator.geolocation){
+if(!navigator.geolocation){
 
-    document.getElementById(
-      "mosqueStatus"
-    ).textContent =
-      "المتصفح لا يدعم تحديد الموقع.";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"المتصفح لا يدعم تحديد الموقع.";
 
-    return;
+return;
 
-  }
+}
 
-  document.getElementById(
-    "mosqueStatus"
-  ).textContent =
-    "جاري البحث عن المساجد القريبة...";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"جاري البحث عن المساجد القريبة...";
 
-  navigator.geolocation.getCurrentPosition(
+navigator.geolocation.getCurrentPosition(
 
-    async function(position){
+async function(position){
 
-      const lat =
-        position.coords.latitude;
+const lat =
+position.coords.latitude;
 
-      const lon =
-        position.coords.longitude;
+const lon =
+position.coords.longitude;
 
-      initializeMap();
+initializeMap();
 
-      map.setView(
-        [lat,lon],
-        14
-      );
+map.setView(
+[lat,lon],
+14
+);
 
-      if(userMarker){
-        map.removeLayer(userMarker);
-      }
+if(userMarker){
+map.removeLayer(userMarker);
+}
 
-      userMarker =
-        L.marker([lat,lon])
-          .addTo(map)
-          .bindPopup("موقعك الحالي");
+userMarker =
+L.marker([lat,lon])
+.addTo(map)
+.bindPopup("موقعك الحالي");
 
-      if(mosqueLayer){
+if(mosqueLayer){
+map.removeLayer(mosqueLayer);
+}
 
-        map.removeLayer(
-          mosqueLayer
-        );
+mosqueLayer =
+L.layerGroup().addTo(map);
 
-      }
+const radius =
+5000;
 
-      mosqueLayer =
-        L.layerGroup().addTo(map);
+const query = `
+[out:json][timeout:25];
+(
+node["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
+way["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
+relation["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
+);
+out center;
+`;
 
-      const radius =
-        5000;
+try{
 
-      const query = `
-        [out:json][timeout:25];
-        (
-          node["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
-          way["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
-          relation["amenity"="place_of_worship"]["religion"="muslim"](around:${radius},${lat},${lon});
-        );
-        out center;
-      `;
+const response =
+await fetch(
+"https://overpass-api.de/api/interpreter",
+{
+method:"POST",
+body:query
+}
+);
 
-      try{
+const data =
+await response.json();
 
-        const response =
-          await fetch(
-            "https://overpass-api.de/api/interpreter",
-            {
-              method:"POST",
-              body:query
-            }
-          );
+const elements =
+data.elements || [];
 
-        const data =
-          await response.json();
+elements.forEach(function(place){
 
-        const elements =
-          data.elements || [];
+let pLat =
+place.lat;
 
-        elements.forEach(function(place){
+let pLon =
+place.lon;
 
-          let pLat =
-            place.lat;
+if(
+place.center &&
+pLat === undefined
+){
 
-          let pLon =
-            place.lon;
+pLat =
+place.center.lat;
 
-          if(
-            place.center &&
-            pLat === undefined
-          ){
+pLon =
+place.center.lon;
 
-            pLat =
-              place.center.lat;
+}
 
-            pLon =
-              place.center.lon;
+if(
+pLat === undefined ||
+pLon === undefined
+){
+return;
+}
 
-          }
+const name =
+place.tags &&
+place.tags.name
+?
+place.tags.name
+:
+"مسجد";
 
-          if(
-            pLat === undefined ||
-            pLon === undefined
-          ){
-            return;
-          }
+const marker =
+L.marker(
+[pLat,pLon]
+)
+.addTo(mosqueLayer);
 
-          const name =
-            place.tags &&
-            place.tags.name
-              ? place.tags.name
-              : "مسجد";
+const directions =
+"https://www.google.com/maps/dir/?api=1&destination=" +
+pLat +
+"," +
+pLon;
 
-          const marker =
-            L.marker(
-              [pLat,pLon]
-            ).addTo(mosqueLayer);
+marker.bindPopup(`
+<div style="text-align:center">
+<strong>${name}</strong>
+<br><br>
+<a
+href="${directions}"
+target="_blank"
+style="
+color:#a47b2e;
+font-weight:bold;
+"
+>
+🧭 الاتجاهات
+</a>
+</div>
+`);
 
-          const directions =
-            "https://www.google.com/maps/dir/?api=1&destination=" +
-            pLat +
-            "," +
-            pLon;
+});
 
-          marker.bindPopup(`
-            <div style="text-align:center">
-              <strong>${name}</strong>
-              <br><br>
-              <a
-                href="${directions}"
-                target="_blank"
-                style="
-                  color:#a47b2e;
-                  font-weight:bold;
-                "
-              >
-                🧭 الاتجاهات
-              </a>
-            </div>
-          `);
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"تم العثور على " +
+elements.length +
+" مسجد/مكان عبادة قريب.";
 
-        });
+}catch(error){
 
-        document.getElementById(
-          "mosqueStatus"
-        ).textContent =
-          "تم العثور على " +
-          elements.length +
-          " مسجد/مكان عبادة قريب.";
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"تعذر تحميل بيانات المساجد حاليًا.";
 
-      }catch(error){
+}
 
-        console.error(error);
+},
 
-        document.getElementById(
-          "mosqueStatus"
-        ).textContent =
-          "تعذر تحميل بيانات المساجد حاليًا.";
+function(){
 
-      }
+document.getElementById(
+"mosqueStatus"
+).textContent =
+"اسمح للموقع بالوصول إلى موقعك للبحث عن المساجد.";
 
-    },
+}
 
-    function(){
-
-      document.getElementById(
-        "mosqueStatus"
-      ).textContent =
-        "اسمح للموقع بالوصول إلى موقعك للبحث عن المساجد.";
-
-    }
-
-  );
+);
 
 }
 
 
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
+/* =====================================================
+   START
+===================================================== */
 
-renderSurahs(
-  surahs
-);
+renderSurahs(surahs);
 
 renderPrayerTracking();
 
@@ -2649,43 +3067,61 @@ renderZikr(1);
 renderZikr(2);
 renderZikr(3);
 
+updateHomeProgress();
+
 loadPrayerTimes();
+
+loadHijriDate();
 
 initializeMap();
 
 
-/* =========================================================
-   SMOOTH HASH NAVIGATION
-========================================================= */
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+setInterval(function(){
+
+if(todayPrayerTimes.Fajr){
+
+updateNextPrayer();
+
+}
+
+},1000);
+
+
+/* =====================================================
+   HASH NAVIGATION
+===================================================== */
 
 window.addEventListener(
-  "hashchange",
-  function(){
+"hashchange",
+function(){
 
-    const target =
-      location.hash.replace("#","");
+const target =
+location.hash.replace("#","");
 
-    if(target){
+if(target){
 
-      const element =
-        document.getElementById(target);
+const element =
+document.getElementById(target);
 
-      if(element){
+if(element){
 
-        setTimeout(function(){
+setTimeout(function(){
 
-          element.scrollIntoView({
-            behavior:"smooth"
-          });
+element.scrollIntoView({
+behavior:"smooth"
+});
 
-        },50);
+},50);
 
-      }
+}
 
-    }
+}
 
-  }
-);
+});
 
 </script>
 
