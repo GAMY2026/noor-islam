@@ -1745,39 +1745,53 @@ font-size:15px;
 </head>
 
 <body>
-<!-- نور الإسلام - HOME HERO -->
-<section class="noor-hero">
+<!-- BISMILLAH -->
+<div class="bismillah-hero">
 
-  <div class="hero-image">
-    <img
-      src="https://cdn.phototourl.com/member/2026-10-06-98bf0bc2-ed90-455b-82a6-e54bcc3e19b9.jpg"
-      alt="نور الإسلام"
-    >
+  <div class="bismillah-decoration">✦</div>
+
+  <div class="bismillah-text">
+    بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
   </div>
 
-  <div class="hero-content">
-    <span class="hero-badge">✦ نور الإسلام ✦</span>
+  <div class="bismillah-decoration">✦</div>
 
-    <h1>طريقك إلى الطمأنينة</h1>
-
-    <p>
-      مواقيت الصلاة • القرآن • الأذكار • القبلة
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#prayer" class="hero-btn primary">
-        🕌 مواقيت الصلاة
-      </a>
-
-      <a href="#quran" class="hero-btn secondary">
-        📖 القرآن الكريم
-      </a>
-    </div>
-  </div>
-
-</section>
+</div>
 
 <style>
+.bismillah-hero {
+  text-align: center;
+  direction: rtl;
+  padding: 28px 15px 22px;
+  margin: 0 auto;
+}
+
+.bismillah-text {
+  color: #c9a84e;
+  font-family: "Amiri", "Times New Roman", serif;
+  font-size: clamp(28px, 5vw, 45px);
+  font-weight: 700;
+  line-height: 1.8;
+  text-shadow: 0 2px 12px rgba(201,168,78,.20);
+}
+
+.bismillah-decoration {
+  color: #c9a84e;
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+@media (max-width: 600px) {
+  .bismillah-hero {
+    padding: 20px 10px 15px;
+  }
+
+  .bismillah-text {
+    font-size: 28px;
+  }
+}
+</style>
+  
 .noor-hero {
   position: relative;
   width: calc(100% - 30px);
