@@ -4755,11 +4755,15 @@ function checkQiyamTime(){
 
 }
 
+/* تحديث قيام الليل بعد تحميل المواقيت */
 
-/* تحديث الوقت كل دقيقة */
+setTimeout(function(){
+  updateQiyamTime();
+},3000);
 
-updateQiyamTime();
-setInterval(updateQiyamTime,60000);
+setInterval(function(){
+  updateQiyamTime();
+},60000);
 </script>
 
 </body>
