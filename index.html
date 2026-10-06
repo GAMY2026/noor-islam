@@ -967,6 +967,145 @@ font-family:"Amiri",serif;
 font-size:23px;
 }
 
+
+
+/* QURAN READER AUDIO + TAFSIR */
+const QURAN_API_BASE="https://api.alquran.cloud/v1";
+const QURAN_AUDIO_BASE="https://cdn.islamic.network/quran/audio-surah/128/";
+let currentQuranSurah=null;
+let currentQuranAyahs=[];
+let currentQuranTafsir=[];
+
+function setQuranReaderMessage(message){
+const el=document.getElementById("quranReaderMessage");
+if(el)el.textContent=message||"";
+}
+
+function quranTafsirId(){
+return document.getElementById("quranTafsir")?.value||"ar.muyassar";
+}
+
+function quranReciterId(){
+return document.getElementById("quranReciter")?.value||"ar.alafasy";
+}
+
+async function openQuranReader(number){
+const reader=document.getElementById("quranReader");
+reader.classList.add("open");
+reader.scrollIntoView({behavior:"smooth",block:"start"});
+setQuranReaderMessage("جاري تحميل السورة والتفسير...");
+document.getElementById("quranAyahList").innerHTML="<p style="color:#aaa">جاري تحميل الآيات...</p>";
+
+try{
+const editions=await Promise.all([
+fetch(QURAN_API_BASE+"/surah/"+number).then(r=>r.json()),
+fetch(QURAN_API_BASE+"/surah/"+number+"/"+quranTafsirId()).then(r=>r.json())
+]);
+const quran=editions[0].data;
+const tafsir=editions[1].data;
+currentQuranSurah=quran;
+currentQuranAyahs=quran.ayahs||[];
+currentQuranTafsir=tafsir?.ayahs||[];
+
+document.getElementById("readerSurahName").textContent=quran.name||"السورة";
+document.getElementById("readerSurahInfo").textContent=(quran.englishName||"")+" • "+quran.numberOfAyahs+" آية • "+(quran.revelationType==="Meccan"?"مكية":"مدنية");
+renderQuranAyahs();
+setQuranAudioSource();
+setQuranReaderMessage("▶️ اضغط تشغيل، أو اضغط على السورة من جديد لبدء التلاوة.");
+}catch(error){
+console.error(error);
+setQuranReaderMessage("تعذر تحميل السورة الآن. جرّب مرة أخرى.");
+document.getElementById("quranAyahList").innerHTML="<p style="color:#aaa">تعذر تحميل الآيات.</p>";
+}
+}
+
+function setQuranAudioSource(autoplay=false){
+if(!currentQuranSurah)return;
+const audio=document.getElementById("quranAudio");
+audio.src=QURAN_AUDIO_BASE+encodeURIComponent(quranReciterId())+"/"+currentQuranSurah.number+".mp3";
+audio.load();
+if(autoplay){
+const p=audio.play();
+if(p&&p.catch)p.catch(()=>setQuranReaderMessage("🔊 المتصفح منع التشغيل التلقائي. اضغط ▶️ تشغيل السورة."));
+}
+}
+
+function playCurrentSurah(){
+if(!currentQuranSurah){setQuranReaderMessage("اختر سورة أولًا.");return;}
+const audio=document.getElementById("quranAudio");
+if(!audio.src)setQuranAudioSource();
+const p=audio.play();
+if(p&&p.catch)p.catch(()=>setQuranReaderMessage("اضغط زر التشغيل مرة أخرى للسماح بالصوت."));
+}
+function pauseCurrentSurah(){document.getElementById("quranAudio")?.pause();}
+function restartCurrentSurah(){
+const audio=document.getElementById("quranAudio");
+if(!currentQuranSurah)return;
+audio.currentTime=0;
+const p=audio.play();
+if(p&&p.catch)p.catch(()=>{});
+}
+async function changeReciterAndReload(){
+if(!currentQuranSurah)return;
+setQuranReaderMessage("جاري تغيير الشيخ...");
+setQuranAudioSource();
+playCurrentSurah();
+}
+
+function renderQuranAyahs(){
+const box=document.getElementById("quranAyahList");
+box.innerHTML="";
+currentQuranAyahs.forEach(function(ayah,index){
+const taf=currentQuranTafsir[index]?.text||"التفسير غير متاح حاليًا لهذه الآية.";
+const item=document.createElement("article");
+item.className="quran-ayah";
+item.id="quranAyah_"+index;
+item.innerHTML=`
+<div class="quran-ayah-number">الآية ${ayah.numberInSurah}</div>
+<div class="quran-ayah-text" tabindex="0">${ayah.text}</div>
+<div class="quran-ayah-actions">
+<button type="button" onclick="toggleQuranTafsir(${index})" aria-label="عرض تفسير الآية ${ayah.numberInSurah}">📚 التفسير</button>
+<button type="button" onclick="readQuranAyah(${index})" aria-label="قراءة الآية ${ayah.numberInSurah} بصوت المتصفح">🔊 قراءة الآية</button>
+</div>
+<div class="quran-tafsir" id="quranTafsir_${index}"><strong>التفسير:</strong><br>${taf}</div>
+`;
+box.appendChild(item);
+});
+}
+
+function toggleQuranTafsir(index){
+const el=document.getElementById("quranTafsir_"+index);
+if(el)el.classList.toggle("show");
+}
+
+function readQuranAyah(index){
+const ayah=currentQuranAyahs[index];
+if(!ayah||!("speechSynthesis" in window))return;
+window.speechSynthesis.cancel();
+const u=new SpeechSynthesisUtterance(ayah.text);
+u.lang="ar-SA";
+u.rate=.82;
+window.speechSynthesis.speak(u);
+}
+
+function closeQuranReader(){
+const audio=document.getElementById("quranAudio");
+if(audio)audio.pause();
+document.getElementById("quranReader")?.classList.remove("open");
+}
+
+document.addEventListener("change",function(e){
+if(e.target&&e.target.id==="quranTafsir"&&currentQuranSurah){
+openQuranReader(currentQuranSurah.number);
+}
+});
+
+document.addEventListener("ended",function(e){
+if(e.target&&e.target.id==="quranAudio"){
+setQuranReaderMessage("تمت تلاوة السورة بحمد الله.");
+}
+});
+
 /* AZKAR */
 
 .azkar-grid{
@@ -1339,6 +1478,34 @@ font-size:13px;
 @media(max-width:420px){
 .iqama-grid{grid-template-columns:1fr}
 }
+
+
+/* QURAN READER */
+.quran-reader{margin-top:28px;background:linear-gradient(145deg,#101615,#090b0b);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow);display:none}
+.quran-reader.open{display:block}
+.quran-reader-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}
+.quran-reader-title{font-family:"Amiri",serif;color:var(--gold2);font-size:31px}
+.quran-reader-sub{color:var(--muted);font-size:13px}
+.quran-reader-tools{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin:18px 0}
+.quran-reader-tools select{width:100%}
+.quran-audio-box{border:1px solid var(--line);background:rgba(217,180,91,.045);border-radius:18px;padding:16px;margin-bottom:18px}
+.quran-audio-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.quran-audio-row .btn{padding:10px 15px}
+#quranAudio{width:100%;margin-top:12px}
+.quran-reader-message{color:#c9b783;font-size:13px;min-height:24px;margin-top:8px}
+.quran-ayah-list{display:flex;flex-direction:column;gap:12px;max-height:650px;overflow:auto;padding:4px}
+.quran-ayah{border:1px solid rgba(217,180,91,.14);background:#0c1110;border-radius:16px;padding:18px;transition:.2s}
+.quran-ayah.active{border-color:rgba(217,180,91,.55);box-shadow:0 0 0 1px rgba(217,180,91,.08)}
+.quran-ayah-number{color:var(--gold2);font-size:12px;margin-bottom:7px}
+.quran-ayah-text{font-family:"Amiri",serif;font-size:25px;line-height:2.15;color:#f1e8d2}
+.quran-tafsir{margin-top:13px;padding:14px;border-right:3px solid var(--gold);background:rgba(217,180,91,.045);color:#d2cec2;font-size:14px;line-height:2;display:none}
+.quran-tafsir.show{display:block}
+.quran-ayah-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.quran-ayah-actions button{border:1px solid var(--line);background:transparent;color:var(--gold2);border-radius:10px;padding:7px 11px;font-size:12px}
+.quran-close{border:1px solid var(--line);background:transparent;color:var(--gold2);border-radius:11px;padding:9px 13px}
+.quran-access-note{color:var(--muted);font-size:12px;margin-top:12px}
+@media(max-width:700px){.quran-reader{padding:16px}.quran-reader-tools{grid-template-columns:1fr}.quran-reader-title{font-size:26px}.quran-ayah-text{font-size:22px}.quran-audio-row{display:grid;grid-template-columns:1fr 1fr}.quran-audio-row .btn{width:100%}}
+@media(max-width:420px){.quran-audio-row{grid-template-columns:1fr}.quran-ayah-text{font-size:20px}}
 
 /* RESPONSIVE */
 
@@ -2125,6 +2292,56 @@ oninput="filterSurahs()"
 </div>
 
 <div class="quran-grid" id="quranGrid"></div>
+
+<div class="quran-reader" id="quranReader" aria-live="polite">
+  <div class="quran-reader-head">
+    <div>
+      <div class="quran-reader-title" id="readerSurahName">سورة</div>
+      <div class="quran-reader-sub" id="readerSurahInfo">جاري التحميل...</div>
+    </div>
+    <button class="quran-close" type="button" onclick="closeQuranReader()" aria-label="إغلاق قارئ القرآن">✕ إغلاق</button>
+  </div>
+
+  <div class="quran-reader-tools">
+    <div>
+      <label for="quranReciter" style="display:block;color:#d8d4c9;font-size:13px;margin-bottom:7px">🎙️ اختر الشيخ</label>
+      <select id="quranReciter" aria-label="اختيار قارئ القرآن">
+        <option value="ar.alafasy">مشاري راشد العفاسي</option>
+        <option value="ar.husary">محمود خليل الحصري</option>
+        <option value="ar.minshawi">محمد صديق المنشاوي</option>
+        <option value="ar.sudais">عبدالرحمن السديس</option>
+        <option value="ar.shuraim">سعود الشريم</option>
+        <option value="ar.abdulbasit">عبد الباسط عبد الصمد</option>
+        <option value="ar.ajamy">أحمد العجمي</option>
+        <option value="ar.hudhaify">علي الحذيفي</option>
+      </select>
+    </div>
+    <div>
+      <label for="quranTafsir" style="display:block;color:#d8d4c9;font-size:13px;margin-bottom:7px">📚 التفسير</label>
+      <select id="quranTafsir" aria-label="اختيار التفسير">
+        <option value="ar.muyassar">التفسير الميسر</option>
+        <option value="ar.jalalayn">تفسير الجلالين</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="quran-audio-box">
+    <div class="quran-audio-row">
+      <button class="btn" type="button" onclick="playCurrentSurah()">▶️ تشغيل السورة</button>
+      <button class="btn secondary" type="button" onclick="pauseCurrentSurah()">⏸️ إيقاف</button>
+      <button class="btn secondary" type="button" onclick="restartCurrentSurah()">🔄 من البداية</button>
+      <button class="btn secondary" type="button" onclick="changeReciterAndReload()">🎙️ تطبيق الشيخ</button>
+    </div>
+    <audio id="quranAudio" controls preload="metadata"></audio>
+    <div class="quran-reader-message" id="quranReaderMessage"></div>
+    <div class="quran-access-note">♿ القارئ مناسب لقارئات الشاشة، ويمكن فتح التفسير لكل آية. عند الضغط على السورة يبدأ التشغيل مباشرة إذا سمح المتصفح.</div>
+  </div>
+
+  <div class="quran-ayah-list" id="quranAyahList">
+    <p style="color:#aaa">جاري تحميل الآيات...</p>
+  </div>
+</div>
+
 
 </div>
 
@@ -3376,12 +3593,7 @@ ${surah.numberOfAyahs} آية
 `;
 
 card.addEventListener("click",function(){
-
-window.open(
-"https://alquran.cloud/surah/"+surah.number,
-"_blank"
-);
-
+openQuranReader(surah.number);
 });
 
 grid.appendChild(card);
