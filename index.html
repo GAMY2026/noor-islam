@@ -1589,6 +1589,158 @@ font-size:15px;
 
 }
 
+
+/* ===== PREMIUM MOBILE TUNING ===== */
+@media (max-width:700px){
+  html{scroll-padding-top:70px;overflow-x:hidden}
+  body{overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+  header{background:rgba(5,6,7,.96)}
+  .navbar{min-height:64px;width:100%;padding:8px 14px;gap:10px}
+  .logo{font-size:18px;gap:8px}
+  .logo-symbol{width:36px;height:36px;font-size:18px}
+  .menu-btn{display:block;padding:7px 11px;font-size:19px;min-width:44px;min-height:42px}
+  .nav-links{top:64px;padding:9px 12px 14px;gap:4px;box-shadow:0 16px 35px rgba(0,0,0,.35)}
+  .nav-links a{padding:11px 10px;font-size:13px;border:1px solid rgba(217,180,91,.07)}
+
+  .hero{min-height:auto;padding:58px 14px 34px}
+  .hero-inner{width:100%;gap:18px}
+  .hero-copy{width:100%}
+  .eyebrow{font-size:11px;padding:6px 11px;margin-bottom:14px}
+  .hero h1{font-size:clamp(45px,14vw,60px);line-height:1.05;margin-bottom:8px}
+  .hero-subtitle{font-size:23px;margin-bottom:12px}
+  .hero-text{font-size:14px;line-height:1.9;max-width:100%}
+  .hero-buttons{margin-top:20px;gap:9px;display:grid;grid-template-columns:1fr 1fr}
+  .btn{width:100%;padding:11px 9px;font-size:13px;border-radius:12px;min-height:46px;display:flex;align-items:center;justify-content:center}
+
+  .palestine-duaa{width:100%;max-width:100%;margin-top:20px;padding:13px;gap:12px;border-radius:18px}
+  .palestine-image{width:100%;height:155px}
+  .palestine-title{font-size:20px}
+  .palestine-content p{font-size:15px;line-height:1.85}
+  .palestine-duaa-footer{font-size:16px}
+
+  .hero-art{width:100%;height:245px;min-height:245px;margin-top:2px;transform:none;overflow:hidden}
+  .moon{width:120px;height:120px;top:18px;right:calc(50% - 78px)}
+  .moon::after{width:120px;height:120px;left:-27px;top:-12px}
+  .mosque{width:285px;height:125px;bottom:4px}
+  .dome{width:118px;height:82px;top:-72px}
+  .dome::after{top:-40px;font-size:25px}
+  .minaret{width:25px;height:165px}
+  .minaret::before{width:42px;height:13px;top:19px}
+  .minaret::after{width:9px;height:31px;top:-30px}
+  .minaret.one{right:7px}.minaret.two{left:7px}
+  .door{width:53px;height:78px}
+
+  section{padding:55px 13px}
+  .container{width:100%}
+  .section-title{margin-bottom:26px}
+  .section-title span{font-size:11px}
+  .section-title h2{font-size:34px;line-height:1.3}
+  .section-title p{font-size:13px}
+
+  .live-grid,.featured-grid,.azkar-grid,.post-prayer-grid{grid-template-columns:1fr}
+  .live-grid{gap:10px}
+  .info-card{min-height:122px;padding:17px;border-radius:17px}
+  .card-icon{font-size:22px}.card-value{font-size:19px}.card-small{font-size:11px}
+  .featured-grid{gap:12px}
+  .feature-card{padding:22px 18px;min-height:auto;border-radius:20px}
+  .feature-card h3{font-size:27px}
+  .ayah{font-size:21px;line-height:2}
+  .dhikr{font-size:25px}
+
+  .progress-section,.tracking{padding:20px 16px;border-radius:19px}
+  .progress-head{align-items:flex-start;flex-direction:column;gap:8px}
+  .track-buttons{gap:8px}.track-btn{flex:1;min-width:115px;padding:10px 8px;font-size:12px}
+
+  .prayer-toolbar{display:grid;grid-template-columns:1fr;gap:9px;margin-bottom:20px}
+  .prayer-toolbar select,.prayer-toolbar input{width:100%}
+  select,input{min-height:44px;padding:10px 12px;font-size:13px}
+  .prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .prayer-card{padding:17px 8px;border-radius:16px}
+  .prayer-icon{font-size:25px}.prayer-name{font-size:12px}.prayer-time{font-size:21px}
+  .prayer-note{font-size:11px}
+  .week-table{border-radius:16px}
+  table{min-width:680px;font-size:12px}
+  th,td{padding:10px 8px}
+
+  .quran-tools{margin-bottom:18px}
+  .quran-tools input{width:100%}
+  .quran-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .surah{padding:15px 8px;border-radius:14px;min-height:110px;display:flex;flex-direction:column;justify-content:center}
+  .surah-number{width:32px;height:32px;font-size:12px;margin-bottom:6px}
+  .surah h3{font-size:20px}
+
+  .quran-reader{margin-top:18px;padding:15px 12px;border-radius:19px}
+  .quran-reader-head{display:flex;flex-direction:column;gap:9px;margin-bottom:12px}
+  .quran-reader-title{font-size:24px;width:100%}
+  .quran-close{margin-right:0;width:100%;min-height:42px}
+  .quran-reader-controls{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+  .quran-reader-controls select,.quran-reader-controls button{width:100%;min-height:44px;font-size:12px;padding:8px 7px}
+  .quran-reader audio{height:48px;margin:8px 0 15px}
+  .quran-ayah{padding:17px 2px}
+  .quran-ayah-text{font-size:22px;line-height:2.05;text-align:right}
+  .quran-ayah-tools{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+  .quran-ayah-tools button{width:100%;min-height:40px;font-size:11px;padding:7px 6px}
+  .quran-tafsir{font-size:13px;line-height:1.85}
+  .quran-status{font-size:12px}
+
+  .adhan-section{padding:17px 12px;border-radius:19px}
+  .adhan-head{align-items:flex-start;margin-bottom:14px}
+  .adhan-head h3{font-size:23px}
+  .adhan-status{font-size:11px}
+  .adhan-control{padding:13px;border-radius:14px}
+  .adhan-controls{gap:9px;margin-bottom:15px}
+  .adhan-switches{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .adhan-toggle{width:100%;min-height:42px;font-size:11px;padding:8px}
+  .iqama-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .iqama-item{padding:10px 6px}.iqama-item input{padding:8px;font-size:12px}
+  .adhan-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.adhan-actions button{width:100%}
+
+  .post-prayer-grid{gap:12px}
+  .post-prayer-card{padding:23px 15px;border-radius:18px}
+  .post-prayer-card.full{grid-column:auto}
+  .post-prayer-card h3{font-size:25px}.post-prayer-text{font-size:20px;line-height:2}
+  .post-prayer-btn{padding:9px 12px;font-size:12px}
+
+  .salawat-card,.istighfar-card{padding:34px 15px;border-radius:22px}
+  .salawat-symbol,.istighfar-symbol{font-size:36px}
+  .salawat-title,.istighfar-title{font-size:32px;line-height:1.65}
+  .salawat-count,.istighfar-count{font-size:36px}
+  .salawat-button,.istighfar-button{width:100%;max-width:320px;min-height:48px}
+  .goal-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .goal-btn{padding:9px 5px;font-size:12px}
+
+  .qibla-box{padding:25px 14px;border-radius:22px}
+  .compass{width:190px;height:190px;margin:18px auto}
+  .needle{height:68px;top:25px}
+  .kaaba{font-size:34px}
+
+  #map{height:340px;border-radius:18px}
+  .map-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.map-actions button{width:100%}
+
+  footer{padding:40px 14px calc(24px + env(safe-area-inset-bottom))}
+  .footer-logo{font-size:29px}
+}
+
+@media (max-width:420px){
+  .navbar{padding-left:11px;padding-right:11px}
+  .logo{font-size:16px}.logo-symbol{width:34px;height:34px}
+  .hero{padding-top:48px}
+  .hero h1{font-size:48px}
+  .hero-subtitle{font-size:21px}
+  .hero-text{font-size:13px}
+  .palestine-image{height:130px}
+  .palestine-title{font-size:18px}
+  .palestine-content p{font-size:14px}
+  .hero-art{height:220px;min-height:220px}
+  .mosque{width:255px;height:112px}
+  .quran-reader-controls{grid-template-columns:1fr}
+  .quran-ayah-tools{grid-template-columns:1fr}
+  .adhan-switches,.adhan-actions{grid-template-columns:1fr}
+  .iqama-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .goal-buttons{grid-template-columns:1fr 1fr 1fr}
+  .map-actions{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 
