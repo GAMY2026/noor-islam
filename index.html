@@ -3308,7 +3308,20 @@ function cleanTime(time){
 
 if(!time)return"--:--";
 
-return time.split(" ")[0];
+const raw=time.split(" ")[0];
+const parts=raw.split(":");
+if(parts.length<2)return raw;
+
+let hour=Number(parts[0]);
+const minute=String(parts[1]).padStart(2,"0");
+
+if(Number.isNaN(hour))return raw;
+
+// عرض المواقيت بنظام 12 ساعة بدون AM/PM
+hour=hour%12;
+if(hour===0)hour=12;
+
+return hour+":"+minute;
 
 }
 
