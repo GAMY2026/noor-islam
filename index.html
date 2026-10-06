@@ -3439,10 +3439,26 @@ grid.appendChild(card);
 }
 
 let currentQuranSurah=null;
-const QURAN_AUDIO_BASE="https://cdn.islamic.network/quran/audio-surah/128/";
+const QURAN_AUDIO_BASE="https://cdn.islamic.network/quran/audio-surah/";
 
 function quranReciterId(){
   return document.getElementById("quranReciter").value;
+}
+
+// بعض القرّاء متاح صوتهم على 192kbps وليس 128kbps، لذلك نحدد الجودة حسب الشيخ.
+function quranReciterBitrate(){
+  const id=quranReciterId();
+  const bitrates={
+    "ar.alafasy":128,
+    "ar.husary":128,
+    "ar.minshawi":128,
+    "ar.sudais":192,
+    "ar.shuraim":128,
+    "ar.abdulbasit":192,
+    "ar.ajamy":128,
+    "ar.hudhaify":128
+  };
+  return bitrates[id]||128;
 }
 
 function setQuranStatus(message){
@@ -3453,7 +3469,10 @@ function setQuranStatus(message){
 function setQuranAudioSource(number,autoplay){
   const audio=document.getElementById("quranAudio");
   if(!audio)return;
-  audio.src=QURAN_AUDIO_BASE+quranReciterId()+"/"+number+".mp3";
+  audio.src=QURAN_AUDIO_BASE+quranReciterBitrate()+"/"+quranReciterId()+"/"+number+".mp3";
+  audio.onerror=function(){
+    setQuranStatus("تعذر تشغيل تسجيل هذا الشيخ من مصدر الصوت الحالي. جرّب شيخًا آخر أو أعد التشغيل.");
+  };
   audio.load();
   if(autoplay){
     const promise=audio.play();
@@ -3510,15 +3529,7 @@ async function openQuranReader(number){
         box.querySelector(".quran-tafsir").classList.toggle("show");
       });
       box.querySelector(".read-ayah-btn").addEventListener("click",function(){
-        if("speechSynthesis" in window){
-          window.speechSynthesis.cancel();
-          const utterance=new SpeechSynthesisUtterance(ayah.text);
-          utterance.lang="ar-SA";
-          utterance.rate=.85;
-          window.speechSynthesis.speak(utterance);
-        }else{
-          setQuranStatus("المتصفح لا يدعم القراءة الصوتية للنص.");
-        }
+        playSingleAyahByReciter(ayah);
       });
       ayahsBox.appendChild(box);
     });
@@ -3528,6 +3539,38 @@ async function openQuranReader(number){
     ayahsBox.innerHTML="<p>تعذر تحميل الآيات حاليًا. جرّب مرة أخرى.</p>";
     setQuranStatus("حدث خطأ أثناء تحميل القرآن.");
   }
+}
+
+function playSingleAyahByReciter(ayah){
+  const audio=document.getElementById("quranAudio");
+  if(!audio||!currentQuranSurah||!ayah)return;
+
+  // Al Quran Cloud يوفر ملف السورة كاملًا، لذلك نستخدم توقيت الآية داخل السورة
+  // عبر بيانات الآيات الصوتية من نفس الشيخ، بدل صوت المتصفح.
+  const reciter=quranReciterId();
+  const number=Number(ayah.number);
+  const bitrate=(typeof quranReciterBitrate==="function") ? quranReciterBitrate() : 128;
+  const audioBase="https://cdn.islamic.network/quran/audio/"+bitrate+"/";
+  const url=audioBase+reciter+"/"+number+".mp3";
+
+  audio.pause();
+  audio.src=url;
+  audio.load();
+  setQuranStatus("جاري تشغيل الآية بصوت الشيخ المختار...");
+
+  const playNow=function(){
+    const promise=audio.play();
+    if(promise&&promise.catch){
+      promise.catch(function(){
+        setQuranStatus("اضغط ▶️ تشغيل من المشغل إذا منع المتصفح التشغيل التلقائي.");
+      });
+    }
+  };
+
+  audio.onloadedmetadata=playNow;
+  audio.onerror=function(){
+    setQuranStatus("تعذر تشغيل الآية بهذا الشيخ حاليًا. جرّب اختيار شيخ آخر.");
+  };
 }
 
 function playQuran(){
