@@ -1745,7 +1745,46 @@ font-size:15px;
 </head>
 
 <body>
+<!-- HOME HERO IMAGE -->
+<section class="home-hero-image">
+  <img 
+    src="https://cdn.phototourl.com/member/2026-10-06-98bf0bc2-ed90-455b-82a6-e54bcc3e19b9.jpg"
+    alt="نور الإسلام"
+  >
+</section>
 
+<style>
+.home-hero-image {
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.home-hero-image img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.18);
+}
+
+/* الموبايل */
+@media (max-width: 600px) {
+  .home-hero-image {
+    margin: 12px auto;
+    padding: 0 10px;
+  }
+
+  .home-hero-image img {
+    max-height: 420px;
+    border-radius: 18px;
+  }
+}
+</style>
 <header>
 
 <nav class="navbar">
