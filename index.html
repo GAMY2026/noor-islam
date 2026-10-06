@@ -1740,7 +1740,151 @@ font-size:15px;
   .goal-buttons{grid-template-columns:1fr 1fr 1fr}
   .map-actions{grid-template-columns:1fr}
 }
+/* =========================
+   QIYAM AL-LAYL
+========================= */
 
+#qiyam{
+  padding:35px 0;
+}
+
+.qiyam-card{
+  max-width:850px;
+  margin:0 auto;
+  padding:35px 25px;
+  text-align:center;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.045),
+    rgba(255,255,255,.018)
+  );
+  border:1px solid rgba(217,180,91,.20);
+  border-radius:24px;
+  box-shadow:0 15px 45px rgba(0,0,0,.18);
+}
+
+.qiyam-icon{
+  width:70px;
+  height:70px;
+  margin:0 auto 15px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(217,180,91,.08);
+  border:1px solid rgba(217,180,91,.25);
+  font-size:35px;
+}
+
+.qiyam-card h3{
+  margin:8px 0;
+  color:var(--gold2);
+  font-size:25px;
+}
+
+.qiyam-card > p{
+  color:#c9c7c0;
+  margin:8px auto 25px;
+  font-size:15px;
+}
+
+.qiyam-times{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:25px 0;
+}
+
+.qiyam-time{
+  padding:18px 12px;
+  border-radius:17px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.qiyam-time span{
+  display:block;
+  color:#aaa79f;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.qiyam-time strong{
+  display:block;
+  color:#fff;
+  font-size:23px;
+}
+
+.qiyam-time.highlight{
+  border-color:rgba(217,180,91,.45);
+  background:rgba(217,180,91,.08);
+  box-shadow:0 0 25px rgba(217,180,91,.07);
+}
+
+.qiyam-time.highlight span{
+  color:var(--gold2);
+}
+
+.qiyam-time.highlight strong{
+  color:var(--gold2);
+}
+
+.qiyam-prayers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:20px 0 25px;
+}
+
+.qiyam-prayers div{
+  padding:13px 10px;
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.06);
+  color:#ddd9ce;
+  font-size:14px;
+}
+
+.qiyam-card .btn{
+  min-width:220px;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+  #qiyam{
+    padding:25px 0;
+  }
+
+  .qiyam-card{
+    padding:28px 15px;
+    border-radius:20px;
+  }
+
+  .qiyam-card h3{
+    font-size:22px;
+  }
+
+  .qiyam-times{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .qiyam-time{
+    padding:14px 10px;
+  }
+
+  .qiyam-prayers{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .qiyam-card .btn{
+    width:100%;
+    min-width:0;
+  }
+
+}
 </style>
 </head>
 
@@ -1890,7 +2034,76 @@ font-size:15px;
 </div>
 
 </section>
+<!-- QIYAM AL-LAYL -->
 
+<section id="qiyam">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>🌙 قيام الليل</span>
+
+<h2>قيام الليل • الشفع • الوتر</h2>
+
+<p>
+اغتنم الثلث الأخير من الليل بالصلاة والدعاء والاستغفار
+</p>
+
+</div>
+
+<div class="qiyam-card">
+
+<div class="qiyam-icon">
+🌙
+</div>
+
+<h3>
+الثلث الأخير من الليل
+</h3>
+
+<p id="qiyamMessage">
+جاري حساب وقت الثلث الأخير من الليل...
+</p>
+
+<div class="qiyam-times">
+
+<div class="qiyam-time">
+<span>🌆 المغرب</span>
+<strong id="qiyamMaghrib">--:--</strong>
+</div>
+
+<div class="qiyam-time highlight">
+<span>🌙 بداية الثلث الأخير</span>
+<strong id="lastThirdStart">--:--</strong>
+</div>
+
+<div class="qiyam-time">
+<span>🌅 الفجر</span>
+<strong id="qiyamFajr">--:--</strong>
+</div>
+
+</div>
+
+<div class="qiyam-prayers">
+
+<div>🌙 قيام الليل</div>
+
+<div>🤲 الشفع</div>
+
+<div>🕌 الوتر</div>
+
+</div>
+
+<button class="btn" onclick="checkQiyamTime()">
+🔔 تذكير بقيام الليل
+</button>
+
+</div>
+
+</div>
+
+</section>
 <!-- AYAH -->
 
 <section>
@@ -4387,7 +4600,166 @@ initializeMap();
 
 }
 );
+/* =========================
+   QIYAM AL-LAYL
+========================= */
 
+function updateQiyamTime(){
+
+  if(!currentPrayerData) return;
+
+  const maghribTime = currentPrayerData.Maghrib;
+  const fajrTime = currentPrayerData.Fajr;
+
+  if(!maghribTime || !fajrTime) return;
+
+  const maghrib = makePrayerDate(maghribTime);
+
+  let fajr = makePrayerDate(fajrTime);
+
+  /* الفجر القادم يكون في اليوم التالي */
+  if(fajr <= maghrib){
+    fajr.setDate(fajr.getDate() + 1);
+  }
+
+  /* مدة الليل من المغرب إلى الفجر */
+  const nightDuration = fajr.getTime() - maghrib.getTime();
+
+  /* الثلث الأخير يبدأ بعد مرور ثلثي الليل */
+  const lastThirdStart = new Date(
+    maghrib.getTime() + (nightDuration * 2 / 3)
+  );
+
+  function formatQiyamTime(date){
+
+    return date.toLocaleTimeString("ar-EG",{
+      hour:"numeric",
+      minute:"2-digit",
+      hour12:true
+    });
+  }
+
+  const maghribEl = document.getElementById("qiyamMaghrib");
+  const fajrEl = document.getElementById("qiyamFajr");
+  const lastThirdEl = document.getElementById("lastThirdStart");
+  const messageEl = document.getElementById("qiyamMessage");
+
+  if(maghribEl)
+    maghribEl.textContent = formatQiyamTime(maghrib);
+
+  if(fajrEl)
+    fajrEl.textContent = formatQiyamTime(fajr);
+
+  if(lastThirdEl)
+    lastThirdEl.textContent = formatQiyamTime(lastThirdStart);
+
+  const now = new Date();
+
+  if(now >= lastThirdStart && now < fajr){
+
+    if(messageEl){
+      messageEl.textContent =
+        "🌙 الآن بدأ الثلث الأخير من الليل — وقت مبارك لقيام الليل والدعاء والاستغفار.";
+    }
+
+  }else{
+
+    const tomorrowLastThird = new Date(lastThirdStart);
+
+    if(now > fajr){
+      tomorrowLastThird.setDate(
+        tomorrowLastThird.getDate() + 1
+      );
+    }
+
+    const diff = tomorrowLastThird - now;
+
+    const hours = Math.floor(diff / 3600000);
+    const minutes = Math.floor(
+      (diff % 3600000) / 60000
+    );
+
+    if(messageEl){
+      messageEl.textContent =
+        "🌙 يبدأ الثلث الأخير الساعة " +
+        formatQiyamTime(lastThirdStart) +
+        " — استعد لقيام الليل والدعاء.";
+    }
+
+  }
+
+}
+
+
+/* تذكير قيام الليل */
+
+function checkQiyamTime(){
+
+  if(!currentPrayerData){
+    alert("جاري تحميل مواقيت الصلاة، حاول مرة أخرى.");
+    return;
+  }
+
+  const maghribTime = currentPrayerData.Maghrib;
+  const fajrTime = currentPrayerData.Fajr;
+
+  if(!maghribTime || !fajrTime){
+    alert("لم يتم تحميل مواقيت المغرب والفجر بعد.");
+    return;
+  }
+
+  const maghrib = makePrayerDate(maghribTime);
+  let fajr = makePrayerDate(fajrTime);
+
+  if(fajr <= maghrib){
+    fajr.setDate(fajr.getDate() + 1);
+  }
+
+  const nightDuration =
+    fajr.getTime() - maghrib.getTime();
+
+  const lastThirdStart = new Date(
+    maghrib.getTime() + (nightDuration * 2 / 3)
+  );
+
+  const now = new Date();
+
+  if(now >= lastThirdStart && now < fajr){
+
+    sendPrayerNotification(
+      "🌙 نور الإسلام — قيام الليل",
+      "الآن بدأ الثلث الأخير من الليل. لا تنسَ قيام الليل والشفع والوتر."
+    );
+
+    alert(
+      "🌙 الآن بدأ الثلث الأخير من الليل\n\n" +
+      "وقت قيام الليل والشفع والوتر."
+    );
+
+  }else{
+
+    const timeText =
+      lastThirdStart.toLocaleTimeString("ar-EG",{
+        hour:"numeric",
+        minute:"2-digit",
+        hour12:true
+      });
+
+    alert(
+      "🌙 تذكير بقيام الليل\n\n" +
+      "يبدأ الثلث الأخير الساعة " +
+      timeText
+    );
+
+  }
+
+}
+
+
+/* تحديث الوقت كل دقيقة */
+
+updateQiyamTime();
+setInterval(updateQiyamTime,60000);
 </script>
 
 </body>
