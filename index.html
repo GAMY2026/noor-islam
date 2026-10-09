@@ -84,15 +84,20 @@ gap:20px;
 
 ```css
 .logo{
-display:flex;
-align-items:center;
-gap:12px;
-color:var(--gold2);
-font-size:26px;
-font-weight:800;
-white-space:nowrap;
-text-decoration:none;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    color:var(--gold2);
+    font-size:27px;
+    font-weight:800;
+    white-space:nowrap;
+    text-decoration:none;
+    line-height:1.2;
 }
+```
+
 
 .logo-symbol{
 width:46px;
@@ -1963,11 +1968,14 @@ font-size:15px;
 
 <nav class="navbar">
 
-````html
+
 <a href="#home" class="logo">
-    <span class="logo-symbol">☪</span>
-    <span>نور الإسلام</span>
+    <span class="logo-symbol">☪️</span>
+    <span class="logo-text">نور الإسلام</span>
 </a>
+```
+
+
 
 <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">
     ☰
