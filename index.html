@@ -1228,6 +1228,20 @@ display:none;
 .quran-close{margin-right:auto;}
 @media(max-width:700px){.quran-reader{padding:18px}.quran-reader-title{font-size:25px}.quran-ayah-text{font-size:22px}.quran-reader-head{align-items:flex-start}}
 
+
+/* Quran mushaf additions */
+.quran-progress-panel,.quran-browse-panel,.quran-khatm-dua{margin:18px 0;padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+.quran-progress-panel h3,.quran-browse-panel h3,.quran-khatm-dua h3{color:var(--gold2);margin:0 0 12px}
+.quran-progress-panel p{font-size:13px;color:#d2c9b4;margin:8px 0}
+.quran-progress-actions,.quran-browse-controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.quran-progress-actions button,.quran-browse-controls button,.quran-browse-controls select{border:1px solid var(--line);border-radius:10px;background:#0c1110;color:#f0e6cc;padding:10px 12px}
+.quran-khatm-dua p{font-family:"Amiri",serif;font-size:21px;line-height:2.1;color:#f0e6cc}
+.quran-khatm-dua small{color:#b8ad96;line-height:1.8;display:block}
+.quran-ayah-meta{font-size:11px;color:#b9a66e;margin-top:7px}
+.quran-tafsir-en{display:none;margin-top:10px;padding:13px;border-radius:12px;background:rgba(80,120,150,.09);color:#d5dce1;line-height:1.8;font-size:14px;direction:ltr;text-align:left}
+.quran-tafsir-en.show{display:block}
+@media(max-width:700px){.quran-browse-controls{display:grid;grid-template-columns:1fr 1fr}.quran-browse-controls select,.quran-browse-controls button{width:100%;min-width:0}.quran-khatm-dua p{font-size:18px}}
+
 /* AZKAR */
 
 .azkar-grid{
@@ -2217,7 +2231,145 @@ header{
 }
 
 
+
+/* PRAYER FILE: internal screen navigation */
+.prayer-file-screen{position:fixed;inset:0;z-index:99999;display:none;overflow:auto;background:rgba(2,15,12,.96);backdrop-filter:blur(10px);padding:clamp(12px,3vw,30px);box-sizing:border-box}
+.prayer-file-screen.active{display:block;animation:prayerFileIn .2s ease-out}
+.prayer-file-screen-inner{max-width:1100px;margin:0 auto;min-height:100%;border:1px solid rgba(233,195,107,.48);border-radius:22px;background:linear-gradient(160deg,#073b30,#041d17);padding:clamp(14px,3vw,28px);box-sizing:border-box;color:#fff}
+.prayer-file-screen-head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5;background:rgba(5,42,32,.96);padding:12px 0 16px;margin-bottom:14px;border-bottom:1px solid rgba(233,195,107,.28)}
+.prayer-file-screen-head h2{margin:0;color:#f5d98b;font-size:clamp(20px,3vw,28px)}
+.prayer-file-back{border:1px solid #e9c36b;background:linear-gradient(135deg,#e8c36c,#b98a35);color:#08291f;border-radius:999px;padding:10px 18px;font-weight:800;cursor:pointer;white-space:nowrap}
+.prayer-file-screen-content{min-height:200px}
+.prayer-file-screen-content>section,.prayer-file-screen-content>.adhan-section{display:block!important;position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important;margin:0 auto!important}
+.prayer-file-screen-content #prayerTrack{scroll-margin-top:90px}
+body.prayer-file-screen-open{overflow:hidden}
+@media(max-width:560px){.prayer-file-screen-inner{padding:14px 10px}.prayer-file-screen-head{align-items:flex-start}.prayer-file-back{padding:9px 12px}}
+
+
+/* Expanded worship library */
+.prayer-file-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important}
+.prayer-file-screen-content > section{display:block!important;max-width:100%;margin:0 auto}
+.pf-extra{direction:rtl;text-align:right;color:var(--text,#f7f1df);padding:18px;background:linear-gradient(145deg,#073b30,#0d5140);border:1px solid rgba(226,190,104,.35);border-radius:18px}
+.pf-extra h3{color:#f0d58d;margin-top:0}.pf-list{display:grid;gap:12px}.pf-item{padding:14px;border:1px solid rgba(226,190,104,.28);border-radius:12px;background:rgba(255,255,255,.045);line-height:1.9}.pf-item strong{color:#f0d58d}.pf-action{border:1px solid #e5c36b;background:#e5c36b;color:#123b30;border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer;margin:5px}.pf-count{font-size:2.5rem;color:#f0d58d;text-align:center;padding:12px}
+
 </style>
+<style id="prayer-file-emergency-fix">
+#prayerFileScreen{position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:0!important;inset:0!important;z-index:2147483647!important;display:none!important;overflow-y:auto!important;overflow-x:hidden!important;width:100vw!important;height:100dvh!important;max-width:none!important;margin:0!important;padding:12px!important;box-sizing:border-box!important;background:rgba(2,15,12,.98)!important;transform:none!important;}
+#prayerFileScreen.active{display:block!important;visibility:visible!important;opacity:1!important;}
+#prayerFileScreen .prayer-file-screen-inner{position:relative!important;width:100%!important;max-width:1100px!important;min-height:calc(100% - 24px)!important;margin:0 auto!important;box-sizing:border-box!important;}
+#prayerFileScreenContent{display:block!important;position:relative!important;width:100%!important;min-height:220px!important;visibility:visible!important;opacity:1!important;}
+#prayerFileScreenContent>section,#prayerFileScreenContent>.adhan-section{display:block!important;position:relative!important;inset:auto!important;visibility:visible!important;opacity:1!important;width:100%!important;max-width:100%!important;}
+</style>
+
+<style id="quran-polish-v2">
+/* Refined Quran reader: calm, readable and accessible */
+#quran .section-title p{max-width:760px;margin-inline:auto;line-height:1.9}
+.quran-progress-panel,.quran-browse-panel{background:linear-gradient(145deg,rgba(20,67,51,.72),rgba(12,17,16,.96));border-color:rgba(217,180,91,.25);box-shadow:0 12px 30px rgba(0,0,0,.16)}
+.quran-progress-panel h3,.quran-browse-panel h3,.quran-khatm-dua h3{font-size:20px;letter-spacing:.1px}
+.quran-progress-panel p{padding:10px 12px;margin:8px 0;border-radius:11px;background:rgba(255,255,255,.035);line-height:1.8}
+.quran-reader{background:linear-gradient(180deg,rgba(12,40,31,.98),rgba(8,17,14,.99));border:1px solid rgba(217,180,91,.34);border-radius:24px;box-shadow:0 18px 48px rgba(0,0,0,.28);padding:clamp(15px,3vw,28px)}
+.quran-reader-head{padding-bottom:15px;border-bottom:1px solid rgba(217,180,91,.18)}
+.quran-reader-title{font-size:clamp(24px,3vw,34px);line-height:1.6}
+.quran-reader-controls{margin-top:16px}
+.quran-reader select,.quran-reader button,.quran-progress-actions button,.quran-browse-controls button,.quran-browse-controls select{transition:background .18s ease,border-color .18s ease,transform .18s ease;min-height:42px}
+.quran-reader button:hover,.quran-progress-actions button:hover,.quran-browse-controls button:hover{border-color:rgba(217,180,91,.65);transform:translateY(-1px)}
+.quran-reader audio{border-radius:12px}
+#quranAyahs{display:grid;gap:15px;margin-top:18px}
+.quran-ayah{position:relative;padding:clamp(16px,2.5vw,24px);border:1px solid rgba(217,180,91,.16);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));transition:border-color .2s ease,background .2s ease;scroll-margin-top:24px}
+.quran-ayah:focus-within,.quran-ayah:hover{border-color:rgba(217,180,91,.4);background:linear-gradient(145deg,rgba(217,180,91,.055),rgba(255,255,255,.015))}
+.quran-ayah-text{font-family:"Amiri",serif;font-size:clamp(25px,3vw,32px);line-height:2.15;text-align:justify;text-align-last:center;direction:rtl;color:#fff3d7;cursor:pointer;padding:2px 0 8px;overflow-wrap:anywhere}
+.quran-ayah-text span{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;margin-inline:4px;border:1px solid rgba(217,180,91,.55);border-radius:50%;font-family:serif;font-size:14px;vertical-align:middle;background:rgba(217,180,91,.1)}
+.quran-ayah-meta{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07);font-size:12px;line-height:1.8;color:#d9c78f}
+.quran-ayah-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.quran-ayah-tools button{font-size:13px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(217,180,91,.22)}
+.quran-ayah-tools .tafsir-btn{background:rgba(217,180,91,.09)}
+.quran-ayah-tools .english-btn{border-color:rgba(117,174,201,.35);color:#bfe4f3}
+.quran-tafsir,.quran-tafsir-en{display:none;margin-top:14px;padding:17px 18px;border-radius:15px;line-height:2;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere;animation:quranPanelIn .2s ease}
+.quran-tafsir{border:1px solid rgba(217,180,91,.22);border-right:4px solid #d9b45b;background:linear-gradient(135deg,rgba(217,180,91,.09),rgba(255,255,255,.025));color:#f1e6ca;direction:rtl;text-align:right}
+.quran-tafsir-en{border:1px solid rgba(117,174,201,.25);border-left:4px solid #79b8d3;background:linear-gradient(135deg,rgba(80,145,175,.12),rgba(255,255,255,.02));color:#e2edf2;direction:ltr;text-align:left;line-height:1.9}
+.quran-tafsir.show,.quran-tafsir-en.show{display:block}
+.quran-tafsir-label{display:block;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.2px;margin-bottom:8px;opacity:.88}
+.quran-tafsir-en .quran-tafsir-label{direction:ltr;text-align:left}
+.quran-status{padding:8px 11px;border-radius:10px;background:rgba(217,180,91,.055);line-height:1.8}
+.quran-khatm-dua{border-color:rgba(217,180,91,.28);background:radial-gradient(ellipse at top,rgba(217,180,91,.09),rgba(255,255,255,.018));}
+.quran-khatm-dua p{font-size:clamp(20px,2.5vw,25px);line-height:2.2;text-align:justify;text-align-last:center}
+@keyframes quranPanelIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+ .quran-ayah{padding:15px 12px;border-radius:15px}
+ .quran-ayah-text{font-size:24px;line-height:2.05;text-align:right;text-align-last:right}
+ .quran-ayah-tools{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+ .quran-ayah-tools button{width:100%;font-size:12px;padding:9px 6px;min-height:42px}
+ .quran-tafsir,.quran-tafsir-en{padding:13px;font-size:14px;line-height:1.9}
+ .quran-ayah-meta{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.quran-ayah,.quran-reader button,.quran-progress-actions button,.quran-browse-controls button{transition:none}.quran-tafsir,.quran-tafsir-en{animation:none}}
+</style>
+
+
+<style id="quran-reader-day-night-theme">
+/* User-selectable Quran reader theme; saved locally on this device */
+#quranReader[data-quran-theme="light"]{background:linear-gradient(180deg,#fffdf6,#f4efdf)!important;border-color:#d9c78f!important;color:#27251f!important;box-shadow:0 14px 36px rgba(60,48,20,.12)!important}
+#quranReader[data-quran-theme="light"] .quran-reader-title{color:#72551a!important}
+#quranReader[data-quran-theme="light"] .quran-reader-controls select,
+#quranReader[data-quran-theme="light"] .quran-reader-controls button{background:#fffaf0!important;color:#45371b!important;border-color:#d7c58f!important}
+#quranReader[data-quran-theme="light"] .quran-status{background:#f2e9cf!important;color:#5a4a27!important}
+#quranReader[data-quran-theme="light"] .quran-ayah{background:linear-gradient(145deg,#fffef9,#fbf7e9)!important;border-color:#e2d7b7!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-text{color:#28251e!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-text span{color:#775a1e!important;background:#f8edc9!important;border-color:#d9bf75!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-meta{color:#79622b!important;border-color:#e9dfc4!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-tools button{background:#f8f1dd!important;color:#51401b!important;border-color:#e1d2a7!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-tools .english-btn{color:#24566b!important;border-color:#b8d5df!important}
+#quranReader[data-quran-theme="light"] .quran-tafsir{background:linear-gradient(135deg,#fff7df,#fffdf7)!important;color:#393024!important;border-color:#e4d3a0!important}
+#quranReader[data-quran-theme="light"] .quran-tafsir-en{background:linear-gradient(135deg,#edf8fc,#fbfeff)!important;color:#243f4a!important;border-color:#c4dfe8!important}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua{background:linear-gradient(145deg,#fff8e4,#fffdf7)!important;border-color:#e0cd93!important}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua p{color:#3e3420!important}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua small{color:#6b6048!important}
+#quranReader[data-quran-theme="light"] .quran-close{background:#eee3c3!important;color:#443719!important}
+#quranThemeToggle{font-weight:800}
+
+/* Modern minimal Mushaf-inspired daylight design: quiet geometric details */
+#quranReader[data-quran-theme="light"]{
+  position:relative;isolation:isolate;overflow:hidden;
+  background-color:#fbf8ef!important;
+  background-image:
+    radial-gradient(circle at 1px 1px,rgba(37,104,77,.055) 1px,transparent 1.6px),
+    linear-gradient(135deg,rgba(226,198,120,.09),transparent 38%,rgba(37,104,77,.035))!important;
+  background-size:18px 18px,100% 100%!important;
+  border:1px solid #d9d8b8!important;border-radius:22px!important;
+}
+#quranReader[data-quran-theme="light"] .quran-reader-head{position:relative;padding:14px 12px 18px;border-bottom:1px solid #e4dfc9}
+#quranReader[data-quran-theme="light"] .quran-reader-title{font-size:clamp(21px,2.5vw,28px)!important;font-weight:900;letter-spacing:.1px;color:#245a43!important}
+#quranReader[data-quran-theme="light"] .quran-reader-title:after{content:"۞  ·  ۞";display:block;margin-top:5px;font-size:12px;letter-spacing:5px;color:#b59a50;opacity:.8}
+#quranReader[data-quran-theme="light"] .quran-reader-controls{gap:8px}
+#quranReader[data-quran-theme="light"] .quran-reader-controls select,
+#quranReader[data-quran-theme="light"] .quran-reader-controls button{border-radius:12px!important;box-shadow:0 2px 5px rgba(45,75,54,.045);transition:background .18s ease,border-color .18s ease,transform .18s ease}
+#quranReader[data-quran-theme="light"] .quran-reader-controls button:hover{background:#eef4e9!important;border-color:#a9c4a8!important;transform:translateY(-1px)}
+#quranReader[data-quran-theme="light"] #quranAudio{accent-color:#2d7454}
+#quranReader[data-quran-theme="light"] .quran-status{border:1px solid #e2dfc8;background:rgba(240,242,225,.9)!important;color:#52614d!important}
+#quranReader[data-quran-theme="light"] .quran-ayah{position:relative;border:1px solid #e1dfcc!important;border-radius:17px!important;background:rgba(255,254,249,.94)!important;box-shadow:0 4px 14px rgba(53,74,48,.045);margin-block:13px;overflow:hidden}
+#quranReader[data-quran-theme="light"] .quran-ayah:before{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(180deg,#9ab99a,#d8c47e);opacity:.8}
+#quranReader[data-quran-theme="light"] .quran-ayah-text{color:#263b30!important;font-size:clamp(26px,3vw,34px);line-height:2.2;letter-spacing:.05px}
+#quranReader[data-quran-theme="light"] .quran-ayah-text span{color:#2f6b4f!important;background:#f5f3e6!important;border-color:#d9cf9f!important;box-shadow:inset 0 0 0 2px #fffdf6}
+#quranReader[data-quran-theme="light"] .quran-ayah-meta{color:#6d806b!important;border-color:#e9e7d8!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-tools button{border-radius:10px!important;background:#f3f5eb!important;color:#355c46!important;border-color:#dce4d4!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-tools .tafsir-btn{background:#f7f1dc!important;color:#765d26!important;border-color:#e8ddb8!important}
+#quranReader[data-quran-theme="light"] .quran-ayah-tools .english-btn{background:#eef5f6!important;color:#315f6c!important;border-color:#d3e5e7!important}
+#quranReader[data-quran-theme="light"] .quran-tafsir{background:#f8f5e9!important;color:#354236!important;border:1px solid #e8e0c8!important;border-right:3px solid #9db48a!important;border-radius:13px!important}
+#quranReader[data-quran-theme="light"] .quran-tafsir-en{background:#f0f6f5!important;color:#304b4c!important;border:1px solid #d9e8e4!important;border-left:3px solid #83b5ad!important;border-radius:13px!important}
+#quranReader[data-quran-theme="light"] .quran-tafsir-label{color:#52745b;letter-spacing:.15px}
+#quranReader[data-quran-theme="light"] .quran-tafsir-en .quran-tafsir-label{color:#477b83}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua{border:1px solid #e1ddc3!important;border-radius:18px!important;background:linear-gradient(145deg,#f7f5e8,#fffdf6)!important;box-shadow:0 4px 14px rgba(53,74,48,.04)}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua h3{color:#2d654b}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua p{color:#344437!important}
+#quranReader[data-quran-theme="light"] .quran-khatm-dua small{color:#74806b!important}
+#quranReader[data-quran-theme="light"] .quran-close{background:#edf1e5!important;color:#35543f!important;border:1px solid #d9e2d1!important;border-radius:11px!important}
+@media(max-width:700px){
+ #quranReader[data-quran-theme="light"]{border-radius:17px!important}
+ #quranReader[data-quran-theme="light"] .quran-ayah-text{font-size:25px;line-height:2.15}
+ #quranReader[data-quran-theme="light"] .quran-reader-head{padding:12px 8px 15px}
+}
+</style>
+
 </head>
 
 <body>
@@ -2265,6 +2417,54 @@ header{
   .bismillah-text {
     font-size: 28px;
   }
+}
+
+/* Prayer file dashboard - added without replacing existing features */
+.prayer-file-launch{margin-top:22px;padding:24px;border:1px solid rgba(214,177,91,.45);border-radius:22px;background:linear-gradient(135deg,rgba(16,75,59,.92),rgba(4,29,23,.98));box-shadow:0 14px 36px rgba(0,0,0,.18);}
+.prayer-file-launch-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.prayer-file-launch h3{margin:0;color:#f4d17c;font-size:clamp(20px,3vw,27px)}
+.prayer-file-launch p{margin:8px 0 0;color:#d7e5df;line-height:1.8}
+.prayer-file-open{border:1px solid #e9c36b;background:linear-gradient(135deg,#e8c36c,#b98a35);color:#08291f;border-radius:999px;padding:12px 24px;font-weight:800;cursor:pointer;font-size:15px;white-space:nowrap}
+.prayer-file-panel{display:none!important;margin-top:22px;width:100%;clear:both;box-sizing:border-box}
+.prayer-file-panel.open{display:block!important}
+.prayer-file-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;width:100%;box-sizing:border-box}
+.prayer-file-card{display:flex!important;visibility:visible!important;opacity:1!important;min-width:0;box-sizing:border-box}
+.prayer-file-card h4,.prayer-file-card p,.prayer-file-enter{display:block!important}
+.prayer-file-panel.open{display:block;animation:prayerFileIn .22s ease-out}
+.prayer-file-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.prayer-file-card{display:flex;align-items:center;gap:14px;min-height:142px;padding:18px;border:1px solid rgba(35,139,103,.65);border-radius:18px;background:rgba(0,29,22,.58);color:#fff;text-decoration:none;transition:transform .18s,border-color .18s,background .18s}
+.prayer-file-card:hover{transform:translateY(-3px);border-color:#e9c36b;background:rgba(14,67,51,.8)}
+.prayer-file-icon{width:68px;height:68px;flex:0 0 68px;display:grid;place-items:center;border:1px solid #e9c36b;border-radius:16px;color:#f0c96e;font-size:32px}
+.prayer-file-card h4{margin:0 0 7px;color:#f5dca0;font-size:18px}
+.prayer-file-card p{font-size:13px;margin:0;line-height:1.75;color:#d5e4dd}
+.prayer-file-enter{display:inline-block;margin-top:10px;color:#edc66c;font-weight:700;font-size:13px}
+@keyframes prayerFileIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.prayer-file-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:560px){.prayer-file-launch{padding:18px 14px}.prayer-file-launch-head{align-items:stretch}.prayer-file-open{width:100%}.prayer-file-grid{grid-template-columns:1fr!important}.prayer-file-card{min-height:115px;padding:14px}.prayer-file-icon{width:58px;height:58px;flex-basis:58px;font-size:27px}}
+
+/* Final daylight-page refinement: visible parchment tone instead of plain white */
+#quranReader[data-quran-theme="light"] #quranAyahs .quran-ayah{
+  background-color:#f2ecd9!important;
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(120,145,91,.10) 1px, transparent 1.7px),
+    linear-gradient(135deg, rgba(221,196,126,.13), transparent 42%, rgba(117,151,111,.08))!important;
+  background-size:24px 24px,100% 100%!important;
+  border:1px solid #d2c69e!important;
+  box-shadow:inset 0 0 0 4px rgba(255,252,239,.55),0 5px 15px rgba(83,75,43,.07)!important;
+}
+#quranReader[data-quran-theme="light"] #quranAyahs .quran-ayah:after{
+  content:"۞";position:absolute;left:10px;top:7px;color:#b49a54;font-size:17px;opacity:.65;pointer-events:none;
+}
+#quranReader[data-quran-theme="light"] #quranAyahs .quran-ayah-text span{
+  background:#e9e0bf!important;border-color:#c9b779!important;box-shadow:inset 0 0 0 1px rgba(255,251,232,.85)!important;
+}
+#quranReader[data-quran-theme="light"] #quranAyahs .quran-tafsir{
+  background-color:#eae5d1!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.25),transparent)!important;
+}
+#quranReader[data-quran-theme="light"] #quranAyahs .quran-tafsir-en{
+  background-color:#e2ece6!important;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.28),transparent)!important;
 }
 </style>
 
@@ -2374,6 +2574,39 @@ header{
 <div class="progress-fill" id="homeProgressBar"></div>
 </div>
 
+</div>
+
+<!-- PRAYER FILE LAUNCHER -->
+<div class="prayer-file-launch" id="prayerFileLauncher">
+  <div class="prayer-file-launch-head">
+    <div>
+      <h3>🕌 ملفات العبادة</h3>
+      <p>الصلاة والقرآن والأذكار والأدعية والتسبيح والقبلة والمساجد — كل شيء داخل ملفه.</p>
+    </div>
+    <button class="prayer-file-open" id="prayerFileToggle" type="button" aria-expanded="false" aria-controls="prayerFilePanel" onclick="togglePrayerFile()">فتح ملف العبادات　⌄</button>
+  </div>
+  <div class="prayer-file-panel" id="prayerFilePanel">
+    <div class="prayer-file-grid">
+      <a class="prayer-file-card" href="#" data-target="prayer"><span class="prayer-file-icon">◷</span><span><h4>مواقيت الصلاة</h4><p>الفجر والظهر والعصر والمغرب والعشاء.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="adhanSettings"><span class="prayer-file-icon">🔔</span><span><h4>الأذان والإقامة</h4><p>إعدادات الصوت والتنبيهات وأوقات الإقامة.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="postPrayerAzkar"><span class="prayer-file-icon">📿</span><span><h4>أذكار بعد الصلاة</h4><p>التسبيح والتحميد والتكبير والأذكار.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="qiyam"><span class="prayer-file-icon">🌙</span><span><h4>قيام الليل</h4><p>الشفع والوتر ووقت القيام.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="qiyamGuide"><span class="prayer-file-icon">🕌</span><span><h4>كيفية الصلاة والقيام</h4><p>إرشادات مختصرة تساعدك على العبادة.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="quran"><span class="prayer-file-icon">📖</span><span><h4>القرآن الكريم</h4><p>افتح قسم القرآن والقارئ من داخل الملف.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="azkar"><span class="prayer-file-icon">🌅</span><span><h4>ملف الأذكار</h4><p>أذكار الصباح والمساء والنوم والاستيقاظ.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="istighfar"><span class="prayer-file-icon">🤲</span><span><h4>ملف الاستغفار</h4><p>صيغ متنوعة للاستغفار مع عدّاد.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="salawat"><span class="prayer-file-icon">💚</span><span><h4>الصلاة على النبي ﷺ</h4><p>صيغ الصلاة والسلام على رسول الله.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="qibla"><span class="prayer-file-icon">🕋</span><span><h4>اتجاه القبلة</h4><p>افتح أداة اتجاه القبلة الموجودة بالموقع.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-target="mosques"><span class="prayer-file-icon">📍</span><span><h4>المساجد القريبة</h4><p>ابحث عن المساجد القريبة منك على الخريطة.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="duas"><span class="prayer-file-icon">🤍</span><span><h4>ملف الأدعية</h4><p>أدعية متنوعة للحياة اليومية.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="tasbih"><span class="prayer-file-icon">🔢</span><span><h4>المسبحة الإلكترونية</h4><p>عدّاد تسبيح مع إعادة التصفير.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="names"><span class="prayer-file-icon">✨</span><span><h4>أسماء الله الحسنى</h4><p>تصفّح أسماء الله الحسنى ومعاني مختصرة.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="prophets"><span class="prayer-file-icon">📚</span><span><h4>قصص الأنبياء</h4><p>قصص مختصرة للتعلّم والتدبّر.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="prophetDuas"><span class="prayer-file-icon">🌿</span><span><h4>أدعية الأنبياء</h4><p>أدعية قرآنية وردت على ألسنة الأنبياء.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="believerTraits"><span class="prayer-file-icon">🌱</span><span><h4>ملف صفات المؤمن</h4><p>صفات المؤمنين كما وردت في القرآن الكريم.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+      <a class="prayer-file-card" href="#" data-feature="tracking"><span class="prayer-file-icon">☑</span><span><h4>متابعة الصلوات</h4><p>سجّل صلوات اليوم وراجع تقدّمك.</p><span class="prayer-file-enter">دخول ←</span></span></a>
+    </div>
+  </div>
 </div>
 
 </div>
@@ -2787,25 +3020,37 @@ header{
 
 <div class="section-title">
 
-<span>📖 القرآن الكريم</span>
+<span>📖 ملف المصحف</span>
 
-<h2>كتاب الله</h2>
+<h2>المصحف الشريف</h2>
 
-<p>تصفح سور القرآن الكريم</p>
+<p>السور كاملة، والأجزاء والصفحات، والتفسير بالعربية ومعاني الآيات بالإنجليزية</p>
 
+</div>
+
+<div class="quran-progress-panel">
+  <h3>📌 آخر موضع قراءة</h3>
+  <div class="quran-progress-actions">
+    <button type="button" onclick="resumeQuranLastPage()">📄 آخر صفحة</button>
+    <button type="button" onclick="resumeQuranLastAyah()">📖 آخر آية</button>
+  </div>
+  <p id="quranLastPageInfo">لم يتم حفظ صفحة بعد.</p>
+  <p id="quranLastAyahInfo">لم يتم حفظ آية بعد.</p>
+</div>
+
+<div class="quran-browse-panel">
+  <h3>تصفح المصحف</h3>
+  <div class="quran-browse-controls">
+    <select id="quranPageSelect" aria-label="اختر صفحة"><option value="">اختر رقم الصفحة (1–604)</option></select>
+    <button type="button" onclick="openQuranPage()">فتح الصفحة</button>
+    <select id="quranJuzSelect" aria-label="اختر جزء"><option value="">اختر الجزء (1–30)</option></select>
+    <button type="button" onclick="openQuranJuz()">فتح الجزء</button>
+  </div>
 </div>
 
 <div class="quran-tools">
-
-<input
-id="surahSearch"
-type="text"
-placeholder="ابحث عن سورة..."
-oninput="filterSurahs()"
->
-
+<input id="surahSearch" type="text" placeholder="ابحث عن سورة..." oninput="filterSurahs()">
 </div>
-
 <div class="quran-grid" id="quranGrid"></div>
 
 <div class="quran-reader" id="quranReader">
@@ -2827,10 +3072,18 @@ oninput="filterSurahs()"
     <button type="button" onclick="playQuran()">▶️ تشغيل السورة</button>
     <button type="button" onclick="pauseQuran()">⏸️ إيقاف</button>
     <button type="button" onclick="restartQuran()">🔄 من البداية</button>
+    <button type="button" id="quranResumeButton" onclick="resumeLastQuranRead()">📌 آخر قراءة</button>
+    <button type="button" id="quranThemeToggle" onclick="toggleQuranTheme()" aria-pressed="false">☀️ الوضع النهاري</button>
   </div>
   <audio id="quranAudio" controls preload="metadata"></audio>
   <div class="quran-status" id="quranStatus">اضغط على سورة لفتح الآيات والصوت.</div>
+  <div class="quran-last-read" id="quranLastRead">سيتم حفظ آخر سورة فتحتها على هذا الجهاز.</div>
   <div id="quranAyahs"></div>
+  <div class="quran-khatm-dua">
+    <h3>🤲 دعاء ختم القرآن الكريم</h3>
+    <p>اللهم ارحمني بالقرآن، واجعله لي إمامًا ونورًا وهدًى ورحمة. اللهم ذكّرني منه ما نسيت، وعلّمني منه ما جهلت، وارزقني تلاوته آناء الليل وأطراف النهار على الوجه الذي يرضيك عني. اللهم اجعل القرآن العظيم ربيع قلبي، ونور صدري، وجلاء حزني، وذهاب همّي وغمي، واجعله حجةً لي لا عليّ، وتقبّل مني تلاوته يا أرحم الراحمين.</p>
+    <small>هذا دعاء عام يمكن الدعاء به عند ختم القرآن، وليس نصًا ثابتًا لازمًا بلفظ محدد.</small>
+  </div>
 </div>
 
 </div>
@@ -3155,7 +3408,7 @@ onclick="resetAfterPrayer('ayat')"
 
 <!-- QIYAM AL-LAYL -->
 
-<section id="qiyam" class="post-prayer-section">
+<section id="qiyamGuide" class="post-prayer-section">
 
   <div class="container">
 
@@ -4110,6 +4363,8 @@ const json=await response.json();
 allSurahs=json.data||[];
 
 renderSurahs(allSurahs);
+initQuranBrowseControls();
+refreshQuranProgressDisplay();
 
 }catch(error){
 
@@ -4334,61 +4589,112 @@ async function setQuranAudioSource(number,autoplay){
   if(autoplay)playQuranPlaylistFromIndex(0,true);
 }
 
-async function openQuranReader(number){
-  const reader=document.getElementById("quranReader");
-  const title=document.getElementById("quranReaderTitle");
-  const ayahsBox=document.getElementById("quranAyahs");
-  if(!reader||!ayahsBox)return;
-
-  const surah=allSurahs.find(function(item){return Number(item.number)===Number(number);});
-  currentQuranSurah=surah||{number:Number(number),name:"السورة"};
-  reader.classList.add("show");
-  title.textContent="📖 "+String(currentQuranSurah.name||"").replace("سُورَةُ ","");
-  ayahsBox.innerHTML="<p>جاري تحميل الآيات والتفسير...</p>";
-  setQuranStatus("جاري تجهيز الصوت...");
-
-  // تجهيز السورة مباشرة مع أول ضغط على السورة، مع fallback لقائمة الآيات عند الحاجة.
-  setQuranAudioSource(number,true);
-  reader.scrollIntoView({behavior:"smooth",block:"start"});
-
+function quranStamp(){
+  try{return new Date().toLocaleString('ar-EG',{dateStyle:'medium',timeStyle:'short'});}catch(e){return new Date().toLocaleString();}
+}
+function saveQuranPosition(ayah,forcedPage){
+  if(!ayah)return;
+  const stamp=quranStamp();
+  const page=Number(forcedPage||ayah.page||1);
+  const lastPage={page:page,surah:ayah.surah?ayah.surah.name:(currentQuranSurah?currentQuranSurah.name:''),ayah:Number(ayah.numberInSurah||1),timestamp:stamp};
+  const lastAyah={surahNumber:Number((ayah.surah&&ayah.surah.number)|| (currentQuranSurah&&currentQuranSurah.number)||1),surahName:(ayah.surah&&ayah.surah.name)|| (currentQuranSurah&&currentQuranSurah.name)||'السورة',ayah:Number(ayah.numberInSurah||1),page:page,juz:Number(ayah.juz||1),timestamp:stamp};
+  try{localStorage.setItem('noorQuranLastPage',JSON.stringify(lastPage));localStorage.setItem('noorQuranLastAyah',JSON.stringify(lastAyah));}catch(e){}
+  refreshQuranProgressDisplay();
+}
+function refreshQuranProgressDisplay(){
+  const pageEl=document.getElementById('quranLastPageInfo'),ayahEl=document.getElementById('quranLastAyahInfo');
+  if(!pageEl||!ayahEl)return;
   try{
-    const results=await Promise.all([
-      fetch("https://api.alquran.cloud/v1/surah/"+number).then(function(r){return r.json();}),
-      fetch("https://api.alquran.cloud/v1/surah/"+number+"/ar.muyassar").then(function(r){return r.json();})
-    ]);
-    const arabic=(results[0].data&&results[0].data.ayahs)||[];
-    const tafsir=(results[1].data&&results[1].data.ayahs)||[];
-    if(!arabic.length){
-      ayahsBox.innerHTML="<p>تعذر تحميل آيات السورة حاليًا.</p>";
-      setQuranStatus("تعذر تحميل الآيات.");
-      return;
-    }
-    ayahsBox.innerHTML="";
-    arabic.forEach(function(ayah,index){
-      const box=document.createElement("div");
-      box.className="quran-ayah";
-      const tafsirText=tafsir[index]&&tafsir[index].text?tafsir[index].text:"لا يتوفر التفسير لهذه الآية حاليًا.";
-      box.innerHTML=`
-        <div class="quran-ayah-text">${ayah.text} <span style="color:var(--gold2)">﴿${ayah.numberInSurah}﴾</span></div>
-        <div class="quran-ayah-tools">
-          <button type="button" class="tafsir-btn">📚 التفسير</button>
-          <button type="button" class="read-ayah-btn">🔊 قراءة الآية</button>
-        </div>
-        <div class="quran-tafsir">${tafsirText}</div>`;
-      box.querySelector(".tafsir-btn").addEventListener("click",function(){
-        box.querySelector(".quran-tafsir").classList.toggle("show");
-      });
-      box.querySelector(".read-ayah-btn").addEventListener("click",function(){
-        playSingleAyahByReciter(ayah);
-      });
-      ayahsBox.appendChild(box);
-    });
-    setQuranStatus("تم فتح الآيات. اختر الشيخ ثم اضغط ▶️ تشغيل السورة.");
-  }catch(error){
-    console.error(error);
-    ayahsBox.innerHTML="<p>تعذر تحميل الآيات حاليًا. جرّب مرة أخرى.</p>";
-    setQuranStatus("حدث خطأ أثناء تحميل القرآن.");
+    const page=JSON.parse(localStorage.getItem('noorQuranLastPage')||'null');
+    const ayah=JSON.parse(localStorage.getItem('noorQuranLastAyah')||'null');
+    pageEl.textContent=page?('آخر صفحة: '+page.page+' — '+(page.surah||'')+'، الآية '+page.ayah+' — '+page.timestamp):'لم يتم حفظ صفحة بعد.';
+    ayahEl.textContent=ayah?('آخر آية: '+String(ayah.surahName||'').replace('سُورَةُ ','')+'، الآية '+ayah.ayah+' — صفحة '+ayah.page+' — '+ayah.timestamp):'لم يتم حفظ آية بعد.';
+  }catch(e){pageEl.textContent='لم يتم حفظ صفحة بعد.';ayahEl.textContent='لم يتم حفظ آية بعد.';}
+}
+function initQuranBrowseControls(){
+  const page=document.getElementById('quranPageSelect'),juz=document.getElementById('quranJuzSelect');
+  if(page&&page.options.length===1){for(let i=1;i<=604;i++){const o=document.createElement('option');o.value=i;o.textContent='صفحة '+i;page.appendChild(o);}}
+  if(juz&&juz.options.length===1){for(let i=1;i<=30;i++){const o=document.createElement('option');o.value=i;o.textContent='الجزء '+i;juz.appendChild(o);}}
+}
+function resumeQuranLastPage(){try{const p=JSON.parse(localStorage.getItem('noorQuranLastPage')||'null');if(p)openQuranPage(p.page);else setQuranStatus('لم تحفظ صفحة من قبل. افتح سورة أو صفحة أولًا.');}catch(e){setQuranStatus('لا توجد صفحة محفوظة.');}}
+function resumeQuranLastAyah(){try{const a=JSON.parse(localStorage.getItem('noorQuranLastAyah')||'null');if(a){openQuranReader(a.surahNumber).then(function(){setTimeout(function(){const el=document.querySelector('[data-global-ayah="'+(a.surahNumber)+'-'+a.ayah+'"]');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},700);});}else setQuranStatus('لم تحفظ آية من قبل. افتح سورة أولًا.');}catch(e){setQuranStatus('لا توجد آية محفوظة.');}}
+async function openQuranPage(savedNumber){const n=Number(savedNumber||document.getElementById('quranPageSelect').value);if(n>=1&&n<=604){const select=document.getElementById('quranPageSelect');if(select)select.value=String(n);openQuranCollection('page',n);}}
+async function openQuranJuz(){const n=Number(document.getElementById('quranJuzSelect').value);if(n>=1&&n<=30)openQuranCollection('juz',n);}
+async function openQuranCollection(kind,number){
+  const reader=document.getElementById('quranReader'),box=document.getElementById('quranAyahs'),title=document.getElementById('quranReaderTitle');
+  reader.classList.add('show');box.innerHTML='<p>جاري تحميل النص والتفسير...</p>';title.textContent=kind==='page'?'📄 صفحة '+number:'📚 الجزء '+number;setQuranStatus('جاري تحميل المصحف...');reader.scrollIntoView({behavior:'smooth',block:'start'});
+  try{
+    const base='https://api.alquran.cloud/v1/'+kind+'/'+number;
+    const results=await Promise.all([fetch(base+'/quran-uthmani').then(r=>r.json()),fetch(base+'/ar.muyassar').then(r=>r.json()),fetch(base+'/en.asad').then(r=>r.json())]);
+    const ayahs=(results[0].data&&results[0].data.ayahs)||[], tafsir=(results[1].data&&results[1].data.ayahs)||[], english=(results[2].data&&results[2].data.ayahs)||[];
+    if(!ayahs.length)throw new Error('No ayahs');
+    renderQuranAyahs(ayahs,tafsir,english);
+    const first=ayahs[0];if(first){currentQuranSurah=first.surah||{number:1,name:'المصحف'};currentVisibleQuranAyah=first;saveQuranPosition(first,kind==='page'?number:first.page);}
+    setQuranStatus('تم فتح '+(kind==='page'?'الصفحة '+number:'الجزء '+number)+' كاملًا. اضغط على أي آية لحفظ موضع القراءة.');
+  }catch(e){console.error(e);box.innerHTML='<p>تعذر تحميل هذا الجزء أو الصفحة الآن. تأكد من الاتصال بالإنترنت ثم حاول مرة أخرى.</p>';setQuranStatus('تعذر تحميل المحتوى.');}
+}
+let quranReadingObserver=null;
+let currentVisibleQuranAyah=null;
+// حفظ موضع القراءة تلقائيًا عند الانتقال من المصحف أو إخفاء الصفحة.
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='hidden' && currentVisibleQuranAyah){
+    saveQuranPosition(currentVisibleQuranAyah);
   }
+});
+window.addEventListener('pagehide',function(){
+  if(currentVisibleQuranAyah) saveQuranPosition(currentVisibleQuranAyah);
+});
+function renderQuranAyahs(ayahs,tafsir,english){
+  const ayahsBox=document.getElementById('quranAyahs');ayahsBox.innerHTML='';
+  if(quranReadingObserver){quranReadingObserver.disconnect();quranReadingObserver=null;}
+  ayahs.forEach(function(ayah,index){
+    const box=document.createElement('div');box.className='quran-ayah';
+    const surah=ayah.surah||currentQuranSurah||{number:1,name:'السورة'};
+    const globalKey=String(surah.number)+'-'+String(ayah.numberInSurah);
+    const tafsirText=tafsir[index]&&tafsir[index].text?tafsir[index].text:'لا يتوفر التفسير العربي لهذه الآية حاليًا.';
+    const englishText=english[index]&&english[index].text?english[index].text:'لا يتوفر المعنى الإنجليزي لهذه الآية حاليًا.';
+    box.dataset.globalAyah=globalKey;
+    box.innerHTML=`<div class="quran-ayah-text" tabindex="0" role="button" aria-label="حفظ موضع الآية">${ayah.text} <span style="color:var(--gold2)">﴿${ayah.numberInSurah}﴾</span></div>
+      <div class="quran-ayah-meta">${String(surah.name||'').replace('سُورَةُ ','')} • الآية ${ayah.numberInSurah} • الجزء ${ayah.juz||'—'} • الصفحة ${ayah.page||'—'}</div>
+      <div class="quran-ayah-tools"><button type="button" class="tafsir-btn" aria-expanded="false">📚 التفسير العربي</button><button type="button" class="english-btn" aria-expanded="false">🌐 English meaning</button><button type="button" class="read-ayah-btn">🔊 قراءة الآية</button></div>
+      <div class="quran-tafsir"></div><div class="quran-tafsir-en"></div>`;
+    box.querySelector('.quran-ayah-text').addEventListener('click',function(){currentQuranSurah=surah;saveQuranPosition(ayah);setQuranStatus('تم حفظ موضع القراءة: '+String(surah.name||'').replace('سُورَةُ ','')+'، الآية '+ayah.numberInSurah+'.');});
+    box.querySelector('.tafsir-btn').addEventListener('click',function(){
+      const el=box.querySelector('.quran-tafsir');
+      const opening=!el.classList.contains('show');
+      if(opening){el.replaceChildren();const label=document.createElement('span');label.className='quran-tafsir-label';label.textContent='📚 التفسير الميسّر للآية';const content=document.createElement('div');content.textContent=tafsirText;el.append(label,content);}
+      el.classList.toggle('show',opening);this.setAttribute('aria-expanded',String(opening));this.textContent=opening?'إخفاء التفسير العربي':'📚 التفسير العربي';
+    });
+    box.querySelector('.english-btn').addEventListener('click',function(){
+      const el=box.querySelector('.quran-tafsir-en');
+      const opening=!el.classList.contains('show');
+      if(opening){el.replaceChildren();const label=document.createElement('span');label.className='quran-tafsir-label';label.textContent='🌐 English translation of the meaning';const content=document.createElement('div');content.textContent=englishText;el.append(label,content);}
+      el.classList.toggle('show',opening);this.setAttribute('aria-expanded',String(opening));this.textContent=opening?'Hide English meaning':'🌐 English meaning';
+    });
+    box.querySelector('.read-ayah-btn').addEventListener('click',function(){currentQuranSurah=surah;playSingleAyahByReciter(ayah);saveQuranPosition(ayah);});
+    ayahsBox.appendChild(box);
+  });
+  if('IntersectionObserver' in window){
+    quranReadingObserver=new IntersectionObserver(function(entries){
+      const visible=entries.filter(function(entry){return entry.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;})[0];
+      if(visible){const index=Array.prototype.indexOf.call(ayahsBox.children,visible.target);const ayah=ayahs[index];if(ayah){const surah=ayah.surah||currentQuranSurah;if(surah)currentQuranSurah=surah;currentVisibleQuranAyah=ayah;saveQuranPosition(ayah);}}
+    },{threshold:[0.25,0.5,0.75],rootMargin:'-20% 0px -45% 0px'});
+    Array.prototype.forEach.call(ayahsBox.children,function(el){quranReadingObserver.observe(el);});
+  }
+}
+async function openQuranReader(number){
+  const reader=document.getElementById('quranReader'),title=document.getElementById('quranReaderTitle'),ayahsBox=document.getElementById('quranAyahs');
+  if(!reader||!ayahsBox)return;
+  const surah=allSurahs.find(function(item){return Number(item.number)===Number(number);});
+  currentQuranSurah=surah||{number:Number(number),name:'السورة'};saveLastQuranRead(number,currentQuranSurah.name);reader.classList.add('show');title.textContent='📖 '+String(currentQuranSurah.name||'').replace('سُورَةُ ','');ayahsBox.innerHTML='<p>جاري تحميل السورة كاملة والتفسير...</p>';setQuranStatus('جاري تجهيز الصوت...');
+  setQuranAudioSource(number,true);reader.scrollIntoView({behavior:'smooth',block:'start'});
+  try{
+    const results=await Promise.all([fetch('https://api.alquran.cloud/v1/surah/'+number).then(r=>r.json()),fetch('https://api.alquran.cloud/v1/surah/'+number+'/ar.muyassar').then(r=>r.json()),fetch('https://api.alquran.cloud/v1/surah/'+number+'/en.asad').then(r=>r.json())]);
+    const arabic=(results[0].data&&results[0].data.ayahs)||[],tafsir=(results[1].data&&results[1].data.ayahs)||[],english=(results[2].data&&results[2].data.ayahs)||[];
+    if(!arabic.length)throw new Error('No ayahs');
+    renderQuranAyahs(arabic,tafsir,english);currentVisibleQuranAyah=arabic[0];saveQuranPosition(arabic[0]);
+    setQuranStatus('السورة مفتوحة كاملة في صفحة واحدة. اضغط على نص أي آية لحفظ آخر موضع قراءة.');
+  }catch(error){console.error(error);ayahsBox.innerHTML='<p>تعذر تحميل الآيات أو التفسير حاليًا. حاول مرة أخرى.</p>';setQuranStatus('حدث خطأ أثناء تحميل القرآن.');}
 }
 
 function playSingleAyahByReciter(ayah){
@@ -5166,5 +5472,183 @@ setInterval(function(){
 },60000);
 </script>
 
+
+
+<div class="prayer-file-screen" id="prayerFileScreen" aria-hidden="true">
+  <div class="prayer-file-screen-inner">
+    <div class="prayer-file-screen-head">
+      <h2 id="prayerFileScreenTitle">ملف العبادات</h2>
+      <button class="prayer-file-back" type="button" onclick="closePrayerFilePage()">← رجوع لملف العبادات</button>
+    </div>
+    <div class="prayer-file-screen-content" id="prayerFileScreenContent"></div>
+  </div>
+</div>
+
+<script>
+function openPrayerFilePage(event,card){
+ try {
+  if(event){event.preventDefault();event.stopPropagation();}
+  if(!card)return;
+  const targetId=card.getAttribute('data-target');
+  const feature=card.getAttribute('data-feature');
+  const target=targetId?document.getElementById(targetId):null;
+  const screen=document.getElementById('prayerFileScreen');
+  const content=document.getElementById('prayerFileScreenContent');
+  const title=document.getElementById('prayerFileScreenTitle');
+  if(!screen||!content||!title){alert('حصلت مشكلة في فتح الشاشة. جرّب تحديث الصفحة.');return;}
+  closePrayerFilePage(false);
+  const heading=card.querySelector('h4');
+  title.textContent=heading?heading.textContent:'ملفات العبادة';
+  if(target && target.parentNode){
+    const placeholder=document.createComment('prayer-file-placeholder-'+targetId);
+    target.parentNode.insertBefore(placeholder,target);
+    window.__prayerFileMoved={target:target,placeholder:placeholder};
+    content.appendChild(target);
+  } else if(feature){
+    content.innerHTML=renderPrayerFeature(feature);
+  } else {
+    content.innerHTML='<section class="pf-extra"><h3>'+title.textContent+'</h3><p>القسم ده مش موجود في الصفحة الحالية. هنراجع ربطه قبل اعتماد النسخة النهائية.</p></section>';
+  }
+  if(screen.parentElement!==document.body) document.body.appendChild(screen);
+  screen.classList.add('active');
+  screen.style.setProperty('position','fixed','important');
+  screen.style.setProperty('top','0','important');
+  screen.style.setProperty('right','0','important');
+  screen.style.setProperty('bottom','0','important');
+  screen.style.setProperty('left','0','important');
+  screen.style.setProperty('inset','0','important');
+  screen.style.setProperty('z-index','2147483647','important');
+  screen.style.setProperty('display','block','important');
+  screen.style.setProperty('visibility','visible','important');
+  screen.style.setProperty('opacity','1','important');
+  screen.style.setProperty('width','100vw','important');
+  screen.style.setProperty('height','100dvh','important');
+  screen.setAttribute('aria-hidden','false');
+  document.body.classList.add('prayer-file-screen-open');
+  closePrayerFile();
+  screen.scrollTop=0;
+ } catch(err) {
+   console.error('Prayer file open error:',err);
+   const screen=document.getElementById('prayerFileScreen');
+   const content=document.getElementById('prayerFileScreenContent');
+   if(screen&&content){content.innerHTML='<section class="pf-extra"><h3>تعذّر فتح القسم</h3><p>حصل خطأ أثناء فتحه. حدّث الصفحة وجرب تاني.</p></section>';screen.classList.add('active');screen.style.setProperty('display','block','important');}
+ }
+}
+function renderPrayerFeature(feature){
+ const wrap=(title,body)=>`<section class="pf-extra"><h3>${title}</h3><div class="pf-list">${body}</div></section>`;
+ if(feature==='tasbih')return `<section class="pf-extra"><h3>المسبحة الإلكترونية</h3><p>اختر الذكر وابدأ العدّ.</p><select id="pfZikrSelect"><option>سبحان الله</option><option>الحمد لله</option><option>الله أكبر</option><option>أستغفر الله</option><option>لا إله إلا الله</option></select><div class="pf-count" id="pfTasbihCount">0</div><div style="text-align:center"><button class="pf-action" onclick="pfTasbihAdd()">تسبيحة +</button><button class="pf-action" onclick="pfTasbihReset()">تصفير</button></div></section>`;
+ if(feature==='duas')return wrap('أدعية متنوعة',`<div class="pf-item"><strong>دعاء الخير:</strong><br>رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.</div><div class="pf-item"><strong>دعاء التيسير:</strong><br>رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي.</div><div class="pf-item"><strong>دعاء المغفرة:</strong><br>رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ.</div><div class="pf-item"><strong>دعاء العلم:</strong><br>رَبِّ زِدْنِي عِلْمًا.</div>`);
+ if(feature==='prophetDuas')return wrap('أدعية الأنبياء من القرآن',`<div class="pf-item"><strong>آدم عليه السلام:</strong><br>رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ.</div><div class="pf-item"><strong>نوح عليه السلام:</strong><br>رَبِّ إِنِّي أَعُوذُ بِكَ أَنْ أَسْأَلَكَ مَا لَيْسَ لِي بِهِ عِلْمٌ.</div><div class="pf-item"><strong>إبراهيم عليه السلام:</strong><br>رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي رَبَّنَا وَتَقَبَّلْ دُعَاءِ.</div><div class="pf-item"><strong>موسى عليه السلام:</strong><br>رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي.</div><div class="pf-item"><strong>يونس عليه السلام:</strong><br>لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ.</div><div class="pf-item"><strong>زكريا عليه السلام:</strong><br>رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنْتَ خَيْرُ الْوَارِثِينَ.</div>`);
+ if(feature==='believerTraits')return wrap('صفات المؤمنين في القرآن الكريم',`<div class="pf-item"><strong>١. الخشوع في الصلاة</strong><br>قال تعالى: ﴿قَدْ أَفْلَحَ الْمُؤْمِنُونَ ۝ الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ﴾ <br><small>سورة المؤمنون: ١–٢</small><p>يُقبل المؤمن على صلاته بقلب حاضر وسكينة.</p></div><div class="pf-item"><strong>٢. الإعراض عن اللغو</strong><br>﴿وَالَّذِينَ هُمْ عَنِ اللَّغْوِ مُعْرِضُونَ﴾ <br><small>سورة المؤمنون: ٣</small><p>يبتعد عن الكلام والأفعال التي لا خير فيها.</p></div><div class="pf-item"><strong>٣. أداء الزكاة والتزكية</strong><br>﴿وَالَّذِينَ هُمْ لِلزَّكَاةِ فَاعِلُونَ﴾ <br><small>سورة المؤمنون: ٤</small><p>يهتم بطهارة نفسه وأداء حق المحتاجين.</p></div><div class="pf-item"><strong>٤. حفظ الأمانة والعهود</strong><br>﴿وَالَّذِينَ هُمْ لِأَمَانَاتِهِمْ وَعَهْدِهِمْ رَاعُونَ﴾ <br><small>سورة المؤمنون: ٨</small><p>يحفظ الحقوق ويصدق في وعوده.</p></div><div class="pf-item"><strong>٥. المحافظة على الصلاة</strong><br>﴿وَالَّذِينَ هُمْ عَلَى صَلَوَاتِهِمْ يُحَافِظُونَ﴾ <br><small>سورة المؤمنون: ٩</small><p>يحافظ على الصلوات في أوقاتها قدر استطاعته.</p></div><div class="pf-item"><strong>٦. خشية الله وزيادة الإيمان</strong><br>﴿إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ إِذَا ذُكِرَ اللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ آيَاتُهُ زَادَتْهُمْ إِيمَانًا﴾ <br><small>سورة الأنفال: ٢</small><p>يتأثر قلبه بذكر الله وآياته ويزداد إيمانًا.</p></div><div class="pf-item"><strong>٧. التوكل على الله</strong><br>﴿وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ﴾ <br><small>سورة الأنفال: ٢</small><p>يأخذ بالأسباب ويعتمد بقلبه على الله.</p></div><div class="pf-item"><strong>٨. التواضع وحسن التعامل</strong><br>﴿وَعِبَادُ الرَّحْمَٰنِ الَّذِينَ يَمْشُونَ عَلَى الْأَرْضِ هَوْنًا﴾ <br><small>سورة الفرقان: ٦٣</small><p>يتعامل مع الناس بتواضع وهدوء، ويبتعد عن الكبر.</p></div><p>هذه تذكرة مختصرة ببعض الصفات الواردة في القرآن الكريم، وليست حصرًا لجميع صفات المؤمن.</p>`);
+ if(feature==='names')return wrap('أسماء الله الحسنى — مجموعة بداية',`<div class="pf-item">الرَّحْمَٰن — واسع الرحمة.</div><div class="pf-item">الرَّحِيم — كثير الرحمة بعباده.</div><div class="pf-item">الْمَلِك — المالك المتصرف في كل شيء.</div><div class="pf-item">الْقُدُّوس — المنزّه عن كل نقص.</div><div class="pf-item">السَّلَام — السالم من كل نقص.</div><div class="pf-item">الْعَلِيم — المحيط علمه بكل شيء.</div><div class="pf-item">الْغَفُور — كثير المغفرة.</div><div class="pf-item">الرَّزَّاق — المتكفّل بأرزاق الخلق.</div><p>هذه عينة أولية؛ نوسّعها إلى قائمة كاملة مع مراجعة المعاني قبل اعتماد النسخة النهائية.</p>`);
+ if(feature==='prophets')return wrap('قصص الأنبياء',`<div class="pf-item"><strong>آدم عليه السلام:</strong><br>بداية خلق الإنسان، والتوبة والرجوع إلى الله.</div><div class="pf-item"><strong>نوح عليه السلام:</strong><br>الصبر في الدعوة والثبات رغم طول الابتلاء.</div><div class="pf-item"><strong>إبراهيم عليه السلام:</strong><br>التوحيد والثقة بالله والاستعداد لطاعته.</div><div class="pf-item"><strong>يوسف عليه السلام:</strong><br>الصبر والعفة والعفو عند المقدرة.</div><div class="pf-item"><strong>موسى عليه السلام:</strong><br>مواجهة الظلم والثقة بنصر الله.</div><div class="pf-item"><strong>عيسى عليه السلام:</strong><br>آيات الله ورسالته إلى بني إسرائيل.</div><div class="pf-item"><strong>محمد ﷺ:</strong><br>الرحمة والصبر وحسن الخلق وإتمام مكارم الأخلاق.</div><p>المعروض ملخصات تمهيدية وليست القصص الكاملة لجميع الأنبياء.</p>`);
+ if(feature==='tracking')return `<section class="pf-extra"><h3>متابعة الصلوات</h3><p>افتح بطاقة متابعة الصلوات من قسم الصلاة لتسجيل صلوات اليوم ومراجعة التقدم.</p><button class="pf-action" onclick="closePrayerFilePage();document.getElementById('prayerFilePanel').classList.add('open');document.getElementById('prayerFilePanel').style.display='block'">العودة إلى البطاقات</button></section>`;
+ return wrap('ملف العبادة','<div class="pf-item">قريبًا.</div>');
+}
+let pfTasbihValue=0;
+function pfTasbihAdd(){pfTasbihValue++;const el=document.getElementById('pfTasbihCount');if(el)el.textContent=pfTasbihValue;}
+function pfTasbihReset(){pfTasbihValue=0;const el=document.getElementById('pfTasbihCount');if(el)el.textContent='0';}
+function closePrayerFilePage(hideScreen=true){
+ const screen=document.getElementById('prayerFileScreen');
+ const content=document.getElementById('prayerFileScreenContent');
+ const moved=window.__prayerFileMoved;
+ if(moved&&moved.target&&moved.placeholder&&moved.placeholder.parentNode){
+   moved.placeholder.parentNode.insertBefore(moved.target,moved.placeholder);
+   moved.placeholder.parentNode.removeChild(moved.placeholder);
+ }
+ window.__prayerFileMoved=null;
+ if(content)content.innerHTML='';
+ if(screen&&hideScreen){screen.classList.remove('active');screen.style.removeProperty('display');screen.style.removeProperty('visibility');screen.style.removeProperty('opacity');screen.setAttribute('aria-hidden','true');document.body.classList.remove('prayer-file-screen-open');}
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePrayerFilePage();});
+
+function togglePrayerFile(){
+ const panel=document.getElementById('prayerFilePanel');
+ const button=document.getElementById('prayerFileToggle');
+ if(!panel||!button)return;
+ const open=panel.style.display!=='block' && !panel.classList.contains('open');
+ panel.classList.toggle('open',open);
+ panel.style.setProperty('display',open?'block':'none','important');
+ panel.style.setProperty('visibility','visible','important');
+ panel.style.setProperty('opacity','1','important');
+ const grid=panel.querySelector('.prayer-file-grid');
+ if(grid){grid.style.setProperty('display','grid','important');grid.style.setProperty('visibility','visible','important');}
+ button.setAttribute('aria-expanded',String(open));
+ button.innerHTML=open?'إغلاق ملف العبادات　⌃':'فتح ملف العبادات　⌄';
+}
+function closePrayerFile(){
+ const panel=document.getElementById('prayerFilePanel');
+ const button=document.getElementById('prayerFileToggle');
+ if(panel){panel.classList.remove('open');panel.style.setProperty('display','none','important');}
+ if(button){button.setAttribute('aria-expanded','false');button.innerHTML='فتح ملف العبادات　⌄';}
+}
+
+// Robust card navigation: attach one click handler to each card and keep the overlay directly under body.
+(function initPrayerFileNavigation(){
+ const screen=document.getElementById('prayerFileScreen');
+ if(screen && screen.parentElement!==document.body) document.body.appendChild(screen);
+ document.addEventListener('click',function(event){
+   const card=event.target && event.target.closest ? event.target.closest('.prayer-file-card') : null;
+   if(!card)return;
+   event.preventDefault();
+   event.stopPropagation();
+   openPrayerFilePage(event,card);
+ },true);
+})();
+</script>
+
+
+<style id="quran-last-read-style">
+.quran-last-read{margin:10px 0 16px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:14px;text-align:center}
+#quranResumeButton{border:1px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer}
+</style>
+<script id="quran-reader-theme-controls">
+function applyQuranTheme(theme){
+  const reader=document.getElementById('quranReader');
+  const button=document.getElementById('quranThemeToggle');
+  if(!reader)return;
+  const selected=theme==='light'?'light':'dark';
+  reader.setAttribute('data-quran-theme',selected);
+  if(button){
+    const isLight=selected==='light';
+    button.textContent=isLight?'🌙 الوضع الليلي':'☀️ الوضع النهاري';
+    button.setAttribute('aria-pressed',String(isLight));
+    button.setAttribute('aria-label',isLight?'تفعيل الوضع الليلي':'تفعيل الوضع النهاري');
+  }
+  try{localStorage.setItem('noorQuranTheme',selected);}catch(e){}
+}
+function toggleQuranTheme(){
+  const reader=document.getElementById('quranReader');
+  const current=reader&&reader.getAttribute('data-quran-theme')==='light'?'light':'dark';
+  applyQuranTheme(current==='light'?'dark':'light');
+}
+function saveLastQuranRead(number,name){
+  const data={number:Number(number),name:String(name||'السورة'),savedAt:new Date().toISOString()};
+  try{localStorage.setItem('noorLastQuranRead',JSON.stringify(data));}catch(e){}
+  const box=document.getElementById('quranLastRead');
+  if(box)box.textContent='آخر قراءة محفوظة: سورة '+data.name.replace('سُورَةُ ','')+' — على هذا الجهاز';
+}
+function resumeLastQuranRead(){
+  let data=null;
+  try{data=JSON.parse(localStorage.getItem('noorLastQuranRead')||'null');}catch(e){}
+  if(data&&data.number){
+    if(typeof openQuranReader==='function')openQuranReader(Number(data.number));
+  }else{
+    const box=document.getElementById('quranLastRead');
+    if(box)box.textContent='لم تُحفظ سورة سابقة بعد. افتح أي سورة وسيتم حفظها تلقائيًا.';
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  let saved='dark';
+  try{saved=localStorage.getItem('noorQuranTheme')||'dark';}catch(e){}
+  applyQuranTheme(saved);
+  let last=null;try{last=JSON.parse(localStorage.getItem('noorLastQuranRead')||'null');}catch(e){}
+  const box=document.getElementById('quranLastRead');
+  if(box&&last&&last.number)box.textContent='آخر قراءة محفوظة: سورة '+String(last.name||'السورة').replace('سُورَةُ ','')+' — اضغط «آخر قراءة» للرجوع إليها';
+});
+</script>
+
 </body>
 </html>
+
+try{initQuranBrowseControls();refreshQuranProgressDisplay();}catch(e){}
