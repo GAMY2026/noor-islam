@@ -2418,6 +2418,66 @@ body.prayer-file-screen-open{overflow:hidden}
 }
 </style>
 
+<style id="noor-mecca-home-image">
+/* صورة مكة داخل مساحة الصورة الرئيسية فقط */
+.hero-art {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    background-color: #f8f1df;
+    background-image: url("https://cdn.phototourl.com/member/2026-10-13-5f9babb4-6b51-46bd-8299-79543fdf0caa.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid rgba(201, 163, 74, 0.65);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(125, 96, 35, 0.18);
+}
+
+
+
+/* الحفاظ على تناسب الصورة على الموبايل */
+@media (max-width: 700px) {
+    .hero-art {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        margin-top: 12px;
+        transform: none;
+    }
+}
+/* صورة مكة - تصميم أبيض وذهبي */
+.noor-mecca-hero {
+    width: min(1100px, calc(100% - 32px));
+    margin: 22px auto 28px;
+    overflow: hidden;
+    border: 1px solid #d8bd78;
+    border-radius: 22px;
+    background: #fbf7eb;
+    box-shadow: 0 10px 30px rgba(112, 84, 35, 0.12);
+    line-height: 0;
+}
+
+.noor-mecca-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    object-position: center;
+}
+
+@media (max-width: 600px) {
+    .noor-mecca-hero {
+        width: calc(100% - 20px);
+        margin: 14px auto 20px;
+        border-radius: 15px;
+    }
+}
+
+</style>
+
 </head>
 
 <body>
@@ -2702,6 +2762,15 @@ body.prayer-file-screen-open{overflow:hidden}
 
 <main id="home">
 
+
+<!-- صورة مكة المكرمة - تصميم أبيض وذهبي -->
+<div class="noor-mecca-hero">
+    <img
+        src="https://cdn.phototourl.com/member/2026-10-13-5f9babb4-6b51-46bd-8299-79543fdf0caa.jpg"
+        alt="مكة المكرمة والكعبة المشرفة"
+        loading="eager"
+    >
+</div>
 
 
 <!-- DASHBOARD -->
